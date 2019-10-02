@@ -8,6 +8,7 @@ package bankgui;
 import BankEntities.BankAccount;
 import java.util.HashSet;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class Banking extends javax.swing.JFrame {
@@ -37,8 +38,12 @@ public class Banking extends javax.swing.JFrame {
     private void doWithdrawal() {
         try{
         int amount = Integer.parseInt(TxtAmount.getText());
-        ba.withdrawMoney(amount);
-        TxtBalance.setText("" + ba.getBalance());
+        boolean validFunds = ba.withdrawMoney(amount);
+        if (validFunds == true)
+            TxtBalance.setText("" + ba.getBalance());
+        else
+            showMessageDialog(this,"Insufficient funds available\n"
+            + "Invalid Withdrawal","Insufficient funds",INFORMATION_MESSAGE);
         TxtAmount.setText("");
         }
         catch (NumberFormatException e) {

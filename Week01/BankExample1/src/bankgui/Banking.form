@@ -199,11 +199,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Deposit"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnDepositActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="BtnWithdraw">
           <Properties>
             <Property name="text" type="java.lang.String" value="Withdraw"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnWithdrawActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -211,6 +217,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Exit"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnExitActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

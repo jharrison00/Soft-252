@@ -5,19 +5,48 @@
  */
 package bankgui;
 
-/**
- *
- * @author jharrison12
- */
-public class Banking extends javax.swing.JFrame {
+import BankEntities.BankAccount;
+import java.util.HashSet;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import static javax.swing.JOptionPane.showMessageDialog;
 
-    /**
-     * Creates new form Banking
-     */
+public class Banking extends javax.swing.JFrame {
+    private BankAccount ba;
+    
     public Banking() {
         initComponents();
+        ba = new BankAccount("John Doe");
+        TxtBalance.setText("" + ba.getBalance());
+        TxtOverdraft.setText("" + ba.getOverdraft());
+        TxtHolder.setText(ba.getHolder());
     }
-
+    
+    private void doDeposit() {
+        try{      
+        int amount = Integer.parseInt(TxtAmount.getText());
+        ba.depositMoney(amount);
+        TxtBalance.setText("" + ba.getBalance());
+        TxtAmount.setText("");
+        }
+        catch (NumberFormatException e) {
+            showMessageDialog(this, "Please enter numbers only",
+            "Error in amount", ERROR_MESSAGE); 
+        }
+    }
+    
+    private void doWithdrawal() {
+        try{
+        int amount = Integer.parseInt(TxtAmount.getText());
+        ba.withdrawMoney(amount);
+        TxtBalance.setText("" + ba.getBalance());
+        TxtAmount.setText("");
+        }
+        catch (NumberFormatException e) {
+            showMessageDialog(this, "Please enter numbers only",
+            "Error in amount", ERROR_MESSAGE); 
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,8 +121,18 @@ public class Banking extends javax.swing.JFrame {
         LblAmount.setText("Amount: ");
 
         BtnDeposit.setText("Deposit");
+        BtnDeposit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDepositActionPerformed(evt);
+            }
+        });
 
         BtnWithdraw.setText("Withdraw");
+        BtnWithdraw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnWithdrawActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -126,6 +165,11 @@ public class Banking extends javax.swing.JFrame {
         );
 
         BtnExit.setText("Exit");
+        BtnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnExitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -170,6 +214,18 @@ public class Banking extends javax.swing.JFrame {
     private void TxtHolderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtHolderActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtHolderActionPerformed
+
+    private void BtnDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDepositActionPerformed
+        doDeposit();
+    }//GEN-LAST:event_BtnDepositActionPerformed
+
+    private void BtnWithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnWithdrawActionPerformed
+        doWithdrawal();
+    }//GEN-LAST:event_BtnWithdrawActionPerformed
+
+    private void BtnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnExitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_BtnExitActionPerformed
 
     /**
      * @param args the command line arguments

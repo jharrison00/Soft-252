@@ -9,18 +9,13 @@ package example1;
  *
  * @author jharrison12
  */
-public class Example1 {
+public class MyWeight {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int day = 22;
-        System.out.println("Hello World");
-        System.out.println("The date today is " + day);
-        System.out.println(true);
-        System.exit(0);
-        
+        // TODO code application logic here
     }
     
 }

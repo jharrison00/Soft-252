@@ -82,17 +82,64 @@ public class StageResultsTest {
 
     @Test
     public void testResetValues() {
-        fail("Test not yet implemented");
+        System.out.println("Testing resetValues");
+        
+        // Set the state of the 'full' object to zero
+        full.resetValues();
+        
+        // Set expected results
+        int expIntResult = 0;
+        double expDoubleResult = 0.0;
+        
+        // Check to see if the reset has worked
+        assertEquals("Credits",expIntResult,full.getTotalCredits());
+        assertEquals("total",expDoubleResult,full.getTotalMarks(),0.0);
+        
+        // Put the 'full' object back to its original state
+        full.addModuleMark(120,50.0);
     }
 
     @Test
     public void testAddModuleMark() {
-        fail("Test not yet implemented");
+        System.out.println("Testing addModuleMark");
+        
+        //Add a 20 credit module, mark 70%
+        empty.addModuleMark(20, 70.0);
+        
+        // Set expected results
+        int expCredits = 20;
+        double expMark = 70.0;
+        
+        // Check to see if the method works
+        assertEquals("Credits should be 20",expCredits,empty.getTotalCredits());
+        assertEquals("Marks should be 70",expMark,empty.getTotalMarks(),0.0);
+    
+        // Add a 20 credit module, mark 40%
+        empty.addModuleMark(20, 40.0);
+        assertEquals("Credits should be 30", 50, empty.getTotalCredits());
+        assertEquals("Marks should be 150", 110.0, empty.getTotalMarks(), 0.0);
+        
+        // Put the 'empty' object back to its original state
+        empty.resetValues();
     }
 
     @Test
     public void testCalculateAverage() {
-        fail("Test not yet implemented");
+        System.out.println("Testing calculateAverage");
+        
+        //Test with no credits and no marks
+        assertEquals("Empty should be 0%",0.0,empty.calculateAverage(),0.0);
+        
+        //Test with 120 credits all at 50%
+        assertEquals("Full should be 50%",50.0,full.calculateAverage(),0.0);
+        
+        //Test wutg 120 credits all at 100%
+        full.resetValues();
+        full.addModuleMark(120,100.0);
+        assertEquals("Full should be 100%",100.0,full.calculateAverage(),0.0);
+        full.resetValues();
+        full.addModuleMark(120, 50.0);
+        
     }
 
     @Test

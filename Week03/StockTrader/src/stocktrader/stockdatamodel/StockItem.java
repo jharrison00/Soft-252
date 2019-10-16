@@ -10,10 +10,10 @@ package stocktrader.stockdatamodel;
  * @author jharrison12
  */
 public class StockItem {
-    private String name = "UNKNOWN";
-    private Integer quantityInStock = 0;
-    private Double sellingPrice = 1000000.00;
-    private Double costPrice = 1000000.00;
+    protected String name = "UNKNOWN";
+    protected Integer quantityInStock = 0;
+    protected Double sellingPrice = 1000000.00;
+    protected Double costPrice = 1000000.00;
 
     public String getName() {
         return name;

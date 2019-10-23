@@ -33,6 +33,15 @@ public class UniDemo {
         teacher.teach();
         student.attendClass();
 
+        //make the student attempt the coursework
+        student.doCoursework();
+
+        //set the coursework
+        String coursework = "Make an app.";
+        course.setCoursework(coursework);
+
+        //make the student attempt the coursework again
+        student.doCoursework();
     }
     
 }

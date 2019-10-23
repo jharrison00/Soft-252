@@ -18,13 +18,14 @@ public class Course {
         this.code = code;
     }
 
-    public String getTeacher() {
+    public Lecturer getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(String teacher) {
+    public void setTeacher(Lecturer teacher) {
         this.teacher = teacher;
     }
+
 
     public String getCoursework() {
         return coursework;

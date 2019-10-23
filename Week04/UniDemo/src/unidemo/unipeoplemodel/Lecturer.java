@@ -24,7 +24,7 @@ public class Lecturer extends UniPeople implements ITeach{
         String courseCode = teacherCourse.getCode();
         String courseRoom = teacherCourse.getRoom();
         System.out.printf("%s is teaching %s in "
-                + "room %s",teacherName,courseCode,courseRoom);
+                + "room %s\n",teacherName,courseCode,courseRoom);
     }
 
     

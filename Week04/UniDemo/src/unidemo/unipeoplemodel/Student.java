@@ -1,8 +1,5 @@
 package unidemo.unipeoplemodel;
 
-import unidemo.Course;
-
-
 public class Student extends UniPeople {
     
     public Student(String name, int id) {
@@ -10,19 +7,17 @@ public class Student extends UniPeople {
         this.id = id;
     }
     
-    String studentName = this.getName();
-    Course studentCourse = this.getCourse();
-
-    
     public void attendClass() {
-        String courseCode = studentCourse.getCode();
-        String courseRoom = studentCourse.getRoom();
-        System.out.printf("%s is attending %s in room %s"
+        String studentName = this.name;
+        String courseCode = course.getCode();
+        String courseRoom = course.getRoom();
+        System.out.printf("%s is attending %s in room %s\n"
                 ,studentName,courseCode,courseRoom);
     }
     
     public void doCoursework(){
-        String courseCoursework = studentCourse.getCoursework();
+        String studentName = this.name;
+        String courseCoursework = course.getCoursework();
         if (courseCoursework != null) {
                     System.out.printf("%s is doing coursework %s"
                             ,studentName,courseCoursework);

@@ -29,6 +29,10 @@ public class UniDemo {
         ad.getDetails(student);
         ad.getDetails(teacher);
 
+        //make the lecturer teach and the student attend
+        teacher.teach();
+        student.attendClass();
+
     }
     
 }

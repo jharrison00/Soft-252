@@ -1,12 +1,19 @@
 package unidemo;
 
+import unidemo.unipeoplemodel.Admin;
+import unidemo.unipeoplemodel.Lecturer;
+import unidemo.unipeoplemodel.Student;
+
 public class UniDemo {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        //Create a new lecturer
+        Lecturer teacher = new Lecturer("Lecturer1",1);
+        //Create a new student
+        Student student = new Student("Student1",2);
+
+
+
     }
     
 }

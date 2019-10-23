@@ -7,7 +7,7 @@ public class Course {
 
     private String code = "Unknown";
     private Lecturer teacher;
-    private String coursework = "Unknown";
+    private String coursework;
     private String room = "Unknown";
     
     public String getCode() {

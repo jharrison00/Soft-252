@@ -14,17 +14,15 @@ public class Admin {
             String name = person.getName();
             int id = person.getId();
             Course course = person.getCourse();
-            if (course != null) {
-                String courseCode = course.getCode();
-                System.out.printf("Name: %s %n ID: %i %n Course: %s"
-                        ,name,id,courseCode);
-            }
-            else {
-                System.out.printf("Name: %s %nID: %i %nCourse: N/A"
-                        ,name,id);
-            }
+            String courseCode;
+            System.out.println("ID:"+id);
+            System.out.println("Name: "+name);
 
-            
-            
+            if (course != null){
+            courseCode = course.getCode();
+            System.out.println("Course: "+courseCode+"\n");
+            }
+            else
+                System.out.println("Course: N/A \n");                                           
+        }                       
     }
-}

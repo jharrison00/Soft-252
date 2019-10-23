@@ -4,7 +4,7 @@ import unidemo.Course;
 
 public abstract class UniPeople {
 
-    private Course course;
+    protected Course course;
     private int id;
     private String name;
     

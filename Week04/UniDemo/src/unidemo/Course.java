@@ -1,10 +1,12 @@
 
 package unidemo;
 
+import unidemo.unipeoplemodel.Lecturer;
+
 public class Course {
 
     private String code = "Unknown";
-    private String teacher = "Unknown";//To be changed to Lecturer object when made
+    private Lecturer teacher;
     private String coursework = "Unknown";
     private String room = "Unknown";
     

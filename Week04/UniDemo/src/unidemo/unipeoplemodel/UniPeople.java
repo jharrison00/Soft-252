@@ -5,8 +5,8 @@ import unidemo.Course;
 public abstract class UniPeople {
 
     protected Course course;
-    private int id;
-    private String name;
+    protected int id;
+    protected String name;
     
     public Course getCourse() {
         return course;

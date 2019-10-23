@@ -4,6 +4,12 @@ import unidemo.Course;
 
 public class Lecturer extends UniPeople implements ITeach{
 
+    
+    public Lecturer(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+    
     @Override
     public void setCourseWork(String coursework) {
         if (course != null) {
@@ -13,12 +19,13 @@ public class Lecturer extends UniPeople implements ITeach{
 
     @Override
     public void teach() {       
-        String objectName = this.getName();
-        Course objectCourse = this.getCourse();
-        String objectCode = objectCourse.getCode();
-        String objectRoom = objectCourse.getRoom();
+        String teacherName = this.getName();
+        Course teacherCourse = this.getCourse();
+        String courseCode = teacherCourse.getCode();
+        String courseRoom = teacherCourse.getRoom();
         System.out.printf("%s is teaching %s in "
-                + "room %s",objectName,objectCode,objectRoom);
+                + "room %s",teacherName,courseCode,courseRoom);
     }
+
     
 }

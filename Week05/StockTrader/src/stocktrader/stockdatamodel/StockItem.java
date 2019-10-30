@@ -1,15 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package stocktrader.stockdatamodel;
 
-/**
- *
- * @author jharrison12
- */
-public class StockItem {
+public abstract class StockItem {
     protected String name = "UNKNOWN";
     protected Integer quantityInStock = 0;
     protected Double sellingPrice = 1000000.00;
@@ -59,5 +50,19 @@ public class StockItem {
         return inStock;
     }
     
+    public StockItem(){}
+    
+    public StockItem(String name)
+    {
+        this.name = name;
+    }
+    
+    public StockItem(String name, Integer qty)
+    {
+        this.name = name;
+        this.quantityInStock = qty;
+    }
+    
+    public abstract StockType getItemType();
 }
 

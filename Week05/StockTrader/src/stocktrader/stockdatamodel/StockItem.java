@@ -15,8 +15,11 @@ public abstract class StockItem implements ISubject {
     }
 
     public void setName(String name) {
-        if (name != null && !name.isEmpty())
+        if (name != null && !name.isEmpty()) {
             this.name = name;
+            notifyObservers();
+        }
+            
     }
 
     public Integer getQuantityInStock() {
@@ -24,8 +27,10 @@ public abstract class StockItem implements ISubject {
     }
 
     public void setQuantityInStock(Integer quantityInStock) {
-        if (quantityInStock >= 0 && quantityInStock != null)
+        if (quantityInStock >= 0 && quantityInStock != null) {
             this.quantityInStock = quantityInStock;
+            notifyObservers();
+        }
     }
 
     public Double getSellingPrice() {
@@ -33,8 +38,10 @@ public abstract class StockItem implements ISubject {
     }
 
     public void setSellingPrice(Double sellingPrice) {
-        if (sellingPrice >= 0 && sellingPrice != null && sellingPrice >= this.costPrice)
+        if (sellingPrice >= 0 && sellingPrice != null && sellingPrice >= this.costPrice) {
             this.sellingPrice = sellingPrice;
+            notifyObservers();
+        }
     }
 
     public Double getCostPrice() {
@@ -42,8 +49,10 @@ public abstract class StockItem implements ISubject {
     }
 
     public void setCostPrice(Double costPrice) {
-        if (costPrice >= 0 && costPrice != null)
+        if (costPrice >= 0 && costPrice != null) {
             this.costPrice = costPrice;
+            notifyObservers();
+        }
     }
     
     public Boolean isInStock()
@@ -104,6 +113,14 @@ public abstract class StockItem implements ISubject {
     @Override
     public void notifyObservers()
     {
+        //Ensure there is a valid list of observers
+        if (this.observers != null && this.observers.size() > 0) {
+            //Start foreach loop
+            for (IObserver currentObserver : this.observers) {
+                //Call update on currentObserver
+                currentObserver.update();              
+            }        
+        }
     }
 }
 

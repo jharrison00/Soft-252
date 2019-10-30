@@ -1,23 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package stocktrader;
 
+import stocktrader.stockdatamodel.AnObserver;
 import stocktrader.stockdatamodel.PhysicalStockItem;
 import stocktrader.stockdatamodel.ServiceStockItem;
 import stocktrader.stockdatamodel.StockItem;
 import stocktrader.stockdatamodel.StockType;
-/**
- *
- * @author jharrison12
- */
+
 public class StockTrader {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         //Create a Physical Stock Item object
         PhysicalStockItem physicalItem = new PhysicalStockItem("Book2", 100);
@@ -44,21 +34,37 @@ public class StockTrader {
         //Test getItemType() method
         if (TestItem1.getItemType() == StockType.PHYSICALITEM) {
             System.out.println("Item 1 is a physical stock item");
-        }else{
+        }
+        else{
             System.out.println("Item 1 is a service stock item");
         }
         
         if (TestItem2.getItemType() == StockType.PHYSICALITEM) {
             System.out.println("Item 2 is a physical stock item");
-        }else{
+        }
+        else{
             System.out.println("Item 2 is a service stock item");
         }
         
         if (TestItem3.getItemType() == StockType.PHYSICALITEM) {
             System.out.println("Item 3 is a physical stock item");
-        }else{
+        }
+        else{
             System.out.println("Item 3 is a service stock item");
         }
-    }
-    
+        
+        //Test Observers
+        StockItem item1 = new PhysicalStockItem("TestPackage");
+        StockItem item2 = new ServiceStockItem("Delivery");
+        AnObserver obs = new AnObserver();
+        
+        //Test registerObserver() method
+        item1.registerObserver(obs);
+        item2.registerObserver(obs);
+        
+        System.out.println("Changing quantity of the physical stock item");
+        item1.setQuantityInStock(100);
+        System.out.println("Changing price of the service stock item");
+        item2.setCostPrice(10.0);       
+    }  
 }

@@ -32,23 +32,32 @@ public class Landlord {
         if (null != choice) switch (choice) {            
             case "Bottled":
                 drink = new BottledDrinks();
+                break;
             case "Tap":
                 drink = new TapDrinks();
+                break;
             case "Coffee":
                 drink = new Coffee();
+                break;
             case "Tea":
                 drink = new Tea();
+                break;
             case "Long":
                 drink = new LongDrinks();
+                break;
             case "Cocktail":
                 drink = new Cocktails();
+                break;
             case "Quit":
                 break;
             default:
                 break;
-        }
-        
-        if (drink != null)
+        }      
+        if (drink != null) {
             drink.makeDrink();
+        }
     }
-}
+    
+        
+      
+    

@@ -18,7 +18,9 @@ public class PubSimulation {
      */
     public static void main(String[] args) {
         Landlord landlord = new Landlord();
-        landlord.askDrink();
+        
+        while (true)
+            landlord.askDrink();
     }
     
 }

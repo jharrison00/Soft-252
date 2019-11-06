@@ -9,6 +9,6 @@ package pubsimulation.Drinks;
  *
  * @author jharrison12
  */
-public interface DrinkStrategy {
-    public abstract void makeDrink(String drink);
+public interface IDrink {
+    public abstract void makeDrink();
 }

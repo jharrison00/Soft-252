@@ -9,10 +9,10 @@ package pubsimulation.Drinks;
  *
  * @author jharrison12
  */
-public abstract class AlcoholicDrinks implements DrinkStrategy {
+public abstract class AlcoholicDrinks implements IDrink {
 
     @Override
-    public void makeDrink(String drink) {
+    public void makeDrink() {
         addIce();
         addSpirits();
         addMixer();

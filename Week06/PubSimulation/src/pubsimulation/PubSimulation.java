@@ -5,6 +5,8 @@
  */
 package pubsimulation;
 
+import pubsimulation.People.Landlord;
+
 /**
  *
  * @author jharrison12
@@ -15,7 +17,8 @@ public class PubSimulation {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Landlord landlord = new Landlord();
+        landlord.askDrink();
     }
     
 }

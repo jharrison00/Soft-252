@@ -9,23 +9,26 @@ package pubsimulation.Drinks;
  *
  * @author jharrison12
  */
-public class HotDrinks implements DrinkStrategy{
+public abstract class HotDrinks implements DrinkStrategy{
 
     @Override
     public void makeDrink(String drink) {
-        System.out.println("Boiling water");
-        if ("coffee".equals(drink)) {
-            System.out.println("Brewing coffee in boiled water");
-            System.out.println("Pouring coffee into cup");
-            System.out.println("Adding milk");
-        }
-        else if ("tea".equals(drink)) {
-            System.out.println("Steeping tea in water");
-            System.out.println("Pouring tea into cup");
-            System.out.println("Adding lemon");
-        }
-
-
+        boilWater();
+        specialiseDrink();
+        pourDrink();
+        additions();
     }
     
+    protected void boilWater() {
+        System.out.println("Boiling water");
+    }
+    
+    protected abstract void specialiseDrink();
+    
+    protected void pourDrink() {
+        System.out.println("Pouring drink into cup");
+    }
+    
+    protected abstract void additions();
+
 }

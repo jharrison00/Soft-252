@@ -9,19 +9,16 @@ package pubsimulation.Drinks;
  *
  * @author jharrison12
  */
-public abstract class ColdDrinks implements DrinkStrategy{
+public class Coffee extends HotDrinks{
 
     @Override
-    public void makeDrink(String drink) {
-        getDrink();
-        pourDrink();
+    protected void specialiseDrink() {
+        System.out.println("Brewing coffee in boiled water");
     }
-    
-    protected abstract void getDrink();
 
-    protected void pourDrink() {
-        System.out.println("Pouring drink into glass");
+    @Override
+    protected void additions() {
+        System.out.println("Adding milk");
     }
     
 }
-

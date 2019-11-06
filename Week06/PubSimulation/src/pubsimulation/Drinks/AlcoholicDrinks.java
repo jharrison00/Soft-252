@@ -9,22 +9,25 @@ package pubsimulation.Drinks;
  *
  * @author jharrison12
  */
-public class AlcoholicDrinks implements DrinkStrategy {
+public abstract class AlcoholicDrinks implements DrinkStrategy {
 
     @Override
     public void makeDrink(String drink) {
-        System.out.println("Adding ice to glass");
-        if ("longDrink".equals(drink)) {
-            System.out.println("Adding spirit to glass");
-            System.out.println("Adding a mixer to glass");
-            System.out.println("Adding a simple garnish");
-        }
-        else if ("cocktail".equals(drink)) {
-            System.out.println("Adding two spirits to glass");
-            System.out.println("Adding a mixer to glass");
-            System.out.println("Adding a fancy garnish");
-        }
-
+        addIce();
+        addSpirits();
+        addMixer();
+        addGarnish();
     }
     
+    public void addIce() {
+        System.out.println("Adding ice to glass");
+    }
+    
+    public abstract void addSpirits();
+    
+    public void addMixer() {
+        System.out.println("Adding mixer to glass");
+    }
+    
+    public abstract void addGarnish();
 }

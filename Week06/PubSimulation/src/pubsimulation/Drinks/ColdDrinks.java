@@ -9,18 +9,21 @@ package pubsimulation.Drinks;
  *
  * @author jharrison12
  */
-public class ColdDrinks implements DrinkStrategy{
+public abstract class ColdDrinks implements DrinkStrategy{
 
     @Override
     public void makeDrink(String drink) {
-        if ("tap".equals(drink)) {
-            System.out.println("Putting glass under tap");          
-        }
-        else if ("bottle".equals(drink)) {
-            System.out.println("Opening bottle");
-        }
+        getDrink();
+        pourDrink();
+    }
+    
+    protected abstract void getDrink();
+
+    protected void pourDrink() {
         System.out.println("Pouring drink into glass");
     }
+    
+
 
 }
 

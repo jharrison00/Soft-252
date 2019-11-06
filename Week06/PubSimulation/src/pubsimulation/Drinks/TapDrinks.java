@@ -9,6 +9,11 @@ package pubsimulation.Drinks;
  *
  * @author jharrison12
  */
-public class TapDrinks {
+public class TapDrinks extends ColdDrinks{
+
+    @Override
+    protected void getDrink() {
+        System.out.println("Putting glass under tap");
+    }
     
 }

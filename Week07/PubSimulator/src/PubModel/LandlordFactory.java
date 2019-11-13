@@ -8,7 +8,8 @@ package PubModel;
 import PubModel.Strategies.IDrinksStrategy;
 
 /**
- *
+ *A class that holds the factory pattern for the drink strategy
+ * 
  * @author jharrison12
  */
 public class LandlordFactory extends AbstractLandlord {

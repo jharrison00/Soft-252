@@ -7,7 +7,7 @@ package PubModel;
 
 import PubModel.Strategies.IDrinksStrategy;
 /**
- * A class for the landlords. 
+ * An abstract class for the landlords. 
  * 
  * @author sthill and a.rahat
  */

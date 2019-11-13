@@ -49,14 +49,20 @@ public class Landlord {
                 drink = new Cocktails();
                 break;
             case "Quit":
+                drink = null;
                 break;
             default:
                 break;
-        }      
+        }
         if (drink != null) {
             drink.makeDrink();
+            askDrink();
         }
     }
+}
+        
+    
+    
     
         
       

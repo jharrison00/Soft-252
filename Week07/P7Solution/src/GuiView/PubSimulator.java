@@ -1,4 +1,4 @@
-package view;
+package GuiView;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,7 +18,7 @@ import java.awt.event.ActionListener;
  *
  * @author arahat
  */
-public class PubSimulatorGUI extends javax.swing.JFrame {
+public class PubSimulator extends javax.swing.JFrame {
 
     /**
      * Creates new form PubSimulator
@@ -29,7 +29,7 @@ public class PubSimulatorGUI extends javax.swing.JFrame {
     /**
      *
      */
-    public PubSimulatorGUI() {
+    public PubSimulator() {
         initComponents();
         groupButton();
     }

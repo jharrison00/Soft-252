@@ -41,6 +41,5 @@ public class ConcreteLandlord extends LandlordFactory{
                 break;
         }
         return strategy;
-    }
-    
+    }    
 }

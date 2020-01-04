@@ -5,7 +5,7 @@
  */
 package Model;
 
-import Controller.LogInController;
+
 import Enums.Genders;
 import java.io.Serializable;
 
@@ -15,7 +15,7 @@ import java.io.Serializable;
  */
 public class Patient implements Serializable
 {  
-    private static final long serialVersionUID =1;
+    private static final long serialVersionUID = 1L;
     private String username;
     private String password;
     private int age;

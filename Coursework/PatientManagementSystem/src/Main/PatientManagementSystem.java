@@ -24,7 +24,6 @@ public class PatientManagementSystem {
         // instantiate the controller
         LogInController controller = new LogInController();
         // set controller attributes
-        controller.setView(view);
-        
+        controller.setView(view);    
     }
 }

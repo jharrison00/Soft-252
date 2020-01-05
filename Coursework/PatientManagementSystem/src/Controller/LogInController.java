@@ -5,8 +5,8 @@
  */
 package Controller;
 
-import Model.HospitalPeople;
-import Model.UserList;
+import Model.Users.HospitalPeople;
+import Model.Users.UserList;
 import View.LogIn;
 
 import java.io.EOFException;

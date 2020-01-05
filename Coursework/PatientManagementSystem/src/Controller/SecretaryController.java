@@ -5,20 +5,10 @@
  */
 package Controller;
 
-import Model.Users.Administrator;
-import View.AdminView;
-
 /**
  *
  * @author jonat
  */
-public class AdminController {
-
-    public AdminController() {
-    }
-    public static void setView(Administrator admin)
-    {
-        AdminView.adminHome(admin);
-    }
+public class SecretaryController {
     
 }

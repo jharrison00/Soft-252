@@ -6,13 +6,16 @@
 package View;
 
 import Controller.AdminController;
+import Controller.DoctorController;
 import Controller.LogInController;
+import Controller.PatientController;
+import Controller.SecretaryController;
 import Enums.Genders;
-import Model.Administrator;
-import Model.Doctor;
-import Model.HospitalPeople;
-import Model.Patient;
-import Model.Secretary;
+import Model.Users.Administrator;
+import Model.Users.Doctor;
+import Model.Users.HospitalPeople;
+import Model.Users.Patient;
+import Model.Users.Secretary;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -41,12 +44,22 @@ public class LogIn {
         } catch (IOException | ClassNotFoundException e) {
             System.out.println(e);
         }
+        
         if (validUser == null) {
             System.out.println("Incorrect");
         }
         else if(validUser.getUsername().toUpperCase().charAt(0) == "A".charAt(0)){
             AdminController.setView((Administrator) validUser);
         }
+        else if(validUser.getUsername().toUpperCase().charAt(0) == "D".charAt(0)){
+            DoctorController.setView((Doctor) validUser);
+        } 
+        else if(validUser.getUsername().toUpperCase().charAt(0) == "P".charAt(0)){
+            PatientController.setView((Patient) validUser);
+        } 
+        else if(validUser.getUsername().toUpperCase().charAt(0) == "S".charAt(0)){
+            SecretaryController.setView((Secretary) validUser);
+        } 
 
     }
     

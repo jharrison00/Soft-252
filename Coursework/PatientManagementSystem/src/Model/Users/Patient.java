@@ -3,16 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package Model.Users;
+
+
+import Enums.Genders;
 
 /**
- *
+ * Patient Data model with override for gender and age
  * @author jonat
  */
-public class Secretary extends HospitalPeople{
-    public Secretary(String username, String password, String address) {
+public class Patient extends HospitalPeople
+{  
+    public Patient(String username, String password, String address,int age, Genders gender) {
         this.username = username;
         this.password = password;
         this.address = address;    
-    } 
+        this.age = age;
+        this.gender = gender;
+    }   
 }

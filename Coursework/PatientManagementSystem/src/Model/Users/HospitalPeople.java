@@ -1,4 +1,4 @@
-package Model;
+package Model.Users;
 
 import Enums.Genders;
 import java.io.Serializable;

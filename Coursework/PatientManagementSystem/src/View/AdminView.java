@@ -5,8 +5,8 @@
  */
 package View;
 
-import Model.Administrator;
-import Model.Doctor;
+import Model.Users.Administrator;
+import Model.Users.Doctor;
 
 /**
  *

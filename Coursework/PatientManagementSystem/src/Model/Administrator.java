@@ -5,20 +5,14 @@
  */
 package Model;
 
-
-import Enums.Genders;
-
 /**
- * Patient Data model with override for gender and age
+ *
  * @author jonat
  */
-public class Patient extends HospitalPeople
-{  
-    public Patient(String username, String password, String address,int age, Genders gender) {
+public class Administrator extends HospitalPeople {
+    public Administrator(String username, String password, String address) {
         this.username = username;
         this.password = password;
         this.address = address;    
-        this.age = age;
-        this.gender = gender;
-    }   
+    } 
 }

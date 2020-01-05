@@ -7,7 +7,10 @@ package View;
 
 import Controller.LogInController;
 import Enums.Genders;
+import Model.Administrator;
+import Model.Doctor;
 import Model.Patient;
+import Model.Secretary;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -18,26 +21,39 @@ import java.util.Scanner;
 public class LogIn {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        getUserDetails();
+        //getUserDetails();
+        //addUsers();
+        logInUser();
     }
     
-    public static void getUserDetails() throws IOException, ClassNotFoundException {
+    public static void logInUser()
+    {
         Scanner in = new Scanner(System.in);        
         System.out.println("Input username: ");
         String username = in.nextLine();
         System.out.println("Input password: ");
         String password = in.nextLine();
-        System.out.println("Input age: ");
-        int age = in.nextInt();
-        System.out.println("Input gender: ");
-        //String gender = in.nextLine();
-        Patient patient = new Patient();
-        patient.setAge(age);
-        patient.setGender(Genders.Other);
-        patient.setPassword(password);
-        patient.setUsername(username);
-        in.close();
-        LogInController.createPatient(patient);
-        LogInController.ReadPatientList();
+        boolean validUser = LogInController.checkUserExists(username,password);
+        
     }
+    
+    public static void addUsers() throws IOException, ClassNotFoundException {
+        //Scanner in = new Scanner(System.in);        
+        //System.out.println("Input username: ");
+        //String username = in.nextLine();
+        //System.out.println("Input password: ");
+        //String password = in.nextLine();
+        //System.out.println("Input address: ");
+        //String address = in.nextLine();    
+        Patient patient = new Patient("patient","password","address",12,Genders.Male);
+        Doctor doctor = new Doctor("doctor","password","address");
+        Administrator admin = new Administrator("admin","password","address");
+        Secretary secretary = new Secretary("secretary","password","address"); 
+        //in.close();
+        LogInController.createUser(patient);
+        LogInController.createUser(doctor);
+        LogInController.createUser(admin);
+        LogInController.createUser(secretary);
+        LogInController.readUserFile();
+    }        
 }

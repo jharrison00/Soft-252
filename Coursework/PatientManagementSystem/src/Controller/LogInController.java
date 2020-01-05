@@ -5,8 +5,8 @@
  */
 package Controller;
 
-import Model.Patient;
-import Model.PatientCollection;
+import Model.HospitalPeople;
+import Model.UserList;
 import View.LogIn;
 
 import java.io.EOFException;
@@ -20,86 +20,87 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author jonat
  */
 public class LogInController {
-
-    private LogIn view;
-    private Patient patient;
-    /**
-     * Setting the view reference. 
-     * @param view The view.
-     */
-    public void setView(final LogIn view){
-        this.view = view;
-    }
-    
-    /**
-     * Setting the model reference.
-     * 
-     * @param patient
-     * @throws java.io.IOException
-     * @throws ClassNotFoundException
-     */
-    public void setPatient(final Patient patient) throws IOException, ClassNotFoundException {
-        this.patient = patient;
-        createPatient(patient);
-    }
     
     /**
      * Creates a user
      * 
-     * @param patient
+     * @param person
      * @throws FileNotFoundException
      * @throws IOException
      * @throws ClassNotFoundException
      */
-    public static void createPatient(final Patient patient)
+    public static void createUser(HospitalPeople person)
             throws FileNotFoundException, IOException, ClassNotFoundException
     {      
-        PatientCollection patientCollection = new PatientCollection();
-        ArrayList<Patient> newPatientList = new ArrayList<Patient>();
+        UserList userList = new UserList();
+        ArrayList<HospitalPeople> newUserList = new ArrayList<HospitalPeople>();
         try 
         {       
             final FileInputStream fis = new FileInputStream("Users.txt");
             final ObjectInputStream ois = new ObjectInputStream(fis);
-            PatientCollection patientList=null;
-            patientList = (PatientCollection) ois.readObject();
+            userList = (UserList) ois.readObject();
             ois.close();
-            newPatientList = patientList.getPatients();
-            newPatientList.add(patient);
+            newUserList = userList.getAllUsersList();
+            newUserList.add(person);
         }
         catch (EOFException e) {
-            newPatientList.add(patient);
+            newUserList.add(person);
         }   
-        patientCollection.setPatients(newPatientList);
+        userList.setAllUsersList(newUserList);
 
         final File file = new File("Users.txt");
         final FileOutputStream fos = new FileOutputStream(file);
-        final ObjectOutput outputStream = new ObjectOutputStream(fos);
-        outputStream.writeObject(patientCollection);
-        System.out.println("Stored in file : " + file.getName());
-        outputStream.close();
+        try (ObjectOutput outputStream = new ObjectOutputStream(fos)) {
+            outputStream.writeObject(userList);
+            System.out.println("Stored in file : " + file.getName());
+        }
     }
 
-    public static void ReadPatientList() throws IOException, ClassNotFoundException {
-        PatientCollection patientList=null;
+    public static UserList readUserFile() throws IOException, ClassNotFoundException {
+        UserList userList = new UserList();
         try 
         {       
             final FileInputStream fis = new FileInputStream("Users.txt");
             final ObjectInputStream ois = new ObjectInputStream(fis);
 
-            patientList = (PatientCollection) ois.readObject();
+            userList = (UserList) ois.readObject();
             ois.close();
         }
         catch (EOFException e) {
+            System.out.println(e.toString());
         }   
-        ArrayList<Patient> patients = patientList.getPatients();
-        for (Patient patient : patients) {
-            System.out.println(patient.getUsername());
-        }
+        
+        ArrayList<HospitalPeople> allUsers = userList.getAllUsersList();
+        userList.setAllUsersList(allUsers);
+        allUsers.forEach((user) -> {
+            System.out.println(user.getUsername());
+        });
+        return userList;
     }   
+    
+    public static boolean checkUserExists(String username,String password)
+    {
+        UserList userList = new UserList();
+        try {
+            userList = readUserFile();
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(LogInController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        ArrayList<HospitalPeople> allUsers = userList.getAllUsersList(); 
+        for (HospitalPeople user : allUsers){ 
+            if (username.equals(user.getUsername()) && password.equals(user.getPassword())){
+                return true;
+            }  
+        }
+        return false;
+    }
 }

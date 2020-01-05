@@ -12,16 +12,17 @@ import java.util.ArrayList;
  *
  * @author jonat
  */
-public class PatientCollection implements Serializable {
+public class UserList implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private ArrayList<Patient> patientList;
+    private ArrayList<HospitalPeople> allUsersList;
 
-    public ArrayList<Patient> getPatients() {
-        return patientList;
+    public ArrayList<HospitalPeople> getAllUsersList() {
+        return allUsersList;
     }
 
-    public void setPatients(ArrayList<Patient> patientList) {
-        this.patientList = patientList;
+    public void setAllUsersList(ArrayList<HospitalPeople> allUsersList) {
+        this.allUsersList = allUsersList;
     }
+
 }

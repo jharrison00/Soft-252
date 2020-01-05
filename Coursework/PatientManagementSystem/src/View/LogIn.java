@@ -5,10 +5,12 @@
  */
 package View;
 
+import Controller.AdminController;
 import Controller.LogInController;
 import Enums.Genders;
 import Model.Administrator;
 import Model.Doctor;
+import Model.HospitalPeople;
 import Model.Patient;
 import Model.Secretary;
 import java.io.IOException;
@@ -33,8 +35,19 @@ public class LogIn {
         String username = in.nextLine();
         System.out.println("Input password: ");
         String password = in.nextLine();
-        boolean validUser = LogInController.checkUserExists(username,password);
-        
+        HospitalPeople validUser = null;
+        try {
+            validUser = LogInController.checkUserExists(username,password);
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
+        if (validUser == null) {
+            System.out.println("Incorrect");
+        }
+        else if(validUser.getUsername().toUpperCase().charAt(0) == "A".charAt(0)){
+            AdminController.setView((Administrator) validUser);
+        }
+
     }
     
     public static void addUsers() throws IOException, ClassNotFoundException {

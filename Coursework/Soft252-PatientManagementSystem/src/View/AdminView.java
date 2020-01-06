@@ -6,8 +6,11 @@
 package View;
 
 import Controller.AdminController;
+import Controller.LogInController;
 import Model.Users.Administrator;
 import Model.Users.Doctor;
+
+import java.io.IOException;
 
 /**
  *
@@ -16,13 +19,21 @@ import Model.Users.Doctor;
 public class AdminView {
     public static void adminHome(Administrator admin)
     {
-
+        //createAccount();
+        try {
+            LogInController.readUserFile();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void createAccount()
-    {
+    public static void createAccount(){
         Doctor doctor = new Doctor("doctor1","password","address");
-        AdminController.createAccount(doctor);
+        try {
+            LogInController.createUser(doctor);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void viewRatings()

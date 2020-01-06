@@ -5,7 +5,11 @@
  */
 package View;
 
+import Controller.SecretaryController;
+import Model.Users.HospitalPeople;
 import Model.Users.Secretary;
+
+import java.util.Scanner;
 
 /**
  *
@@ -30,9 +34,20 @@ public class SecretaryView {
 
     }
 
-    public static void approveAccount()
+    public static boolean approveAccount(HospitalPeople person)
     {
-
+        Scanner in = new Scanner(System.in);
+        System.out.println("Would you like to approve: "+person.getUsername());
+        String approve = in.nextLine();
+        if (approve.equals("yes"))
+        {
+            return true;
+        }
+        else
+        {
+            System.out.println("Not approved");
+            return false;
+        }
     }
 }    
 

@@ -6,10 +6,9 @@
 package Controller;
 
 import Model.Users.Administrator;
-import Model.Users.HospitalPeople;
+import Model.Users.Patient;
 import View.AdminView;
 
-import java.io.IOException;
 
 /**
  *
@@ -25,13 +24,7 @@ public class AdminController {
         AdminView.adminHome(admin);
     }
 
-    public static void createAccount(HospitalPeople person){
-        try {
-            LogInController.createUser(person);
-        }
-        catch(IOException | ClassNotFoundException e)
-        {
-            System.out.println(e);
-        }
+    public static void terminateAccount(Patient patient) {
+
     }
 }

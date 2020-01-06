@@ -29,6 +29,8 @@ public class LogIn {
         //getUserDetails();
         //addUsers();
         logInUser();
+        //Patient patient = new Patient("approvedPatient","password","address",12,Genders.Male);
+        //PatientController.createAccount(patient);
     }
     
     public static void logInUser()

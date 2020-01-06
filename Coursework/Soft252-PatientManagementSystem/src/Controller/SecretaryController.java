@@ -5,8 +5,13 @@
  */
 package Controller;
 
+import Model.Users.HospitalPeople;
 import Model.Users.Secretary;
+import Model.Users.UserList;
 import View.SecretaryView;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,5 +21,17 @@ public class SecretaryController {
     public static void setView(Secretary secretary)
     {
         SecretaryView.secretaryHome(secretary);
+    }
+
+    public static void approveAccount(HospitalPeople person)
+    {
+        if (SecretaryView.approveAccount(person) == true)
+        {
+            try {
+                LogInController.createUser(person);
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

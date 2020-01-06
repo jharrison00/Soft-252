@@ -5,16 +5,24 @@
  */
 package Controller;
 
+import Model.Users.HospitalPeople;
 import Model.Users.Patient;
 import View.PatientView;
+
+import java.io.IOException;
 
 /**
  *
  * @author jonat
  */
 public class PatientController {
-        public static void setView(Patient patient)
+    public static void setView(Patient patient)
     {
         PatientView.patientHome(patient);
+    }
+
+    public static void createAccount(Patient patient) throws IOException, ClassNotFoundException {
+        patient.registerObservers();
+        patient.notifyObserver(patient);
     }
 }

@@ -3,18 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package View;
 
-import Model.Users.Secretary;
-import View.SecretaryView;
+import Model.Users.Doctor;
 
 /**
  *
  * @author jonat
  */
-public class SecretaryController {
-    public static void setView(Secretary secretary)
-    {
-        SecretaryView.secretaryHome(secretary);
+public class DoctorView {
+    public static void doctorHome(Doctor doctor){
     }
 }

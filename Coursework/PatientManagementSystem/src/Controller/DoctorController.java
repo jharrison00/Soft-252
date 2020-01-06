@@ -5,10 +5,16 @@
  */
 package Controller;
 
+import Model.Users.Doctor;
+import View.DoctorView;
+
 /**
  *
  * @author jonat
  */
 public class DoctorController {
-    
+    public static void setView(Doctor doctor)
+    {
+        DoctorView.doctorHome(doctor);
+    }
 }

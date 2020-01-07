@@ -26,10 +26,10 @@ public class LogIn {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         //getUserDetails();
         //addUsers();
-        //logInUser();
+        logInUser();
         //createAccount();
-        UserList userList  = UsersController.getAllUsers();
-        AppointmentList appointmentList = AppointmentsController.getAllAppointments();
+        //UserList userList  = UsersController.getAllUsers();
+        //AppointmentList appointmentList = AppointmentsController.getAllAppointments();
     }
     
     public static void logInUser()

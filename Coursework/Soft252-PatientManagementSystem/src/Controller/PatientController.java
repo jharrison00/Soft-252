@@ -57,4 +57,5 @@ public abstract class PatientController {
         requestAppointment.getAppointmentPatient().registerObservers();
         requestAppointment.getAppointmentPatient().notifyObserverAppointment(requestAppointment);
     }
+
 }

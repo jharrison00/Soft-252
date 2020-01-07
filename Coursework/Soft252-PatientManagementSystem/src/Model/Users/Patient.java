@@ -52,6 +52,13 @@ public class Patient extends HospitalPeople implements PatientObservable, Appoin
         this.gender = gender;
     }
 
+    public ArrayList<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(ArrayList<Appointment> appointments) {
+        this.appointments = appointments;
+    }
 
     @Override
     public void registerObservers() {

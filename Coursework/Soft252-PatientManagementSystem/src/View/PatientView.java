@@ -28,8 +28,9 @@ import java.util.ArrayList;
 public class PatientView {
     public static void patientHome(Patient patient)
     {
-        requestAppointment(patient);
+        //requestAppointment(patient);
         //terminateAccount(patient);
+        appointments(patient);
     }
 
     public static void requestAppointment(Patient patient)
@@ -50,6 +51,19 @@ public class PatientView {
         }
         PatientController.requestAppointment(requestAppointment);
 
+    }
+
+    public static void appointments(Patient patient)
+    {
+        if (patient.getAppointments() != null) {
+            ArrayList<Appointment> appointments = patient.getAppointments();
+            for (Appointment appointment : appointments) {
+                System.out.println(appointment.getAppointmentID());
+            }
+        }
+        else{
+            System.out.println("No appointments");
+        }
     }
 
     public static void doctors()

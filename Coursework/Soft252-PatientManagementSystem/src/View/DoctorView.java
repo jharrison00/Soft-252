@@ -5,7 +5,11 @@
  */
 package View;
 
+import Model.Appointments.Appointment;
 import Model.Users.Doctor;
+import Model.Users.Patient;
+
+import java.util.ArrayList;
 
 /**
  *
@@ -15,13 +19,22 @@ public class DoctorView
 {
     public static void doctorHome(Doctor doctor)
     {
-
+        appointments(doctor);
     }
 
-    public static void appointments()
+    public static void appointments(Doctor doctor)
     {
-
+        if (doctor.getAppointments() != null) {
+            ArrayList<Appointment> appointments = doctor.getAppointments();
+            for (Appointment appointment : appointments) {
+                System.out.println(appointment.getAppointmentID());
+            }
+        }
+        else{
+            System.out.println("No appointments");
+        }
     }
+
     public static void addNotes()
     {
 

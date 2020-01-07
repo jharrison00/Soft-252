@@ -28,6 +28,14 @@ public class Doctor extends HospitalPeople implements AppointmentObserver
         this.address = address;
     }
 
+    public ArrayList<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(ArrayList<Appointment> appointments) {
+        this.appointments = appointments;
+    }
+
     @Override
     public void updateAppointment(Appointment appointment) {
         UserList userList = null;

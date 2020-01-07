@@ -21,10 +21,9 @@ public class LogIn {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         //getUserDetails();
-        addUsers();
-        //logInUser();
-        //Patient patient = new Patient("PatientApproved","password","address",12,Genders.Male);
-        //PatientController.createAccount(patient);
+        //addUsers();
+        logInUser();
+        //createAccount();
         UserList userList  = UsersController.getAllUsers();
         //createAccount();
     }
@@ -53,7 +52,7 @@ public class LogIn {
     public static void createAccount()
     {
         System.out.println("Would you like to create an account");
-        Patient patient = new Patient("approvedPatient","approvedPassword","add",23, Genders.Female);
+        Patient patient = new Patient("patientApproved","password]","add",23, Genders.Female);
         try {
             PatientController.createAccount(patient);
         } catch (IOException | ClassNotFoundException e) {

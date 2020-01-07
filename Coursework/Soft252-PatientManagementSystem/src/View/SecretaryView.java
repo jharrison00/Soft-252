@@ -6,9 +6,15 @@
 package View;
 
 import Controller.SecretaryController;
+import Controller.UsersController;
 import Model.Users.HospitalPeople;
+import Model.Users.Patient;
 import Model.Users.Secretary;
+import Model.Users.UserList;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -18,22 +24,8 @@ import java.util.Scanner;
 public class SecretaryView {
     public static void secretaryHome(Secretary secretary){
         //approveCreateAccount(secretary);
-        approveRemoveAccount(secretary);
-    }
-
-    public static void removePatient()
-    {
-
-    }
-
-    public static void giveMedicine()
-    {
-
-    }
-
-    public static void createAppointment()
-    {
-
+        //approveRemoveAccount(secretary);
+        removePatient();
     }
 
     public static void approveCreateAccount(Secretary secretary)
@@ -65,5 +57,52 @@ public class SecretaryView {
             }
         }
     }
+
+    public static void removePatient()
+    {
+        UserList userList = null;
+        ArrayList<Patient> allPatients = new ArrayList<Patient>();
+        try {
+            userList = UsersController.getAllUsers();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        ArrayList<HospitalPeople> allUsers = userList.getAllUsersList();
+        for (HospitalPeople user : allUsers)
+        {
+         if (user.getUsername().toUpperCase().charAt(0) == "P".charAt(0))
+         {
+             allPatients.add((Patient) user);
+             System.out.println(user.getUsername());
+         }
+        }
+        if (allPatients != null) {
+            Scanner in = new Scanner(System.in);
+            System.out.println("Would you like to remove a patient: ");
+            String approve = in.nextLine();
+            if (approve.equals("yes")) {
+                try {
+                    UsersController.deleteUser(allPatients.get(0));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("Patient removed");
+            } else {
+                System.out.println("Not approved");
+            }
+        }
+    }
+
+    public static void giveMedicine()
+    {
+
+    }
+
+    public static void createAppointment()
+    {
+
+    }
+
+
 }    
 

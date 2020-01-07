@@ -5,16 +5,10 @@
  */
 package View;
 
-import Controller.DoctorController;
 import Controller.PatientController;
-import Controller.UsersController;
-import Enums.Genders;
 import Model.Appointments.Appointment;
-import Model.Observables.PatientObservable;
 import Model.Users.Doctor;
 import Model.Users.Patient;
-import Model.Users.Secretary;
-import Model.Users.SecretaryObserver;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -28,9 +22,9 @@ import java.util.ArrayList;
 public class PatientView {
     public static void patientHome(Patient patient)
     {
-        //requestAppointment(patient);
+        requestAppointment(patient);
         //terminateAccount(patient);
-        appointments(patient);
+        //appointments(patient);
     }
 
     public static void requestAppointment(Patient patient)

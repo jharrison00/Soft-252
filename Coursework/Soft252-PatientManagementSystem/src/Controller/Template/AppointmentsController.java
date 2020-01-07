@@ -1,9 +1,8 @@
-package Controller;
+package Controller.Template;
 
 import Model.Appointments.Appointment;
 import Model.Appointments.AppointmentList;
-import Model.Users.HospitalPeople;
-import Model.Users.UserList;
+import Model.Users.Secretary;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -13,6 +12,15 @@ import java.util.ArrayList;
  * @author jonat
  */
 public abstract class AppointmentsController {
+
+    public final void createAppointment(Secretary secretary,Appointment appointment)
+            throws FileNotFoundException, IOException, ClassNotFoundException
+    {
+        secretaryApproval(secretary,appointment);
+        updateObservers(appointment);
+        addToFile(appointment);
+    }
+
     public static AppointmentList getAllAppointments() throws IOException, ClassNotFoundException {
         AppointmentList appointmentList = new AppointmentList();
         FileInputStream fis = new FileInputStream("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Appointments.txt");
@@ -36,7 +44,15 @@ public abstract class AppointmentsController {
         return appointmentList;
     }
 
-    public static void createAppointment(Appointment appointment)
+    protected abstract void secretaryApproval(Secretary secretary,Appointment appointment);
+
+    public static void updateObservers(Appointment appointment)
+    {
+        appointment.registerAppointmentObservers();
+        appointment.notifyAppointment(appointment);
+    }
+
+    public static void addToFile(Appointment appointment)
             throws FileNotFoundException, IOException, ClassNotFoundException
     {
         AppointmentList appointmentList = new AppointmentList();
@@ -55,7 +71,6 @@ public abstract class AppointmentsController {
             newAppointmentList.add(appointment);
         }
         appointmentList.setAllAppointmentsList(newAppointmentList);
-
         final File file = new File("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Appointments.txt");
         final FileOutputStream fos = new FileOutputStream(file);
         try (ObjectOutput outputStream = new ObjectOutputStream(fos)) {
@@ -65,4 +80,5 @@ public abstract class AppointmentsController {
             fos.close();
         }
     }
+
 }

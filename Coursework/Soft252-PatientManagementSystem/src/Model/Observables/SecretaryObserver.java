@@ -1,6 +1,7 @@
-package Model.Users;
+package Model.Observables;
 
 import Model.Appointments.Appointment;
+import Model.Users.HospitalPeople;
 
 /**
  *

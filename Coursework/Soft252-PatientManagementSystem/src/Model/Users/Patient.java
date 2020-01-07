@@ -8,8 +8,9 @@ package Model.Users;
 import Controller.UsersController;
 import Enums.Genders;
 import Model.Appointments.Appointment;
-import Model.Observables.AppointmentObservable;
+import Model.Observables.AppointmentObserver;
 import Model.Observables.PatientObservable;
+import Model.Observables.SecretaryObserver;
 
 import java.io.IOException;
 import java.util.ArrayList;

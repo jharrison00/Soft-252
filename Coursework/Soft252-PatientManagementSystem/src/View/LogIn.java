@@ -5,7 +5,7 @@
  */
 package View;
 
-import Controller.AppointmentsController;
+import Controller.Template.AppointmentsController;
 import Controller.PatientController;
 import Controller.UsersController;
 import Enums.Genders;
@@ -90,9 +90,9 @@ public class LogIn {
         UsersController.createUser(admin);
         UsersController.createUser(secretary);
         UsersController.getAllUsers();
-        Appointment appointment = new Appointment(1,patient,doctor, new Date(8/1/2020));
-        AppointmentsController.createAppointment(appointment);
-        AppointmentsController.getAllAppointments();
+        //Appointment appointment = new Appointment(1,patient,doctor, new Date(8/1/2020));
+        //AppointmentsController.createAppointment(appointment);
+        //AppointmentsController.getAllAppointments();
     }
 
 

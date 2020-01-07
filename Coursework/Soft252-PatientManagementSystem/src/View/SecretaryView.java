@@ -6,6 +6,8 @@
 package View;
 
 import Controller.SecretaryController;
+import Controller.Template.AppointmentsController;
+import Controller.Template.SecretaryAppointmentCreate;
 import Controller.UsersController;
 import Model.Users.HospitalPeople;
 import Model.Users.Patient;
@@ -80,11 +82,6 @@ public class SecretaryView {
         }
     }
 
-    public static void giveMedicine()
-    {
-
-    }
-
     public static void approveAppointment(Secretary secretary)
     {
         if (secretary.getRequestAppointment() != null) {
@@ -92,7 +89,12 @@ public class SecretaryView {
             System.out.println("Would you like to approve appointment: ");
             String approve = in.nextLine();
             if (approve.equals("yes")) {
-                SecretaryController.approveAppointment(secretary, secretary.getRequestAppointment());
+                AppointmentsController secretaryAppointment = new SecretaryAppointmentCreate();
+                try {
+                    secretaryAppointment.createAppointment(secretary,secretary.getRequestAppointment());
+                } catch (IOException | ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
                 System.out.println("Appointment approved");
             } else {
                 System.out.println("Not approved");
@@ -100,6 +102,10 @@ public class SecretaryView {
         }
     }
 
+    public static void giveMedicine()
+    {
+
+    }
 
 }    
 

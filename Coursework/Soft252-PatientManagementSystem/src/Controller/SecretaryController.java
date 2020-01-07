@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Controller.Template.AppointmentsController;
 import Model.Appointments.Appointment;
 import Model.Users.HospitalPeople;
 import Model.Users.Patient;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
  *
  * @author jonat
  */
-public abstract class SecretaryController {
+public abstract class SecretaryController extends AppointmentsController {
     public static void setView(Secretary secretary)
     {
         SecretaryView.secretaryHome(secretary);
@@ -40,25 +41,6 @@ public abstract class SecretaryController {
             e.printStackTrace();
         }
     }
-
-    public static void approveAppointment(Secretary secretary, Appointment appointment)
-    {
-        try {
-            AppointmentsController.createAppointment(appointment);
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        secretary.setRequestAppointment(null);
-        appointment.registerAppointmentObservers();
-        appointment.notifyAppointment(appointment);
-        try {
-            UsersController.editUser(secretary);
-            System.out.println("Appointment approved");
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     public static void terminateAccount(Secretary secretary, HospitalPeople person)
     {

@@ -5,10 +5,9 @@
  */
 package Model.Users;
 
-import Controller.AppointmentsController;
 import Controller.UsersController;
 import Model.Appointments.Appointment;
-import Model.Appointments.AppointmentList;
+import Model.Observables.SecretaryObserver;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
  *
  * @author jonat
  */
-public class Secretary extends HospitalPeople implements SecretaryObserver{
+public class Secretary extends HospitalPeople implements SecretaryObserver {
     protected HospitalPeople approvalUser;
     protected HospitalPeople removalUser;
     protected Appointment requestAppointment;

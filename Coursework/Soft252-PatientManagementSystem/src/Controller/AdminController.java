@@ -7,19 +7,16 @@ package Controller;
 
 import Model.Users.Administrator;
 import Model.Users.HospitalPeople;
-import Model.Users.Patient;
 import Model.Users.UserList;
 import View.AdminView;
-
 import java.io.IOException;
 import java.util.ArrayList;
-
 
 /**
  *
  * @author jonat
  */
-public class AdminController {
+public abstract class AdminController {
 
     public AdminController() {
     }

@@ -5,14 +5,21 @@
  */
 package View;
 
+import Controller.DoctorController;
 import Controller.PatientController;
+import Controller.UsersController;
 import Enums.Genders;
+import Model.Appointments.Appointment;
 import Model.Observables.PatientObservable;
+import Model.Users.Doctor;
 import Model.Users.Patient;
 import Model.Users.Secretary;
 import Model.Users.SecretaryObserver;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 /**
  *
@@ -21,11 +28,27 @@ import java.io.IOException;
 public class PatientView {
     public static void patientHome(Patient patient)
     {
-        terminateAccount(patient);
+        requestAppointment(patient);
+        //terminateAccount(patient);
     }
 
-    public static void appointment()
+    public static void requestAppointment(Patient patient)
     {
+        ArrayList<Doctor> allDocs = PatientController.getAllDoc();
+        Appointment requestAppointment = null;
+        String date = "08/01/2020";
+
+        System.out.println("Choose doctor: ");
+        System.out.println("Choose date: ");
+
+        requestAppointment.setDoctor(allDocs.get(0));
+        requestAppointment.setAppointmentPatient(patient);
+        try {
+            requestAppointment.setDate(new SimpleDateFormat("dd/MM/yyyy").parse(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        PatientController.requestAppointment(requestAppointment);
 
     }
 

@@ -40,11 +40,6 @@ public class AdminView {
         }
     }
 
-    public static void viewRatings()
-    {
-
-    }
-
     public static void removeAccount()
     {
         ArrayList<HospitalPeople> allDocSec = AdminController.getAllDocSec();
@@ -66,6 +61,11 @@ public class AdminView {
     }
 
     public static void feedback()
+    {
+
+    }
+
+    public static void viewRatings()
     {
 
     }

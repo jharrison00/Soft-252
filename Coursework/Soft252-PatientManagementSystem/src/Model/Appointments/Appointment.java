@@ -3,13 +3,25 @@ package Model.Appointments;
 import Model.Users.Doctor;
 import Model.Users.Patient;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public abstract class Appointment {
+/**
+ *
+ * @author jonat
+ */
+public class Appointment implements Serializable {
     protected int appointmentID;
     protected Patient patient;
     protected Doctor doctor;
     protected Date date;
+
+    public Appointment(int appointmentID, Patient patient, Doctor doctor, Date date) {
+        this.appointmentID = appointmentID;
+        this.patient = patient;
+        this.doctor = doctor;
+        this.date = date;
+    }
 
     public int getAppointmentID() {
         return appointmentID;
@@ -19,11 +31,11 @@ public abstract class Appointment {
         this.appointmentID = appointmentID;
     }
 
-    public Patient getPatient() {
+    public Patient getAppointmentPatient() {
         return patient;
     }
 
-    public void setPatient(Patient patient) {
+    public void setAppointmentPatient(Patient patient) {
         this.patient = patient;
     }
 
@@ -42,7 +54,5 @@ public abstract class Appointment {
     public void setDate(Date date) {
         this.date = date;
     }
-
-
 
 }

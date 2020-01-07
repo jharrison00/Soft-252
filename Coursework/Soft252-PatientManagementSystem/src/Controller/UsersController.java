@@ -22,7 +22,7 @@ import java.util.ArrayList;
  *
  * @author jonat
  */
-public class UsersController {
+public abstract class UsersController {
 
     
     /**

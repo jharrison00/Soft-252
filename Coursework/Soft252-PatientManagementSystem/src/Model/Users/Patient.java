@@ -6,6 +6,7 @@
 package Model.Users;
 
 import Enums.Genders;
+import Model.Appointments.Appointment;
 import Model.Observables.PatientObservable;
 import java.util.ArrayList;
 
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  * Patient Data model with override for gender and age
  * @author jonat
  */
-public class Patient extends HospitalPeople implements PatientObservable
+public class Patient extends HospitalPeople implements PatientObservable, AppointmentObserver
 {
     private ArrayList<SecretaryObserver> secretaries;
     protected int age;
@@ -70,4 +71,15 @@ public class Patient extends HospitalPeople implements PatientObservable
         }
     }
 
+    @Override
+    public void notifyObserverAppointment(Appointment appointment) {
+        for (SecretaryObserver secretary: secretaries){
+            secretary.updateAppointment(appointment);
+        }
+    }
+
+    @Override
+    public void update(HospitalPeople observer) {
+
+    }
 }

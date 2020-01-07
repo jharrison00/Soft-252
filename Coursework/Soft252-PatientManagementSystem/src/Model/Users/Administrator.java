@@ -9,7 +9,6 @@ package Model.Users;
  *
  * @author jonat
  */
-
 public class Administrator extends HospitalPeople {
     public Administrator(String username, String firstName, String lastName, String password, String address) {
         this.username = username;

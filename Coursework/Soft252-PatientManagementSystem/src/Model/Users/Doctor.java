@@ -6,11 +6,13 @@
  */
 package Model.Users;
 
+import Model.Appointments.IAppointment;
+
 /**
  *
  * @author jonat
  */
-public class Doctor extends HospitalPeople
+public class Doctor extends HospitalPeople implements AppointmentObserver
 {
     public Doctor(String username, String firstName, String lastName, String password, String address) {
         this.username = username;
@@ -19,4 +21,10 @@ public class Doctor extends HospitalPeople
         this.password = password;
         this.address = address;
     }
+
+    @Override
+    public void update(HospitalPeople observer) {
+
+    }
+
 }

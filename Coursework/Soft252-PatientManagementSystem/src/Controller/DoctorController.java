@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.Appointments.IAppointment;
 import Model.Users.Doctor;
 import View.DoctorView;
 
@@ -12,9 +13,19 @@ import View.DoctorView;
  *
  * @author jonat
  */
-public class DoctorController {
+public abstract class DoctorController implements IAppointment {
     public static void setView(Doctor doctor)
     {
         DoctorView.doctorHome(doctor);
+    }
+
+    @Override
+    public void createPrescription() {
+
+    }
+
+    @Override
+    public void createNote() {
+
     }
 }

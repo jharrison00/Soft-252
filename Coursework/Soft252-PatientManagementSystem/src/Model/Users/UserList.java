@@ -13,7 +13,6 @@ import java.util.ArrayList;
  * @author jonat
  */
 public class UserList implements Serializable {
-    private static final long serialVersionUID = 1L;
 
     private ArrayList<HospitalPeople> allUsersList;
 

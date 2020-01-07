@@ -18,7 +18,7 @@ import java.util.ArrayList;
  *
  * @author jonat
  */
-public class SecretaryController {
+public abstract class SecretaryController {
     public static void setView(Secretary secretary)
     {
         SecretaryView.secretaryHome(secretary);

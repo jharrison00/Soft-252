@@ -5,7 +5,10 @@
  */
 package Model.Users;
 
+import Controller.AppointmentsController;
 import Controller.UsersController;
+import Model.Appointments.Appointment;
+import Model.Appointments.AppointmentList;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,6 +20,8 @@ import java.util.ArrayList;
 public class Secretary extends HospitalPeople implements SecretaryObserver{
     protected HospitalPeople approvalUser;
     protected HospitalPeople removalUser;
+    protected Appointment requestAppointment;
+
     public Secretary(String username, String firstName, String lastName, String password, String address) {
         this.username = username;
         this.firstName = firstName;
@@ -98,6 +103,29 @@ public class Secretary extends HospitalPeople implements SecretaryObserver{
             }
         }
         userList.setAllUsersList(allUsers);
+        try {
+            UsersController.editUser(this);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateAppointment(Appointment appointment) {
+        AppointmentList appointmentList = null;
+        try {
+            appointmentList = AppointmentsController.getAllAppointments();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        ArrayList<Appointment> allAppointments = appointmentList.getAllAppointmentsList();
+        for (Appointment appointments : allAppointments){
+            if (appointments.getAppointmentID() == appointment.getAppointmentID()) {
+                System.out.println("Updating "+this.getUsername()+" about appointment");
+                this.requestAppointment = appointment;
+            }
+        }
+        appointmentList.setAllAppointmentsList(allAppointments);
         try {
             UsersController.editUser(this);
         } catch (IOException | ClassNotFoundException e) {

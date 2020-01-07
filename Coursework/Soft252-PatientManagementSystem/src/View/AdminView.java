@@ -30,7 +30,9 @@ public class AdminView {
     }
 
     public static void createAccount(){
-        Doctor doctor = new Doctor("doctor1","password","address");
+        Doctor doctor = new Doctor("D0002","doctor","doctor",
+                "password","address");
+
         try {
             UsersController.createUser(doctor);
         } catch (IOException | ClassNotFoundException e) {

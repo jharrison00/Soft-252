@@ -17,8 +17,10 @@ import java.util.ArrayList;
 public class Secretary extends HospitalPeople implements SecretaryObserver{
     protected HospitalPeople approvalUser;
     protected HospitalPeople removalUser;
-    public Secretary(String username, String password, String address) {
+    public Secretary(String username, String firstName, String lastName, String password, String address) {
         this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.password = password;
         this.address = address;
     }

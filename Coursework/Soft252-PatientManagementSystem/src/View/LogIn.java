@@ -22,7 +22,7 @@ public class LogIn {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         //getUserDetails();
         //addUsers();
-        logInUser();
+        //logInUser();
         //createAccount();
         UserList userList  = UsersController.getAllUsers();
         //createAccount();
@@ -52,7 +52,8 @@ public class LogIn {
     public static void createAccount()
     {
         System.out.println("Would you like to create an account");
-        Patient patient = new Patient("patientApproved","password]","add",23, Genders.Female);
+        Patient patient = new Patient("P0002","Test","Patient",
+                "password","address",22,Genders.Female);
         try {
             PatientController.createAccount(patient);
         } catch (IOException | ClassNotFoundException e) {
@@ -69,10 +70,16 @@ public class LogIn {
         //String password = in.nextLine();
         //System.out.println("Input address: ");
         //String address = in.nextLine();    
-        Patient patient = new Patient("patient","password","address",12,Genders.Male);
-        Doctor doctor = new Doctor("doctor","password","address");
-        Administrator admin = new Administrator("admin","password","address");
-        Secretary secretary = new Secretary("secretary","password","address"); 
+        Patient patient = new Patient("P0001","patient","patient",
+                "password","address",22,Genders.Female);
+
+        Doctor doctor = new Doctor("D0001","doctor","doctor",
+                "password","address");
+
+        Administrator admin = new Administrator("A0001","admin","admin",
+                "password","address");
+        Secretary secretary = new Secretary("S0001","secretary","secretary",
+                "password","address");
         //in.close();
         UsersController.createUser(patient);
         UsersController.createUser(doctor);

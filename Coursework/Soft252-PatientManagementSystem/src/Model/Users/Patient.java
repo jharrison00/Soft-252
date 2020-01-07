@@ -19,8 +19,10 @@ public class Patient extends HospitalPeople implements PatientObservable
     protected int age;
     protected Genders gender;
 
-    public Patient(String username, String password, String address,int age, Genders gender) {
+    public Patient(String username, String firstName, String lastName, String password, String address,int age, Genders gender) {
         this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.password = password;
         this.address = address;    
         this.age = age;

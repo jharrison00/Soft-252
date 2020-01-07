@@ -6,10 +6,13 @@
 package Controller;
 
 import Model.Users.HospitalPeople;
+import Model.Users.Patient;
 import Model.Users.Secretary;
+import Model.Users.UserList;
 import View.SecretaryView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
@@ -53,5 +56,22 @@ public class SecretaryController {
         }
     }
 
+    public static ArrayList<Patient> getAllPatients() {
+        UserList userList = null;
+        ArrayList<Patient> allPatients = new ArrayList<Patient>();
+        try {
+            userList = UsersController.getAllUsers();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        ArrayList<HospitalPeople> allUsers = userList.getAllUsersList();
+        for (HospitalPeople user : allUsers) {
+            if (user.getUsername().toUpperCase().charAt(0) == "P".charAt(0)) {
+                allPatients.add((Patient) user);
+                System.out.println(user.getUsername());
+            }
+        }
+        return allPatients;
+    }
 
 }

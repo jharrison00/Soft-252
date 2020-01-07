@@ -6,8 +6,13 @@
 package Controller;
 
 import Model.Users.Administrator;
+import Model.Users.HospitalPeople;
 import Model.Users.Patient;
+import Model.Users.UserList;
 import View.AdminView;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 
 /**
@@ -24,7 +29,21 @@ public class AdminController {
         AdminView.adminHome(admin);
     }
 
-    public static void terminateAccount(Patient patient) {
-
+    public static ArrayList<HospitalPeople> getAllDocSec() {
+        UserList userList = null;
+        ArrayList<HospitalPeople> allDocSec = new ArrayList<HospitalPeople>();
+        try {
+            userList = UsersController.getAllUsers();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        ArrayList<HospitalPeople> allUsers = userList.getAllUsersList();
+        for (HospitalPeople user : allUsers) {
+            if (user.getUsername().toUpperCase().charAt(0) == "D".charAt(0) || user.getUsername().toUpperCase().charAt(0) == "S".charAt(0) ) {
+                allDocSec.add(user);
+                System.out.println(user.getUsername());
+            }
+        }
+        return allDocSec;
     }
 }

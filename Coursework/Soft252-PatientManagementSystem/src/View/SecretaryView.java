@@ -60,22 +60,7 @@ public class SecretaryView {
 
     public static void removePatient()
     {
-        UserList userList = null;
-        ArrayList<Patient> allPatients = new ArrayList<Patient>();
-        try {
-            userList = UsersController.getAllUsers();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        ArrayList<HospitalPeople> allUsers = userList.getAllUsersList();
-        for (HospitalPeople user : allUsers)
-        {
-         if (user.getUsername().toUpperCase().charAt(0) == "P".charAt(0))
-         {
-             allPatients.add((Patient) user);
-             System.out.println(user.getUsername());
-         }
-        }
+        ArrayList<Patient> allPatients = SecretaryController.getAllPatients();
         if (allPatients != null) {
             Scanner in = new Scanner(System.in);
             System.out.println("Would you like to remove a patient: ");

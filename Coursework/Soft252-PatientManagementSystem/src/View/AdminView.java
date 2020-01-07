@@ -5,11 +5,18 @@
  */
 package View;
 
+import Controller.AdminController;
+import Controller.SecretaryController;
 import Controller.UsersController;
 import Model.Users.Administrator;
 import Model.Users.Doctor;
+import Model.Users.HospitalPeople;
+import Model.Users.Patient;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -18,12 +25,8 @@ import java.io.IOException;
 public class AdminView {
     public static void adminHome(Administrator admin)
     {
-        //createAccount();
-        try {
-            UsersController.getAllUsers();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        createAccount();
+        removeAccount();
     }
 
     public static void createAccount(){
@@ -42,7 +45,22 @@ public class AdminView {
 
     public static void removeAccount()
     {
-
+        ArrayList<HospitalPeople> allDocSec = AdminController.getAllDocSec();
+        if (allDocSec != null) {
+            Scanner in = new Scanner(System.in);
+            System.out.println("Would you like to remove a doctor/secretary: ");
+            String approve = in.nextLine();
+            if (approve.equals("yes")) {
+                try {
+                    UsersController.deleteUser(allDocSec.get(0));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("User removed");
+            } else {
+                System.out.println("Not approved");
+            }
+        }
     }
 
     public static void feedback()

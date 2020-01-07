@@ -16,6 +16,7 @@ import java.util.ArrayList;
  */
 public class Secretary extends HospitalPeople implements SecretaryObserver{
     protected HospitalPeople approvalUser;
+    protected HospitalPeople removalUser;
     public Secretary(String username, String password, String address) {
         this.username = username;
         this.password = password;
@@ -47,8 +48,17 @@ public class Secretary extends HospitalPeople implements SecretaryObserver{
         return (Patient) this.approvalUser;
     }
 
+
+    public void setRemovalUser(HospitalPeople removalUser) {
+        this.removalUser = removalUser;
+    }
+
+    public Patient getRemovalUser(){
+        return (Patient) this.removalUser;
+    }
+
     @Override
-    public void updateToFile(HospitalPeople person) {
+    public void updateCreate(HospitalPeople person) {
         UserList userList = null;
         try {
             userList = UsersController.getAllUsers();
@@ -60,6 +70,29 @@ public class Secretary extends HospitalPeople implements SecretaryObserver{
             if (user.getUsername().equals(this.getUsername())&&user.getPassword().equals(this.getPassword())) {
                 System.out.println("Updating "+this.getUsername());
                 this.approvalUser = person;
+            }
+        }
+        userList.setAllUsersList(allUsers);
+        try {
+            UsersController.editUser(this);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateRemove(HospitalPeople person) {
+        UserList userList = null;
+        try {
+            userList = UsersController.getAllUsers();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        ArrayList<HospitalPeople> allUsers = userList.getAllUsersList();
+        for (HospitalPeople user : allUsers){
+            if (user.getUsername().equals(this.getUsername())&&user.getPassword().equals(this.getPassword())) {
+                System.out.println("Updating "+this.getUsername());
+                this.removalUser = person;
             }
         }
         userList.setAllUsersList(allUsers);

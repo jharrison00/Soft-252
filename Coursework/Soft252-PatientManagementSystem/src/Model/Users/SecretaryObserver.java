@@ -1,5 +1,6 @@
 package Model.Users;
 
 public interface SecretaryObserver {
-    public void updateToFile(HospitalPeople person);
+    void updateCreate(HospitalPeople person);
+    void updateRemove(HospitalPeople person);
 }

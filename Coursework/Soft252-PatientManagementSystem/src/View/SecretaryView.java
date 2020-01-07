@@ -17,7 +17,8 @@ import java.util.Scanner;
  */
 public class SecretaryView {
     public static void secretaryHome(Secretary secretary){
-        approveAccount(secretary);
+        //approveCreateAccount(secretary);
+        approveRemoveAccount(secretary);
     }
 
     public static void removePatient()
@@ -35,19 +36,33 @@ public class SecretaryView {
 
     }
 
-    public static void approveAccount(Secretary secretary)
+    public static void approveCreateAccount(Secretary secretary)
     {
-        Scanner in = new Scanner(System.in);
-        System.out.println("Would you like to approve: ");
-        String approve = in.nextLine();
-        if (approve.equals("yes"))
-        {
-            SecretaryController.approveAccount(secretary, secretary.getApprovalUser());
-            System.out.println("Patient approved");
+        if (secretary.getApprovalUser() != null) {
+            Scanner in = new Scanner(System.in);
+            System.out.println("Would you like to approve: ");
+            String approve = in.nextLine();
+            if (approve.equals("yes")) {
+                SecretaryController.approveAccount(secretary, secretary.getApprovalUser());
+                System.out.println("Patient approved");
+            } else {
+                System.out.println("Not approved");
+            }
         }
-        else
-        {
-            System.out.println("Not approved");
+    }
+
+    public static void approveRemoveAccount(Secretary secretary)
+    {
+        if (secretary.getRemovalUser() != null) {
+            Scanner in = new Scanner(System.in);
+            System.out.println("Would you like to approve termination: ");
+            String approve = in.nextLine();
+            if (approve.equals("yes")) {
+                SecretaryController.terminateAccount(secretary, secretary.getRemovalUser());
+                System.out.println("Patient removed");
+            } else {
+                System.out.println("Not approved");
+            }
         }
     }
 }    

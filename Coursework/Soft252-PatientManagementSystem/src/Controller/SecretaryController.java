@@ -37,5 +37,21 @@ public class SecretaryController {
         }
     }
 
+    public static void terminateAccount(Secretary secretary, HospitalPeople person)
+    {
+        try {
+            UsersController.deleteUser(person);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        secretary.setRemovalUser(null);
+        try {
+            UsersController.editUser(secretary);
+            System.out.println("Secretary approval user removed");
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

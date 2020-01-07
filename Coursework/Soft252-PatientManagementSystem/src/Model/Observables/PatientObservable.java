@@ -6,6 +6,6 @@ import Model.Users.Secretary;
 public interface PatientObservable {
     public void registerObservers();
     public void removeObserver(Secretary secretary);
-    public void notifyObserver(Patient patient);
-
+    public void notifyObserverCreate(Patient patient);
+    public void notifyObserverRemove(Patient patient);
 }

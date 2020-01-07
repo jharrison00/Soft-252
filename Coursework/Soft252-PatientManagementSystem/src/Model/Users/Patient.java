@@ -16,6 +16,8 @@ import java.util.ArrayList;
 public class Patient extends HospitalPeople implements PatientObservable
 {
     private ArrayList<SecretaryObserver> secretaries;
+    protected int age;
+    protected Genders gender;
 
     public Patient(String username, String password, String address,int age, Genders gender) {
         this.username = username;
@@ -24,6 +26,23 @@ public class Patient extends HospitalPeople implements PatientObservable
         this.age = age;
         this.gender = gender;
     }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Genders getGender() {
+        return gender;
+    }
+
+    public void setGender(Genders gender) {
+        this.gender = gender;
+    }
+
 
     @Override
     public void registerObservers() {
@@ -36,9 +55,17 @@ public class Patient extends HospitalPeople implements PatientObservable
     }
 
     @Override
-    public void notifyObserver(Patient patient) {
+    public void notifyObserverCreate(Patient patient) {
         for (SecretaryObserver secretary: secretaries){
-            secretary.updateToFile(patient);
+            secretary.updateCreate(patient);
         }
     }
+
+    @Override
+    public void notifyObserverRemove(Patient patient) {
+        for (SecretaryObserver secretary: secretaries){
+            secretary.updateRemove(patient);
+        }
+    }
+
 }

@@ -21,11 +21,12 @@ public class LogIn {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         //getUserDetails();
-        //addUsers();
+        addUsers();
         //logInUser();
-        //Patient patient = new Patient("approvedPatient","password","address",12,Genders.Male);
+        //Patient patient = new Patient("PatientApproved","password","address",12,Genders.Male);
         //PatientController.createAccount(patient);
         UserList userList  = UsersController.getAllUsers();
+        //createAccount();
     }
     
     public static void logInUser()
@@ -47,7 +48,18 @@ public class LogIn {
             System.out.println("Incorrect User");
             logInUser();
         }
+    }
 
+    public static void createAccount()
+    {
+        System.out.println("Would you like to create an account");
+        Patient patient = new Patient("approvedPatient","approvedPassword","add",23, Genders.Female);
+        try {
+            PatientController.createAccount(patient);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Request has been stored, waiting for approval from a secretary");
     }
     
     public static void addUsers() throws IOException, ClassNotFoundException {
@@ -68,5 +80,7 @@ public class LogIn {
         UsersController.createUser(admin);
         UsersController.createUser(secretary);
         UsersController.getAllUsers();
-    }        
+    }
+
+
 }

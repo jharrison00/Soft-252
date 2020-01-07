@@ -92,7 +92,35 @@ public class UsersController {
         }
     }
 
-    public static UserList getAllUsers() throws IOException, ClassNotFoundException {
+    public static void deleteUser(HospitalPeople person) throws FileNotFoundException {
+        UserList userList = null;
+        try {
+            userList = getAllUsers();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        ArrayList<HospitalPeople> allUsers = userList.getAllUsersList();
+        for (HospitalPeople user : allUsers) {
+            if (user.getUsername().equals(person.getUsername()) && user.getPassword().equals(person.getPassword())) {
+                System.out.println("Removing" + person.getUsername());
+                allUsers.remove(user);
+                break;
+            }
+        }
+        userList.setAllUsersList(allUsers);
+        final File file = new File("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Users.txt");
+        final FileOutputStream fos = new FileOutputStream(file);
+        try (ObjectOutput outputStream = new ObjectOutputStream(fos)) {
+            outputStream.writeObject(userList);
+            System.out.println("Stored in file : " + file.getName());
+            outputStream.close();
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+        public static UserList getAllUsers() throws IOException, ClassNotFoundException {
         UserList userList = new UserList();
         FileInputStream fis = new FileInputStream("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Users.txt");
         ObjectInputStream ois = new ObjectInputStream(fis);

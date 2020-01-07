@@ -23,6 +23,11 @@ public class PatientController {
 
     public static void createAccount(Patient patient) throws IOException, ClassNotFoundException {
         patient.registerObservers();
-        patient.notifyObserver(patient);
+        patient.notifyObserverCreate(patient);
+    }
+
+    public static void terminateAccount(Patient patient) throws IOException, ClassNotFoundException {
+        patient.registerObservers();
+        patient.notifyObserverRemove(patient);
     }
 }

@@ -21,24 +21,12 @@ import java.io.IOException;
 public class PatientView {
     public static void patientHome(Patient patient)
     {
-        createAccount();
+        terminateAccount(patient);
     }
 
     public static void appointment()
     {
 
-    }
-
-    public static void createAccount()
-    {
-        System.out.println("Would you like to create an account");
-        Patient patient = new Patient("approvedPatient","approvedPassword","add",23, Genders.Female);
-        try {
-            PatientController.createAccount(patient);
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Request has been stored, waiting approval from a secretary");
     }
 
     public static void doctors()
@@ -51,8 +39,13 @@ public class PatientView {
 
     }
 
-    public static void terminateAccount()
+    public static void terminateAccount(Patient patient)
     {
-
+        try {
+            PatientController.terminateAccount(patient);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Request for termination has been stored, waiting for approval from a secretary");
     }
 }

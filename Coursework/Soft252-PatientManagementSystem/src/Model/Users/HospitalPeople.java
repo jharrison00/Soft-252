@@ -26,8 +26,7 @@ public abstract class HospitalPeople implements Serializable {
     public void setAddress(String address) {
         this.address = address;
     }
-    protected int age;
-    protected Genders gender;
+
 
     public String getUsername() {
         return username;
@@ -45,20 +44,5 @@ public abstract class HospitalPeople implements Serializable {
         this.password = password;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public Genders getGender() {
-        return gender;
-    }
-
-    public void setGender(Genders gender) {
-        this.gender = gender;
-    }
 
 }

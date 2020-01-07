@@ -35,13 +35,13 @@ public class PatientView {
     public static void requestAppointment(Patient patient)
     {
         ArrayList<Doctor> allDocs = PatientController.getAllDoc();
-        Appointment requestAppointment = null;
+        Appointment requestAppointment = new Appointment();
         String date = "08/01/2020";
 
         System.out.println("Choose doctor: ");
         System.out.println("Choose date: ");
-
-        requestAppointment.setDoctor(allDocs.get(0));
+        Doctor doctor = allDocs.get(0);
+        requestAppointment.setDoctor(doctor);
         requestAppointment.setAppointmentPatient(patient);
         try {
             requestAppointment.setDate(new SimpleDateFormat("dd/MM/yyyy").parse(date));

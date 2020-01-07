@@ -9,5 +9,5 @@ import Model.Appointments.Appointment;
 public interface SecretaryObserver {
     void updateCreate(HospitalPeople person);
     void updateRemove(HospitalPeople person);
-    void updateAppointment(Appointment appointment);
+    void updateRequestAppointment(Appointment appointment);
 }

@@ -6,7 +6,12 @@
  */
 package Model.Users;
 
+import Controller.UsersController;
+import Model.Appointments.Appointment;
 import Model.Appointments.IAppointment;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,6 +19,7 @@ import Model.Appointments.IAppointment;
  */
 public class Doctor extends HospitalPeople implements AppointmentObserver
 {
+    protected ArrayList<Appointment> appointments;
     public Doctor(String username, String firstName, String lastName, String password, String address) {
         this.username = username;
         this.firstName = firstName;
@@ -23,8 +29,29 @@ public class Doctor extends HospitalPeople implements AppointmentObserver
     }
 
     @Override
-    public void update(HospitalPeople observer) {
-
+    public void updateAppointment(Appointment appointment) {
+        UserList userList = null;
+        try {
+            userList = UsersController.getAllUsers();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        ArrayList<HospitalPeople> allUsers = userList.getAllUsersList();
+        for (HospitalPeople user : allUsers){
+            if (user.getUsername().equals(this.getUsername())&&user.getPassword().equals(this.getPassword())) {
+                System.out.println("Updating "+this.getUsername());
+                if (this.appointments == null)
+                {
+                    this.appointments = new ArrayList<Appointment>();
+                }
+                this.appointments.add(appointment);
+            }
+        }
+        userList.setAllUsersList(allUsers);
+        try {
+            UsersController.editUser(this);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
-
 }

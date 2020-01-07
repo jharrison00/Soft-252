@@ -1,9 +1,11 @@
 package Model.Users;
 
+import Model.Appointments.Appointment;
+
 /**
  *
  * @author jonat
  */
 public interface AppointmentObserver {
-    void update(HospitalPeople observer);
+    void updateAppointment(Appointment appointment);
 }

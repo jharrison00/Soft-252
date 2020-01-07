@@ -64,6 +64,14 @@ public class Secretary extends HospitalPeople implements SecretaryObserver{
         return (Patient) this.removalUser;
     }
 
+    public Appointment getRequestAppointment() {
+        return requestAppointment;
+    }
+
+    public void setRequestAppointment(Appointment requestAppointment) {
+        this.requestAppointment = requestAppointment;
+    }
+
     @Override
     public void updateCreate(HospitalPeople person) {
         UserList userList = null;
@@ -111,21 +119,21 @@ public class Secretary extends HospitalPeople implements SecretaryObserver{
     }
 
     @Override
-    public void updateAppointment(Appointment appointment) {
-        AppointmentList appointmentList = null;
+    public void updateRequestAppointment(Appointment appointment) {
+        UserList userList = null;
         try {
-            appointmentList = AppointmentsController.getAllAppointments();
+            userList = UsersController.getAllUsers();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        ArrayList<Appointment> allAppointments = appointmentList.getAllAppointmentsList();
-        for (Appointment appointments : allAppointments){
-            if (appointments.getAppointmentID() == appointment.getAppointmentID()) {
-                System.out.println("Updating "+this.getUsername()+" about appointment");
+        ArrayList<HospitalPeople> allUsers = userList.getAllUsersList();
+        for (HospitalPeople user : allUsers){
+            if (user.getUsername().equals(this.getUsername())&&user.getPassword().equals(this.getPassword())) {
+                System.out.println("Sending appointment to "+this.getUsername());
                 this.requestAppointment = appointment;
             }
         }
-        appointmentList.setAllAppointmentsList(allAppointments);
+        userList.setAllUsersList(allUsers);
         try {
             UsersController.editUser(this);
         } catch (IOException | ClassNotFoundException e) {

@@ -1,5 +1,6 @@
 package Model.Observables;
 
+import Model.Appointments.Appointment;
 import Model.Users.HospitalPeople;
 
 /**
@@ -7,7 +8,7 @@ import Model.Users.HospitalPeople;
  * @author jonat
  */
 public interface AppointmentObservable {
-    public void registerObservers();
-    public void removeObserver();
-    public void notifyObserver(HospitalPeople person);
+    public void registerAppointmentObservers();
+    public void removeAppointmentObserver();
+    public void notifyAppointment(Appointment appointment);
 }

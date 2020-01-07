@@ -5,9 +5,13 @@
  */
 package Model.Users;
 
+import Controller.UsersController;
 import Enums.Genders;
 import Model.Appointments.Appointment;
+import Model.Observables.AppointmentObservable;
 import Model.Observables.PatientObservable;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -17,8 +21,10 @@ import java.util.ArrayList;
 public class Patient extends HospitalPeople implements PatientObservable, AppointmentObserver
 {
     private ArrayList<SecretaryObserver> secretaries;
+
     protected int age;
     protected Genders gender;
+    protected ArrayList<Appointment> appointments;
 
     public Patient(String username, String firstName, String lastName, String password, String address,int age, Genders gender) {
         this.username = username;
@@ -74,12 +80,34 @@ public class Patient extends HospitalPeople implements PatientObservable, Appoin
     @Override
     public void notifyObserverAppointment(Appointment appointment) {
         for (SecretaryObserver secretary: secretaries){
-            secretary.updateAppointment(appointment);
+            secretary.updateRequestAppointment(appointment);
         }
     }
 
     @Override
-    public void update(HospitalPeople observer) {
-
+    public void updateAppointment(Appointment appointment) {
+        UserList userList = null;
+        try {
+            userList = UsersController.getAllUsers();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        ArrayList<HospitalPeople> allUsers = userList.getAllUsersList();
+        for (HospitalPeople user : allUsers){
+            if (user.getUsername().equals(this.getUsername())&&user.getPassword().equals(this.getPassword())) {
+                System.out.println("Updating "+this.getUsername());
+                if (this.appointments == null)
+                {
+                    this.appointments = new ArrayList<Appointment>();
+                }
+                this.appointments.add(appointment);
+            }
+        }
+        userList.setAllUsersList(allUsers);
+        try {
+            UsersController.editUser(this);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

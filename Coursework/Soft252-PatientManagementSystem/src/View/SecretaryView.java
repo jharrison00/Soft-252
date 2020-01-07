@@ -25,7 +25,9 @@ public class SecretaryView {
     public static void secretaryHome(Secretary secretary){
         //approveCreateAccount(secretary);
         //approveRemoveAccount(secretary);
-        removePatient();
+        //removePatient();
+        approveAppointment(secretary);
+
     }
 
     public static void approveCreateAccount(Secretary secretary)
@@ -83,9 +85,19 @@ public class SecretaryView {
 
     }
 
-    public static void createAppointment()
+    public static void approveAppointment(Secretary secretary)
     {
-
+        if (secretary.getRequestAppointment() != null) {
+            Scanner in = new Scanner(System.in);
+            System.out.println("Would you like to approve appointment: ");
+            String approve = in.nextLine();
+            if (approve.equals("yes")) {
+                SecretaryController.approveAppointment(secretary, secretary.getRequestAppointment());
+                System.out.println("Appointment approved");
+            } else {
+                System.out.println("Not approved");
+            }
+        }
     }
 
 

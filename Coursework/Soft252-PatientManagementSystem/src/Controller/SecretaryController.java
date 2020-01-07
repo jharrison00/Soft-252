@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.Appointments.Appointment;
 import Model.Users.HospitalPeople;
 import Model.Users.Patient;
 import Model.Users.Secretary;
@@ -39,6 +40,25 @@ public abstract class SecretaryController {
             e.printStackTrace();
         }
     }
+
+    public static void approveAppointment(Secretary secretary, Appointment appointment)
+    {
+        try {
+            AppointmentsController.createAppointment(appointment);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        secretary.setRequestAppointment(null);
+        appointment.registerAppointmentObservers();
+        appointment.notifyAppointment(appointment);
+        try {
+            UsersController.editUser(secretary);
+            System.out.println("Appointment approved");
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public static void terminateAccount(Secretary secretary, HospitalPeople person)
     {

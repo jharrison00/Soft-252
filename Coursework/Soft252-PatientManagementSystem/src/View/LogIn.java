@@ -25,7 +25,7 @@ public class LogIn {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         //getUserDetails();
-        addUsers();
+        //addUsers();
         //logInUser();
         //createAccount();
         UserList userList  = UsersController.getAllUsers();
@@ -85,14 +85,14 @@ public class LogIn {
         Secretary secretary = new Secretary("S0001","secretary","secretary",
                 "password","address");
         //in.close();
-        //UsersController.createUser(patient);
-        //UsersController.createUser(doctor);
-        //UsersController.createUser(admin);
-        //UsersController.createUser(secretary);
-        //UsersController.getAllUsers();
+        UsersController.createUser(patient);
+        UsersController.createUser(doctor);
+        UsersController.createUser(admin);
+        UsersController.createUser(secretary);
+        UsersController.getAllUsers();
         Appointment appointment = new Appointment(1,patient,doctor, new Date(8/1/2020));
         AppointmentsController.createAppointment(appointment);
-        AppointmentList appointmentList = AppointmentsController.getAllAppointments();
+        AppointmentsController.getAllAppointments();
     }
 
 

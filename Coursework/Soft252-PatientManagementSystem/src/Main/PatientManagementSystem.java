@@ -5,7 +5,6 @@
  */
 package Main;
 
-import Controller.LogInController;
 import View.LogIn;
 
 import java.io.IOException;

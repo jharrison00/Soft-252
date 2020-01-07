@@ -5,8 +5,7 @@
  */
 package View;
 
-import Controller.AdminController;
-import Controller.LogInController;
+import Controller.UsersController;
 import Model.Users.Administrator;
 import Model.Users.Doctor;
 
@@ -21,7 +20,7 @@ public class AdminView {
     {
         //createAccount();
         try {
-            LogInController.readUserFile();
+            UsersController.getAllUsers();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -30,7 +29,7 @@ public class AdminView {
     public static void createAccount(){
         Doctor doctor = new Doctor("doctor1","password","address");
         try {
-            LogInController.createUser(doctor);
+            UsersController.createUser(doctor);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }

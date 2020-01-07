@@ -5,7 +5,6 @@
  */
 package Model.Users;
 
-import Controller.LogInController;
 import Enums.Genders;
 import Model.Observables.PatientObservable;
 import java.util.ArrayList;
@@ -39,7 +38,7 @@ public class Patient extends HospitalPeople implements PatientObservable
     @Override
     public void notifyObserver(Patient patient) {
         for (SecretaryObserver secretary: secretaries){
-            secretary.update(patient);
+            secretary.updateToFile(patient);
         }
     }
 }

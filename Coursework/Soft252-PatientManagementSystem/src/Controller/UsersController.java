@@ -22,7 +22,7 @@ import java.util.ArrayList;
  *
  * @author jonat
  */
-public class LogInController {
+public class UsersController {
 
     
     /**
@@ -63,7 +63,36 @@ public class LogInController {
         }
     }
 
-    public static UserList readUserFile() throws IOException, ClassNotFoundException {
+    public static void editUser(HospitalPeople person)
+            throws FileNotFoundException, IOException, ClassNotFoundException
+    {
+        int index = 0;
+        UserList userList = null;
+        try {
+            userList = UsersController.getAllUsers();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        ArrayList<HospitalPeople> allUsers = userList.getAllUsersList();
+        for (HospitalPeople user : allUsers){
+            if (user.getUsername().equals(person.getUsername())&&user.getPassword().equals(person.getPassword())) {
+                System.out.println("Updating "+person.getUsername());
+                allUsers.set(index,person);
+            }
+            index++;
+        }
+        userList.setAllUsersList(allUsers);
+        final File file = new File("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Users.txt");
+        final FileOutputStream fos = new FileOutputStream(file);
+        try (ObjectOutput outputStream = new ObjectOutputStream(fos)) {
+            outputStream.writeObject(userList);
+            System.out.println("Stored in file : " + file.getName());
+            outputStream.close();
+            fos.close();
+        }
+    }
+
+    public static UserList getAllUsers() throws IOException, ClassNotFoundException {
         UserList userList = new UserList();
         FileInputStream fis = new FileInputStream("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Users.txt");
         ObjectInputStream ois = new ObjectInputStream(fis);
@@ -84,11 +113,11 @@ public class LogInController {
         });
         return userList;
     }   
-    
-    public static boolean checkUserExists(String username, String password) throws ClassNotFoundException, IOException
+
+    public static boolean validateUser(String username, String password) throws ClassNotFoundException, IOException
     {
         UserList userList;
-        userList = readUserFile();
+        userList = getAllUsers();
         HospitalPeople validUser = null;
         ArrayList<HospitalPeople> allUsers = userList.getAllUsersList(); 
         for (HospitalPeople user : allUsers){ 

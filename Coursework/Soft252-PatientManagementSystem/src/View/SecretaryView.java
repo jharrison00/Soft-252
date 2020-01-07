@@ -17,6 +17,7 @@ import java.util.Scanner;
  */
 public class SecretaryView {
     public static void secretaryHome(Secretary secretary){
+        approveAccount(secretary);
     }
 
     public static void removePatient()
@@ -34,19 +35,19 @@ public class SecretaryView {
 
     }
 
-    public static boolean approveAccount(HospitalPeople person)
+    public static void approveAccount(Secretary secretary)
     {
         Scanner in = new Scanner(System.in);
-        System.out.println("Would you like to approve: "+person.getUsername());
+        System.out.println("Would you like to approve: ");
         String approve = in.nextLine();
         if (approve.equals("yes"))
         {
-            return true;
+            SecretaryController.approveAccount(secretary, secretary.getApprovalUser());
+            System.out.println("Patient approved");
         }
         else
         {
             System.out.println("Not approved");
-            return false;
         }
     }
 }    

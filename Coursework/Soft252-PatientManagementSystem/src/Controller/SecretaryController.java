@@ -7,11 +7,9 @@ package Controller;
 
 import Model.Users.HospitalPeople;
 import Model.Users.Secretary;
-import Model.Users.UserList;
 import View.SecretaryView;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  *
@@ -23,15 +21,21 @@ public class SecretaryController {
         SecretaryView.secretaryHome(secretary);
     }
 
-    public static void approveAccount(HospitalPeople person)
+    public static void approveAccount(Secretary secretary, HospitalPeople person)
     {
-        if (SecretaryView.approveAccount(person) == true)
-        {
-            try {
-                LogInController.createUser(person);
-            } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace();
-            }
+        try {
+            UsersController.createUser(person);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        secretary.setApprovalUser(null);
+        try {
+            UsersController.editUser(secretary);
+            System.out.println("Secretary approval user removed");
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
+
+
 }

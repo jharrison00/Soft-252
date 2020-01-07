@@ -5,9 +5,7 @@
  */
 package Model.Users;
 
-import Controller.LogInController;
-import Controller.SecretaryController;
-import View.SecretaryView;
+import Controller.UsersController;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,17 +15,18 @@ import java.util.ArrayList;
  * @author jonat
  */
 public class Secretary extends HospitalPeople implements SecretaryObserver{
+    protected HospitalPeople approvalUser;
     public Secretary(String username, String password, String address) {
         this.username = username;
         this.password = password;
-        this.address = address;    
+        this.address = address;
     }
 
     public static ArrayList<SecretaryObserver> getAllSecretaries() {
         ArrayList<SecretaryObserver>  secretaries = new ArrayList<SecretaryObserver>();
         UserList userList = null;
         try {
-            userList = LogInController.readUserFile();
+            userList = UsersController.getAllUsers();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -40,8 +39,34 @@ public class Secretary extends HospitalPeople implements SecretaryObserver{
         return secretaries;
     }
 
+    public void setApprovalUser(HospitalPeople approvalUser) {
+        this.approvalUser = approvalUser;
+    }
+
+    public Patient getApprovalUser(){
+        return (Patient) this.approvalUser;
+    }
+
     @Override
-    public void update(HospitalPeople person) {
-        SecretaryController.approveAccount(person);
+    public void updateToFile(HospitalPeople person) {
+        UserList userList = null;
+        try {
+            userList = UsersController.getAllUsers();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        ArrayList<HospitalPeople> allUsers = userList.getAllUsersList();
+        for (HospitalPeople user : allUsers){
+            if (user.getUsername().equals(this.getUsername())&&user.getPassword().equals(this.getPassword())) {
+                System.out.println("Updating "+this.getUsername());
+                this.approvalUser = person;
+            }
+        }
+        userList.setAllUsersList(allUsers);
+        try {
+            UsersController.editUser(this);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

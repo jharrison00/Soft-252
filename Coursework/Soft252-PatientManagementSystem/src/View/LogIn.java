@@ -5,17 +5,11 @@
  */
 package View;
 
-import Controller.AdminController;
-import Controller.DoctorController;
-import Controller.LogInController;
 import Controller.PatientController;
-import Controller.SecretaryController;
+import Controller.UsersController;
 import Enums.Genders;
-import Model.Users.Administrator;
-import Model.Users.Doctor;
-import Model.Users.HospitalPeople;
-import Model.Users.Patient;
-import Model.Users.Secretary;
+import Model.Users.*;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -28,9 +22,10 @@ public class LogIn {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         //getUserDetails();
         //addUsers();
-        logInUser();
+        //logInUser();
         //Patient patient = new Patient("approvedPatient","password","address",12,Genders.Male);
         //PatientController.createAccount(patient);
+        UserList userList  = UsersController.getAllUsers();
     }
     
     public static void logInUser()
@@ -43,7 +38,7 @@ public class LogIn {
         String password = in.nextLine();
         HospitalPeople validUser = null;
         try {
-            valid = LogInController.checkUserExists(username,password);
+            valid = UsersController.validateUser(username,password);
         } catch (IOException | ClassNotFoundException e) {
             System.out.println(e);
         }
@@ -68,10 +63,10 @@ public class LogIn {
         Administrator admin = new Administrator("admin","password","address");
         Secretary secretary = new Secretary("secretary","password","address"); 
         //in.close();
-        LogInController.createUser(patient);
-        LogInController.createUser(doctor);
-        LogInController.createUser(admin);
-        LogInController.createUser(secretary);
-        LogInController.readUserFile();
+        UsersController.createUser(patient);
+        UsersController.createUser(doctor);
+        UsersController.createUser(admin);
+        UsersController.createUser(secretary);
+        UsersController.getAllUsers();
     }        
 }

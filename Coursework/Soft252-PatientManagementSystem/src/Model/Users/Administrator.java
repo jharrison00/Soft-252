@@ -5,9 +5,6 @@
  */
 package Model.Users;
 
-import Controller.LogInController;
-import java.io.IOException;
-
 /**
  *
  * @author jonat

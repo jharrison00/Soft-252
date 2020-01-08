@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public abstract class AppointmentsController {
 
     public final void createAppointment(Secretary secretary,Appointment appointment)
-            throws FileNotFoundException, IOException, ClassNotFoundException
+            throws IOException, ClassNotFoundException
     {
         secretaryApproval(secretary,appointment);
         updateObservers(appointment);
@@ -53,7 +53,7 @@ public abstract class AppointmentsController {
     }
 
     public static void addToFile(Appointment appointment)
-            throws FileNotFoundException, IOException, ClassNotFoundException
+            throws IOException, ClassNotFoundException
     {
         AppointmentList appointmentList = new AppointmentList();
         ArrayList<Appointment> newAppointmentList = new ArrayList<Appointment>();

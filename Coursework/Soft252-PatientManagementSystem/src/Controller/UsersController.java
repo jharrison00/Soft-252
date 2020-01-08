@@ -64,7 +64,7 @@ public abstract class UsersController {
     }
 
     public static void editUser(HospitalPeople person)
-            throws FileNotFoundException, IOException, ClassNotFoundException
+            throws IOException, ClassNotFoundException
     {
         int index = 0;
         UserList userList = null;

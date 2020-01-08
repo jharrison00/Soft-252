@@ -5,27 +5,22 @@
  */
 package Controller;
 
-import Model.Appointments.IAppointment;
 import Model.Users.Doctor;
-import View.DoctorView;
+import View.State.DoctorState;
+import View.State.DoctorView;
+import View.State.IState;
 
 /**
  *
  * @author jonat
  */
-public abstract class DoctorController implements IAppointment {
+public abstract class DoctorController{
+
     public static void setView(Doctor doctor)
     {
-        DoctorView.doctorHome(doctor);
+        IState start = new DoctorView();
+        DoctorState doctorState = new DoctorState(doctor, start);
+        doctorState.enterAppointment();
     }
 
-    @Override
-    public void createPrescription() {
-
-    }
-
-    @Override
-    public void createNote() {
-
-    }
 }

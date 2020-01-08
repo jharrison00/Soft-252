@@ -10,5 +10,5 @@ package Enums;
  * @author jonat
  */
 public enum Genders {
-    Female,Male,Other;
+    Female,Male,Other
 }

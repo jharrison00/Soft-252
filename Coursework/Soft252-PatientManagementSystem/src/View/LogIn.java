@@ -30,6 +30,7 @@ public class LogIn {
         //createAccount();
         //UserList userList  = UsersController.getAllUsers();
         //AppointmentList appointmentList = AppointmentsController.getAllAppointments();
+
     }
     
     public static void logInUser()

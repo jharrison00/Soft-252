@@ -12,6 +12,8 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
+        <option value="JUnit3 Test Class" />
       </list>
     </option>
   </component>
@@ -22,21 +24,38 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit3" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3" value="junit.framework.TestCase" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="View.State.DoctorState" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
+    <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Soft-252/Practicals/Week07/P7Solution" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="View.State" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="junit.framework.TestCase" />
+      <recent name="View.State.DoctorState" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Johnny\IdeaProjects\Soft252-PatientManagementSystem\src\View" />
       <recent name="C:\Users\Johnny\IdeaProjects\Soft252-PatientManagementSystem\src" />
     </key>
   </component>
   <component name="RunManager" selected="Application.LogIn">
-    <configuration name="LogIn" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="LogIn" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="View.LogIn" />
       <module name="Soft252-PatientManagementSystem" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="View.*" />
+          <option name="PATTERN" value="View.State.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -67,14 +86,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="testTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="View.State.testTest" />
+      <module name="Soft252-PatientManagementSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="View.State.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="Application.Main" />
       <item itemvalue="Application.LogIn" />
+      <item itemvalue="Application.Main" />
       <item itemvalue="Application.PatientManagementSystem" />
+      <item itemvalue="Application.testTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.LogIn" />
+        <item itemvalue="Application.testTest" />
         <item itemvalue="Application.PatientManagementSystem" />
       </list>
     </recent_temporary>
@@ -105,58 +138,78 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="765" y="250" key="#com.intellij.ide.util.MemberChooser" timestamp="1578435194280">
+    <state x="690" y="295" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1578486988992">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="765" y="250" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578435194280" />
-    <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1578340314935">
+    <state x="690" y="295" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578486988992" />
+    <state x="765" y="250" key="#com.intellij.ide.util.MemberChooser" timestamp="1578485603012">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578340314935" />
-    <state width="483" height="466" key="DebuggerActiveHint" timestamp="1578436237364">
+    <state x="765" y="250" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578485603012" />
+    <state x="690" y="324" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1578485832394">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="483" height="466" key="DebuggerActiveHint/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578436237364" />
-    <state x="740" y="295" key="FileChooserDialogImpl" timestamp="1578413460243">
+    <state x="690" y="324" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578485832394" />
+    <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1578483653775">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="740" y="295" key="FileChooserDialogImpl/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578413460243" />
-    <state width="1877" height="313" key="GridCell.Tab.0.bottom" timestamp="1578437364641">
+    <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578483653775" />
+    <state x="718" y="288" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1578486536667">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="313" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578437364641" />
-    <state width="1877" height="313" key="GridCell.Tab.0.center" timestamp="1578437364641">
+    <state x="718" y="288" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578486536667" />
+    <state width="483" height="466" key="DebuggerActiveHint" timestamp="1578488319741">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="313" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578437364641" />
-    <state width="1877" height="313" key="GridCell.Tab.0.left" timestamp="1578437364641">
+    <state width="483" height="466" key="DebuggerActiveHint/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578488319741" />
+    <state x="740" y="295" key="FileChooserDialogImpl" timestamp="1578486553320">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="313" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578437364641" />
-    <state width="1877" height="313" key="GridCell.Tab.0.right" timestamp="1578437364641">
+    <state x="740" y="295" key="FileChooserDialogImpl/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578486553320" />
+    <state width="1877" height="313" key="GridCell.Tab.0.bottom" timestamp="1578488290036">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="313" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578437364641" />
-    <state width="1877" height="313" key="GridCell.Tab.1.bottom" timestamp="1578437335506">
+    <state width="1877" height="313" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578488290036" />
+    <state width="1877" height="313" key="GridCell.Tab.0.center" timestamp="1578488290036">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="313" key="GridCell.Tab.1.bottom/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578437335506" />
-    <state width="1877" height="313" key="GridCell.Tab.1.center" timestamp="1578437335506">
+    <state width="1877" height="313" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578488290036" />
+    <state width="1877" height="313" key="GridCell.Tab.0.left" timestamp="1578488290036">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="313" key="GridCell.Tab.1.center/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578437335506" />
-    <state width="1877" height="313" key="GridCell.Tab.1.left" timestamp="1578437335506">
+    <state width="1877" height="313" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578488290036" />
+    <state width="1877" height="313" key="GridCell.Tab.0.right" timestamp="1578488290036">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="313" key="GridCell.Tab.1.left/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578437335506" />
-    <state width="1877" height="313" key="GridCell.Tab.1.right" timestamp="1578437335506">
+    <state width="1877" height="313" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578488290036" />
+    <state width="1877" height="313" key="GridCell.Tab.1.bottom" timestamp="1578488283921">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="313" key="GridCell.Tab.1.right/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578437335506" />
-    <state x="656" y="364" key="com.intellij.ide.util.TipDialog" timestamp="1578403436375">
+    <state width="1877" height="313" key="GridCell.Tab.1.bottom/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578488283921" />
+    <state width="1877" height="313" key="GridCell.Tab.1.center" timestamp="1578488283920">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="656" y="364" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578403436375" />
+    <state width="1877" height="313" key="GridCell.Tab.1.center/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578488283920" />
+    <state width="1877" height="313" key="GridCell.Tab.1.left" timestamp="1578488283920">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="313" key="GridCell.Tab.1.left/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578488283920" />
+    <state width="1877" height="313" key="GridCell.Tab.1.right" timestamp="1578488283921">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="313" key="GridCell.Tab.1.right/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578488283921" />
+    <state x="656" y="364" key="com.intellij.ide.util.TipDialog" timestamp="1578483146945">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="656" y="364" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578483146945" />
+    <state x="665" y="433" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1578486652859">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="665" y="433" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578486652859" />
+    <state x="731" y="243" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1578486643051">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="731" y="243" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578486643051" />
     <state x="666" y="169" key="refactoring.ChangeSignatureDialog" timestamp="1578436793206">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -171,36 +224,21 @@
           <option name="timeStamp" value="97" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Model/Appointments/Appointment.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="126" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Model/Users/Doctor.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="129" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Model/Users/Doctor.java</url>
-          <line>50</line>
-          <option name="timeStamp" value="130" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/View/SecretaryView.java</url>
           <line>30</line>
           <option name="timeStamp" value="140" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/View/DoctorView.java</url>
-          <line>60</line>
-          <option name="timeStamp" value="142" />
+          <url>file://$PROJECT_DIR$/src/View/State/DoctorView.java</url>
+          <line>77</line>
+          <option name="timeStamp" value="152" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Controller/DoctorController.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="154" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="allUsers" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

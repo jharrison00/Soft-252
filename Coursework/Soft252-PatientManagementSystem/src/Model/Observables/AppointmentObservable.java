@@ -8,7 +8,7 @@ import Model.Users.HospitalPeople;
  * @author jonat
  */
 public interface AppointmentObservable {
-    public void registerAppointmentObservers();
-    public void removeAppointmentObserver();
-    public void notifyAppointment(Appointment appointment);
+    void registerAppointmentObservers();
+    void removeAppointmentObserver();
+    void notifyAppointment(Appointment appointment);
 }

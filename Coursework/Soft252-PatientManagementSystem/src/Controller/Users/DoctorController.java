@@ -26,6 +26,7 @@ public abstract class DoctorController{
         IState start = new DoctorView();
         DoctorState doctorState = new DoctorState(doctor, start);
         doctorState.enterAppointment();
+        doctorState.exitAppointment();
     }
 
     public static void createMedicine(Medicine medicine) {

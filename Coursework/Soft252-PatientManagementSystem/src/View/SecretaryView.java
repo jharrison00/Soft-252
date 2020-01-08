@@ -34,10 +34,10 @@ public class SecretaryView {
         //approveCreateAccount(secretary);
         //approveRemoveAccount(secretary);
         //removePatient();
-        //approveAppointment(secretary);
+        approveAppointment(secretary);
         //addRequestMedicine(secretary);
         //addMedicine(secretary);
-        giveMedicine();
+        //giveMedicine();
     }
 
     public static void approveCreateAccount(Secretary secretary)

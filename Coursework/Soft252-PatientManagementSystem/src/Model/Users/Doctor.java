@@ -20,6 +20,8 @@ import java.util.ArrayList;
 public class Doctor extends HospitalPeople implements AppointmentObserver
 {
     protected ArrayList<Appointment> appointments;
+    //protected ArrayList<String> feedback;
+    //protected ArrayList<Integer> ratings;
     public Doctor(String username, String firstName, String lastName, String password, String address) {
         this.username = username;
         this.firstName = firstName;

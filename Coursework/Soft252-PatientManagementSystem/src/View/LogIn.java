@@ -34,7 +34,7 @@ public class LogIn {
         UserList userList  = UsersController.getAllUsers();
         //AppointmentList appointmentList = AppointmentsController.getAllAppointments();
         //PrescriptionList prescriptionList = PrescriptionsController.getAllPrescriptions();
-        MedicineList medicineList = MedicinesController.getAllMedicines();
+        //MedicineList medicineList = MedicinesController.getAllMedicines();
     }
     
     public static void logInUser()

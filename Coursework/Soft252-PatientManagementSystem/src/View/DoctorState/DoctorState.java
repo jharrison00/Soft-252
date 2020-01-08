@@ -27,11 +27,11 @@ public class DoctorState {
     }
 
     public void enterAppointment(){
-        state.enterAppointment(doctor,this);
+        state.enterAppointment(doctor,this, appointment);
     }
 
     public void exitAppointment(){
-        state.exitAppointment(doctor,this);
+        state.exitAppointment(doctor,this, appointment);
     }
 
 }

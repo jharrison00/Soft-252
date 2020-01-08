@@ -80,10 +80,8 @@ public class DoctorView implements IState
     }
 
     @Override
-    public void enterAppointment(Doctor doctor, DoctorState doctorState) {
-
-        createMedicine();
-
+    public void enterAppointment(Doctor doctor, DoctorState doctorState,Appointment thisAppointment) {
+        //createMedicine();
         Scanner in = new Scanner(System.in);
         ArrayList<Appointment> appointments = getAppointments(doctor);
         for (Appointment appointment : appointments){
@@ -102,7 +100,7 @@ public class DoctorView implements IState
     }
 
     @Override
-    public void exitAppointment(Doctor doctor, DoctorState doctorState) {
+    public void exitAppointment(Doctor doctor, DoctorState doctorState,Appointment appointment) {
         System.out.println("Not in appointment view, cant save appointment details");
         doctorState.setState(this);
     }

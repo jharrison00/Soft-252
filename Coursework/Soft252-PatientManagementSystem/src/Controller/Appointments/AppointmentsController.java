@@ -1,7 +1,10 @@
 package Controller.Appointments;
 
+import Controller.Users.UsersController;
 import Model.Appointments.Appointment;
 import Model.Appointments.AppointmentList;
+import Model.Observers.AppointmentObserver;
+import Model.Users.Doctor;
 import Model.Users.Secretary;
 
 import java.io.*;
@@ -78,6 +81,20 @@ public abstract class AppointmentsController {
             System.out.println("Stored in file : " + file.getName());
             outputStream.close();
             fos.close();
+        }
+    }
+
+    public static void removeAppointmentObserver(Doctor doctor,Appointment appointment){
+        ArrayList<Appointment> appointments = doctor.getAppointments();
+       appointments.remove(appointment);
+       if (appointments.isEmpty()){
+           appointments = null;
+       }
+       doctor.setAppointments(appointments);
+        try {
+            UsersController.editUser(doctor);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 

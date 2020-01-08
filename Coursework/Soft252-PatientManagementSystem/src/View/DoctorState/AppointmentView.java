@@ -1,5 +1,6 @@
 package View.DoctorState;
 
+import Controller.Appointments.AppointmentsController;
 import Controller.Medicines.MedicinesController;
 import Controller.Prescriptions.PrescriptionsCommand.AddMedicine;
 import Controller.Prescriptions.PrescriptionsCommand.AddNote;
@@ -23,7 +24,9 @@ public class AppointmentView implements IState{
         AppointmentInvoker invoker = new AppointmentInvoker();
         addNotes(prescription, invoker);
         addMedicine(prescription, invoker);
+        patientHistory(prescription);
         savePrescription(prescription,invoker);
+
     }
 
     public static void addNotes(Prescription prescription, AppointmentInvoker invoker)
@@ -62,18 +65,28 @@ public class AppointmentView implements IState{
         //invoker.undoCommand();
     }
 
-
+    public static void patientHistory(Prescription prescription){
+        if (prescription.getPatient().getPrescriptions()!= null) {
+            ArrayList<Prescription> prescriptions = prescription.getPatient().getPrescriptions();
+            for (Prescription patientPrescription : prescriptions) {
+                System.out.println(patientPrescription.getNote());
+            }
+        }
+        else{
+            System.out.println("No prescription history");
+        }
+    }
 
     @Override
-    public void enterAppointment(Doctor doctor, DoctorState doctorState) {
+    public void enterAppointment(Doctor doctor, DoctorState doctorState,Appointment appointment) {
         System.out.println("Already in appointment view");
         doctorState.setState(this);
     }
 
     @Override
-    public void exitAppointment(Doctor doctor, DoctorState doctorState) {
-        System.out.println("Saving appointment. Going back to Doctor view");
+    public void exitAppointment(Doctor doctor, DoctorState doctorState,Appointment appointment) {
+        AppointmentsController.removeAppointmentObserver(doctor,appointment);
+        System.out.println("Finishing appointment. Going back to Doctor view");
         doctorState.setState(new DoctorView());
-
     }
 }

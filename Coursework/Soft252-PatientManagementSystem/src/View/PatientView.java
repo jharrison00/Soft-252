@@ -72,7 +72,7 @@ public class PatientView {
         }
     }
 
-    public static void doctors()
+    public static void doctorRatings()
     {
 
     }

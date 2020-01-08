@@ -20,8 +20,9 @@ import java.util.ArrayList;
 public class Doctor extends HospitalPeople implements AppointmentObserver
 {
     protected ArrayList<Appointment> appointments;
-    //protected ArrayList<String> feedback;
-    //protected ArrayList<Integer> ratings;
+    protected ArrayList<String> feedback;
+    protected ArrayList<Integer> ratings;
+    protected double ratingAverage;
     public Doctor(String username, String firstName, String lastName, String password, String address) {
         this.username = username;
         this.firstName = firstName;
@@ -36,6 +37,35 @@ public class Doctor extends HospitalPeople implements AppointmentObserver
 
     public void setAppointments(ArrayList<Appointment> appointments) {
         this.appointments = appointments;
+    }
+
+    public ArrayList<String> getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(ArrayList<String> feedback) {
+        this.feedback = feedback;
+    }
+
+    public ArrayList<Integer> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(ArrayList<Integer> ratings) {
+        this.ratings = ratings;
+    }
+
+    public double getRatingAverage() {
+        return ratingAverage;
+    }
+
+    public void setRatingAverage(ArrayList<Integer> ratings) {
+        double average = 0;
+        for (Integer rating : ratings){
+            average = average + rating;
+        }
+        average = average/ratings.size();
+        this.ratingAverage = average;
     }
 
     @Override

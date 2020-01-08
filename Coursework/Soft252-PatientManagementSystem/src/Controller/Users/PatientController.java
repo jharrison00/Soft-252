@@ -47,7 +47,6 @@ public abstract class PatientController {
         for (HospitalPeople user : allUsers) {
             if (user.getUsername().toUpperCase().charAt(0) == "D".charAt(0)) {
                 allDoc.add((Doctor) user);
-                System.out.println(user.getUsername());
             }
         }
         return allDoc;

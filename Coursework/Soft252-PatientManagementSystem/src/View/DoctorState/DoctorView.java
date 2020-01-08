@@ -48,11 +48,6 @@ public class DoctorView implements IState
         }
     }
 
-    public static void patientHistory()
-    {
-
-    }
-
     public static void createAppointment(Doctor doctor)
     {
         Patient patient = new Patient("P0002","appointmentPatient","patient","password","address", 20, Genders.Male);

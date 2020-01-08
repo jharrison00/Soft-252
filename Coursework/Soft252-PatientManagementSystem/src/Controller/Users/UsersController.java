@@ -136,9 +136,6 @@ public abstract class UsersController {
 
         ArrayList<HospitalPeople> allUsers = userList.getAllUsersList();
         userList.setAllUsersList(allUsers);
-        allUsers.forEach((user) -> {
-            System.out.println(user.getUsername());
-        });
         return userList;
     }   
 

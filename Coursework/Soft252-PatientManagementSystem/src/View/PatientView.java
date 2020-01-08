@@ -6,10 +6,12 @@
 package View;
 
 import Controller.Users.PatientController;
+import Controller.Users.SecretaryController;
 import Model.Appointments.Appointment;
 import Model.Prescriptions.Prescription;
 import Model.Users.Doctor;
 import Model.Users.Patient;
+import Model.Users.Secretary;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -24,10 +26,11 @@ import java.util.Date;
 public class PatientView {
     public static void patientHome(Patient patient)
     {
-        requestAppointment(patient);
+        //requestAppointment(patient);
         //terminateAccount(patient);
-        //appointments(patient);
+        appointments(patient);
         prescriptions(patient);
+        doctorRatings();
     }
 
     public static void requestAppointment(Patient patient)
@@ -74,9 +77,19 @@ public class PatientView {
 
     public static void doctorRatings()
     {
-
+        ArrayList<Doctor> allDoctors = PatientController.getAllDoc();
+        for (Doctor doctor : allDoctors){
+            System.out.println(doctor.getFirstName());
+            System.out.println(doctor.getRatingAverage());
+        }
     }
 
+    public static void giveRating(Doctor doctor){
+        ArrayList<Integer> ratings = doctor.getRatings();
+        ratings.add(4);
+        doctor.setRatings(ratings);
+        doctor.setRatingAverage(ratings);
+    }
 
     public static void terminateAccount(Patient patient)
     {

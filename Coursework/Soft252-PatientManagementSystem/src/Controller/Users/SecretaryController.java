@@ -55,7 +55,7 @@ public abstract class SecretaryController extends AppointmentsController {
         secretary.setApprovalUsers(removalUsers);
         try {
             UsersController.editUser(secretary);
-            System.out.println("Secretary approval user removed");
+            System.out.println("Secretary approval: user removed");
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }

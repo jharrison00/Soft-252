@@ -38,7 +38,6 @@ public abstract class AdminController {
         for (HospitalPeople user : allUsers) {
             if (user.getUsername().toUpperCase().charAt(0) == "D".charAt(0) || user.getUsername().toUpperCase().charAt(0) == "S".charAt(0) ) {
                 allDocSec.add(user);
-                System.out.println(user.getUsername());
             }
         }
         return allDocSec;

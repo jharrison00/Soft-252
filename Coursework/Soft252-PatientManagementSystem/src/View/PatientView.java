@@ -7,6 +7,7 @@ package View;
 
 import Controller.Users.PatientController;
 import Model.Appointments.Appointment;
+import Model.Prescriptions.Prescription;
 import Model.Users.Doctor;
 import Model.Users.Patient;
 
@@ -22,9 +23,10 @@ import java.util.ArrayList;
 public class PatientView {
     public static void patientHome(Patient patient)
     {
-        requestAppointment(patient);
+        //requestAppointment(patient);
         //terminateAccount(patient);
         //appointments(patient);
+        prescriptions(patient);
     }
 
     public static void requestAppointment(Patient patient)
@@ -60,15 +62,24 @@ public class PatientView {
         }
     }
 
+    public static void prescriptions(Patient patient)
+    {
+        if (patient.getPrescriptions() != null) {
+            ArrayList<Prescription> prescriptions = patient.getPrescriptions();
+            for (Prescription prescription : prescriptions) {
+                System.out.println(prescription.getNote());
+            }
+        }
+        else{
+            System.out.println("No prescriptions");
+        }
+    }
+
     public static void doctors()
     {
 
     }
 
-    public static void prescription()
-    {
-
-    }
 
     public static void terminateAccount(Patient patient)
     {

@@ -1,4 +1,4 @@
-package Controller.AppointmentsTemplate;
+package Controller.Appointments;
 
 import Model.Appointments.Appointment;
 import Model.Appointments.AppointmentList;

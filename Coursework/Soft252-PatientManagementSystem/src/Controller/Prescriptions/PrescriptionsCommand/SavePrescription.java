@@ -16,6 +16,7 @@ public class SavePrescription implements ICommand{
     @Override
     public void execute() {
         try {
+            PrescriptionsController.updateObservers(prescription);
             PrescriptionsController.createPrescription(prescription);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -25,6 +26,7 @@ public class SavePrescription implements ICommand{
     @Override
     public void undo() {
         try {
+            PrescriptionsController.removeObservers(prescription);
             PrescriptionsController.deletePrescription(prescription);
         } catch (FileNotFoundException e) {
             e.printStackTrace();

@@ -7,7 +7,7 @@ package Model.Users;
 
 import Controller.Users.UsersController;
 import Model.Appointments.Appointment;
-import Model.Observables.SecretaryObserver;
+import Model.Observables.AccountObserver;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
  *
  * @author jonat
  */
-public class Secretary extends HospitalPeople implements SecretaryObserver {
+public class Secretary extends HospitalPeople implements AccountObserver {
     protected HospitalPeople approvalUser;
     protected HospitalPeople removalUser;
     protected Appointment requestAppointment;
@@ -29,8 +29,8 @@ public class Secretary extends HospitalPeople implements SecretaryObserver {
         this.address = address;
     }
 
-    public static ArrayList<SecretaryObserver> getAllSecretaries() {
-        ArrayList<SecretaryObserver>  secretaries = new ArrayList<SecretaryObserver>();
+    public static ArrayList<AccountObserver> getAllSecretaries() {
+        ArrayList<AccountObserver>  secretaries = new ArrayList<AccountObserver>();
         UserList userList = null;
         try {
             userList = UsersController.getAllUsers();

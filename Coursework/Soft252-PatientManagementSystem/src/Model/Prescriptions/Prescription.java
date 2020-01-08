@@ -1,12 +1,17 @@
 package Model.Prescriptions;
 
 import Model.Medicines.Medicine;
+import Model.Observables.PrescriptionObservable;
+import Model.Observables.PrescriptionObserver;
 import Model.Users.Doctor;
 import Model.Users.Patient;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
-public class Prescription implements Serializable {
+public class Prescription implements Serializable, PrescriptionObservable {
+
+    protected ArrayList<PrescriptionObserver> prescriptionObservers = new ArrayList<PrescriptionObserver>();
     protected Doctor doctor;
     protected Patient patient;
     protected String note = "No note";
@@ -65,6 +70,25 @@ public class Prescription implements Serializable {
 
     public void setDosage(String dosage) {
         Dosage = dosage;
+    }
+
+    @Override
+    public void registerPrescriptionObservers() {
+        prescriptionObservers.add(this.patient);
+    }
+
+    @Override
+    public void removePrescriptionObserver(Prescription prescription) {
+        for (PrescriptionObserver observer : prescriptionObservers){
+            observer.removePrescription(prescription);
+        }
+    }
+
+    @Override
+    public void notifyPrescription(Prescription prescription) {
+        for (PrescriptionObserver observer: prescriptionObservers){
+            observer.updatePrescription(prescription);
+        }
     }
 }
 

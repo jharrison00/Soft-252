@@ -2,8 +2,6 @@ package Controller.Prescriptions;
 
 import Model.Prescriptions.Prescription;
 import Model.Prescriptions.PrescriptionList;
-import Model.Users.HospitalPeople;
-import Model.Users.UserList;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -89,5 +87,15 @@ public abstract class PrescriptionsController {
             System.out.println(prescription.getNote());
         });
         return prescriptionList;
+    }
+
+    public static void updateObservers(Prescription prescription)
+    {
+       prescription.registerPrescriptionObservers();
+       prescription.notifyPrescription(prescription);
+    }
+
+    public static void removeObservers(Prescription prescription){
+        prescription.removePrescriptionObserver(prescription);
     }
 }

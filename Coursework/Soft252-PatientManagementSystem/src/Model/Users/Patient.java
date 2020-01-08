@@ -9,8 +9,10 @@ import Controller.Users.UsersController;
 import Enums.Genders;
 import Model.Appointments.Appointment;
 import Model.Observables.AppointmentObserver;
-import Model.Observables.PatientObservable;
-import Model.Observables.SecretaryObserver;
+import Model.Observables.AccountObservable;
+import Model.Observables.AccountObserver;
+import Model.Observables.PrescriptionObserver;
+import Model.Prescriptions.Prescription;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,13 +21,14 @@ import java.util.ArrayList;
  * Patient Data model with override for gender and age
  * @author jonat
  */
-public class Patient extends HospitalPeople implements PatientObservable, AppointmentObserver
+public class Patient extends HospitalPeople implements AccountObservable, AppointmentObserver, PrescriptionObserver
 {
-    private ArrayList<SecretaryObserver> secretaries;
+    private ArrayList<AccountObserver> secretaries;
 
     protected int age;
     protected Genders gender;
     protected ArrayList<Appointment> appointments;
+    protected ArrayList<Prescription> prescriptions;
 
     public Patient(String username, String firstName, String lastName, String password, String address,int age, Genders gender) {
         this.username = username;
@@ -61,6 +64,14 @@ public class Patient extends HospitalPeople implements PatientObservable, Appoin
         this.appointments = appointments;
     }
 
+    public ArrayList<Prescription> getPrescriptions() {
+        return prescriptions;
+    }
+
+    public void setPrescriptions(ArrayList<Prescription> prescriptions) {
+        this.prescriptions = prescriptions;
+    }
+
     @Override
     public void registerObservers() {
         secretaries = Secretary.getAllSecretaries();
@@ -73,21 +84,21 @@ public class Patient extends HospitalPeople implements PatientObservable, Appoin
 
     @Override
     public void notifyObserverCreate(Patient patient) {
-        for (SecretaryObserver secretary: secretaries){
+        for (AccountObserver secretary: secretaries){
             secretary.updateCreate(patient);
         }
     }
 
     @Override
     public void notifyObserverRemove(Patient patient) {
-        for (SecretaryObserver secretary: secretaries){
+        for (AccountObserver secretary: secretaries){
             secretary.updateRemove(patient);
         }
     }
 
     @Override
     public void notifyObserverAppointment(Appointment appointment) {
-        for (SecretaryObserver secretary: secretaries){
+        for (AccountObserver secretary: secretaries){
             secretary.updateRequestAppointment(appointment);
         }
     }
@@ -109,6 +120,59 @@ public class Patient extends HospitalPeople implements PatientObservable, Appoin
                     this.appointments = new ArrayList<Appointment>();
                 }
                 this.appointments.add(appointment);
+            }
+        }
+        userList.setAllUsersList(allUsers);
+        try {
+            UsersController.editUser(this);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updatePrescription(Prescription prescription) {
+        UserList userList = null;
+        try {
+            userList = UsersController.getAllUsers();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        ArrayList<HospitalPeople> allUsers = userList.getAllUsersList();
+        for (HospitalPeople user : allUsers){
+            if (user.getUsername().equals(this.getUsername())&&user.getPassword().equals(this.getPassword())) {
+                System.out.println("Updating "+this.getUsername());
+                if (this.prescriptions == null)
+                {
+                    this.prescriptions = new ArrayList<Prescription>();
+                }
+                this.prescriptions.add(prescription);
+            }
+        }
+        userList.setAllUsersList(allUsers);
+        try {
+            UsersController.editUser(this);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void removePrescription(Prescription prescription) {
+        UserList userList = null;
+        try {
+            userList = UsersController.getAllUsers();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        ArrayList<HospitalPeople> allUsers = userList.getAllUsersList();
+        for (HospitalPeople user : allUsers){
+            if (user.getUsername().equals(this.getUsername())&&user.getPassword().equals(this.getPassword())) {
+                System.out.println("Removing prescription from "+this.getUsername());
+                if (this.prescriptions != null)
+                {
+                    this.prescriptions = null;
+                }
             }
         }
         userList.setAllUsersList(allUsers);

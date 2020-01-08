@@ -1,5 +1,6 @@
-package Controller.AppointmentsTemplate;
+package Controller.Appointments.AppointmentsTemplate;
 
+import Controller.Appointments.AppointmentsController;
 import Controller.Users.UsersController;
 import Model.Appointments.Appointment;
 import Model.Users.Secretary;

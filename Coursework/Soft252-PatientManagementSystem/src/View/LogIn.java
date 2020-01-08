@@ -5,7 +5,7 @@
  */
 package View;
 
-import Controller.AppointmentsTemplate.AppointmentsController;
+import Controller.Appointments.AppointmentsController;
 import Controller.Medicines.MedicinesController;
 import Controller.Prescriptions.PrescriptionsController;
 import Controller.Users.PatientController;
@@ -14,7 +14,6 @@ import Enums.Genders;
 import Model.Appointments.AppointmentList;
 import Model.Medicines.Medicine;
 import Model.Medicines.MedicineList;
-import Model.Prescriptions.Prescription;
 import Model.Prescriptions.PrescriptionList;
 import Model.Users.*;
 
@@ -32,7 +31,7 @@ public class LogIn {
         //addUsers();
         logInUser();
         //createAccount();
-        //UserList userList  = UsersController.getAllUsers();
+        UserList userList  = UsersController.getAllUsers();
         AppointmentList appointmentList = AppointmentsController.getAllAppointments();
         PrescriptionList prescriptionList = PrescriptionsController.getAllPrescriptions();
         MedicineList medicineList = MedicinesController.getAllMedicines();
@@ -91,11 +90,11 @@ public class LogIn {
         Secretary secretary = new Secretary("S0001","secretary","secretary",
                 "password","address");
         //in.close();
-        //UsersController.createUser(patient);
-        //UsersController.createUser(doctor);
-        //UsersController.createUser(admin);
-        //UsersController.createUser(secretary);
-        //UsersController.getAllUsers();
+        UsersController.createUser(patient);
+        UsersController.createUser(doctor);
+        UsersController.createUser(admin);
+        UsersController.createUser(secretary);
+        UsersController.getAllUsers();
         //Appointment appointment = new Appointment(1,patient,doctor, new Date(8/1/2020));
         //AppointmentsController.createAppointment(appointment);
         //AppointmentsController.getAllAppointments();

@@ -5,7 +5,7 @@
  */
 package Controller.Users;
 
-import Controller.AppointmentsTemplate.AppointmentsController;
+import Controller.Appointments.AppointmentsController;
 import Model.Users.HospitalPeople;
 import Model.Users.Patient;
 import Model.Users.Secretary;

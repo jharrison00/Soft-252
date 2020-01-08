@@ -7,7 +7,7 @@ import Model.Users.HospitalPeople;
  *
  * @author jonat
  */
-public interface SecretaryObserver {
+public interface AccountObserver {
     void updateCreate(HospitalPeople person);
     void updateRemove(HospitalPeople person);
     void updateRequestAppointment(Appointment appointment);

@@ -6,8 +6,8 @@
 package View.DoctorState;
 
 
-import Controller.AppointmentsTemplate.AppointmentsController;
-import Controller.AppointmentsTemplate.DoctorAppointmentCreate;
+import Controller.Appointments.AppointmentsController;
+import Controller.Appointments.AppointmentsTemplate.DoctorAppointmentCreate;
 import Enums.Genders;
 import Model.Appointments.Appointment;
 import Model.Users.Doctor;

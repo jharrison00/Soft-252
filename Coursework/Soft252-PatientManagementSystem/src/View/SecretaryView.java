@@ -5,10 +5,10 @@
  */
 package View;
 
-import Controller.SecretaryController;
-import Controller.Template.AppointmentsController;
-import Controller.Template.SecretaryAppointmentCreate;
-import Controller.UsersController;
+import Controller.Users.SecretaryController;
+import Controller.AppointmentsTemplate.AppointmentsController;
+import Controller.AppointmentsTemplate.SecretaryAppointmentCreate;
+import Controller.Users.UsersController;
 import Model.Users.Patient;
 import Model.Users.Secretary;
 

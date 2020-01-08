@@ -5,7 +5,7 @@
  */
 package View;
 
-import Controller.PatientController;
+import Controller.Users.PatientController;
 import Model.Appointments.Appointment;
 import Model.Users.Doctor;
 import Model.Users.Patient;

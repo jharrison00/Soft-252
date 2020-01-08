@@ -1,4 +1,4 @@
-package Controller.Template;
+package Controller.AppointmentsTemplate;
 
 import Model.Appointments.Appointment;
 import Model.Users.Secretary;

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package Controller.Users;
 
-import Controller.Template.AppointmentsController;
+import Controller.AppointmentsTemplate.AppointmentsController;
 import Model.Users.HospitalPeople;
 import Model.Users.Patient;
 import Model.Users.Secretary;

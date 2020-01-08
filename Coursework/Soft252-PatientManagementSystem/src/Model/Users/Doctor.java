@@ -6,7 +6,7 @@
  */
 package Model.Users;
 
-import Controller.UsersController;
+import Controller.Users.UsersController;
 import Model.Appointments.Appointment;
 import Model.Observables.AppointmentObserver;
 

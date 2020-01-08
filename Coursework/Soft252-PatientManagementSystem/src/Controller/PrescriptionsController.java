@@ -54,8 +54,8 @@ public abstract class PrescriptionsController {
 
         ArrayList<Prescription> allPrescriptions = prescriptionList.getAllPrescriptions();
         prescriptionList.setAllPrescriptions(allPrescriptions);
-        allPrescriptions.forEach((user) -> {
-            System.out.println(user.getNote());
+        allPrescriptions.forEach((prescription) -> {
+            System.out.println(prescription.getNote());
         });
         return prescriptionList;
     }

@@ -5,13 +5,11 @@
  */
 package View;
 
-import Controller.AdminController;
-import Controller.SecretaryController;
-import Controller.UsersController;
+import Controller.Users.AdminController;
+import Controller.Users.UsersController;
 import Model.Users.Administrator;
 import Model.Users.Doctor;
 import Model.Users.HospitalPeople;
-import Model.Users.Patient;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

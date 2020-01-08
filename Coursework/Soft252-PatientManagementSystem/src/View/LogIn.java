@@ -5,10 +5,15 @@
  */
 package View;
 
+import Controller.AppointmentsTemplate.AppointmentsController;
+import Controller.MedicinesController;
 import Controller.PrescriptionsController;
-import Controller.PatientController;
-import Controller.UsersController;
+import Controller.Users.PatientController;
+import Controller.Users.UsersController;
 import Enums.Genders;
+import Model.Appointments.AppointmentList;
+import Model.Medicines.Medicine;
+import Model.Medicines.MedicineList;
 import Model.Prescriptions.Prescription;
 import Model.Prescriptions.PrescriptionList;
 import Model.Users.*;
@@ -24,13 +29,13 @@ public class LogIn {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         //getUserDetails();
-        //addUsers();
+        addUsers();
         //logInUser();
         //createAccount();
         //UserList userList  = UsersController.getAllUsers();
-        //AppointmentList appointmentList = AppointmentsController.getAllAppointments();
+        AppointmentList appointmentList = AppointmentsController.getAllAppointments();
         PrescriptionList prescriptionList = PrescriptionsController.getAllPrescriptions();
-
+        MedicineList medicineList = MedicinesController.getAllMedicines();
     }
     
     public static void logInUser()
@@ -94,8 +99,10 @@ public class LogIn {
         //Appointment appointment = new Appointment(1,patient,doctor, new Date(8/1/2020));
         //AppointmentsController.createAppointment(appointment);
         //AppointmentsController.getAllAppointments();
-        Prescription prescription = new Prescription(doctor,patient,"Death");
-        PrescriptionsController.createPrescription(prescription);
+        //Prescription prescription = new Prescription(doctor,patient,"Death");
+        //PrescriptionsController.createPrescription(prescription);
+        Medicine medicine = new Medicine("Drug1",1000);
+        MedicinesController.createMedicine(medicine);
     }
 
 

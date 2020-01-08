@@ -6,6 +6,7 @@
 package View;
 
 import Controller.Users.AdminController;
+import Controller.Users.PatientController;
 import Controller.Users.UsersController;
 import Model.Users.Administrator;
 import Model.Users.Doctor;
@@ -58,14 +59,41 @@ public class AdminView {
         }
     }
 
-    public static void feedback()
+    public static void viewFeedback(Doctor doctor)
     {
+        ArrayList<String> allFeedback = doctor.getFeedback();
+        if (allFeedback != null) {
+            for (String feedback : allFeedback) {
+                System.out.println(feedback);
+            }
+        }
+    }
 
+    public static void giveFeedback(Doctor doctor){
+        ArrayList<String> feedback = doctor.getFeedback();
+        String admin = "ADMIN: ";
+        String note = "Work harder";
+        if (feedback == null) {
+            feedback = new ArrayList<String>();
+        }
+        feedback.add(admin + note);
+        doctor.setFeedback(feedback);
+        try {
+            UsersController.editUser(doctor);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void viewRatings()
     {
-
+        ArrayList<Doctor> allDoctors = PatientController.getAllDoc();
+        if (allDoctors != null) {
+            for (Doctor doctor : allDoctors) {
+                System.out.println(doctor.getFirstName());
+                System.out.println(doctor.getRatingAverage());
+            }
+        }
     }
 
 }

@@ -87,7 +87,11 @@ public class PatientView {
 
     public static void giveRating(Doctor doctor){
         ArrayList<Integer> ratings = doctor.getRatings();
-        ratings.add(4);
+        int rating = 4;
+        if (ratings == null) {
+            ratings = new ArrayList<Integer>();
+        }
+        ratings.add(rating);
         doctor.setRatings(ratings);
         doctor.setRatingAverage(ratings);
         try {
@@ -99,7 +103,11 @@ public class PatientView {
 
     public static void giveFeedback(Doctor doctor){
         ArrayList<String> feedback = doctor.getFeedback();
-        feedback.add("Good doctor");
+        String note = "Good doctor";
+        if (feedback == null) {
+            feedback = new ArrayList<String>();
+        }
+        feedback.add(note);
         doctor.setFeedback(feedback);
         try {
             UsersController.editUser(doctor);

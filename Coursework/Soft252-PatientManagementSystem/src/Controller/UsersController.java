@@ -120,7 +120,7 @@ public abstract class UsersController {
         }
     }
 
-        public static UserList getAllUsers() throws IOException, ClassNotFoundException {
+    public static UserList getAllUsers() throws IOException, ClassNotFoundException {
         UserList userList = new UserList();
         FileInputStream fis = new FileInputStream("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Users.txt");
         ObjectInputStream ois = new ObjectInputStream(fis);

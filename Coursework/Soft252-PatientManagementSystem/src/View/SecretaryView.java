@@ -9,10 +9,8 @@ import Controller.SecretaryController;
 import Controller.Template.AppointmentsController;
 import Controller.Template.SecretaryAppointmentCreate;
 import Controller.UsersController;
-import Model.Users.HospitalPeople;
 import Model.Users.Patient;
 import Model.Users.Secretary;
-import Model.Users.UserList;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

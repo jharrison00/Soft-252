@@ -1,7 +1,5 @@
 package Model.Appointments;
 
-import Model.Users.HospitalPeople;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 

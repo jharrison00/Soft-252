@@ -6,7 +6,6 @@
 package Controller;
 
 import Controller.Template.AppointmentsController;
-import Model.Appointments.Appointment;
 import Model.Users.HospitalPeople;
 import Model.Users.Patient;
 import Model.Users.Secretary;
@@ -75,5 +74,4 @@ public abstract class SecretaryController extends AppointmentsController {
         }
         return allPatients;
     }
-
 }

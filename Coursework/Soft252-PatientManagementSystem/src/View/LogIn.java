@@ -5,16 +5,15 @@
  */
 package View;
 
-import Controller.Template.AppointmentsController;
+import Controller.PrescriptionsController;
 import Controller.PatientController;
 import Controller.UsersController;
 import Enums.Genders;
-import Model.Appointments.Appointment;
-import Model.Appointments.AppointmentList;
+import Model.Prescriptions.Prescription;
+import Model.Prescriptions.PrescriptionList;
 import Model.Users.*;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -26,10 +25,11 @@ public class LogIn {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         //getUserDetails();
         //addUsers();
-        logInUser();
+        //logInUser();
         //createAccount();
         //UserList userList  = UsersController.getAllUsers();
         //AppointmentList appointmentList = AppointmentsController.getAllAppointments();
+        PrescriptionList prescriptionList = PrescriptionsController.getAllPrescriptions();
 
     }
     
@@ -86,14 +86,16 @@ public class LogIn {
         Secretary secretary = new Secretary("S0001","secretary","secretary",
                 "password","address");
         //in.close();
-        UsersController.createUser(patient);
-        UsersController.createUser(doctor);
-        UsersController.createUser(admin);
-        UsersController.createUser(secretary);
-        UsersController.getAllUsers();
+        //UsersController.createUser(patient);
+        //UsersController.createUser(doctor);
+        //UsersController.createUser(admin);
+        //UsersController.createUser(secretary);
+        //UsersController.getAllUsers();
         //Appointment appointment = new Appointment(1,patient,doctor, new Date(8/1/2020));
         //AppointmentsController.createAppointment(appointment);
         //AppointmentsController.getAllAppointments();
+        Prescription prescription = new Prescription(doctor,patient,"Death");
+        PrescriptionsController.createPrescription(prescription);
     }
 
 

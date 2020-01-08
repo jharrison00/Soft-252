@@ -62,7 +62,7 @@ public abstract class AppointmentsController {
         ArrayList<Appointment> newAppointmentList = new ArrayList<Appointment>();
         try
         {
-            final FileInputStream fis = new FileInputStream("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Appointments.txt");
+            final FileInputStream fis = new FileInputStream("src\\files\\Appointments.txt");
             final ObjectInputStream ois = new ObjectInputStream(fis);
             appointmentList = (AppointmentList) ois.readObject();
             ois.close();
@@ -74,7 +74,7 @@ public abstract class AppointmentsController {
             newAppointmentList.add(appointment);
         }
         appointmentList.setAllAppointmentsList(newAppointmentList);
-        final File file = new File("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Appointments.txt");
+        final File file = new File("src\\files\\Appointments.txt");
         final FileOutputStream fos = new FileOutputStream(file);
         try (ObjectOutput outputStream = new ObjectOutputStream(fos)) {
             outputStream.writeObject(appointmentList);

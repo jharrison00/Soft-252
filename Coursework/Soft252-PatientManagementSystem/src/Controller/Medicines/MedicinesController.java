@@ -55,7 +55,7 @@ public abstract class MedicinesController {
 
     public static MedicineList getAllMedicines() throws IOException, ClassNotFoundException {
         MedicineList medicineList = new  MedicineList();
-        FileInputStream fis = new FileInputStream("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Medicines.txt");
+        FileInputStream fis = new FileInputStream("src\\files\\Medicines.txt");
         ObjectInputStream ois = new ObjectInputStream(fis);
         try{
             medicineList =  (MedicineList) ois.readObject();
@@ -96,7 +96,7 @@ public abstract class MedicinesController {
             index++;
         }
         medicineList.setAllMedicines(allMedicines);
-        final File file = new File("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Medicines.txt");
+        final File file = new File("src\\files\\Medicines.txt");
         final FileOutputStream fos = new FileOutputStream(file);
         try (ObjectOutput outputStream = new ObjectOutputStream(fos)) {
             outputStream.writeObject(medicineList);

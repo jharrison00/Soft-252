@@ -40,7 +40,7 @@ public abstract class UsersController {
         ArrayList<HospitalPeople> newUserList = new ArrayList<HospitalPeople>();
         try 
         {       
-            final FileInputStream fis = new FileInputStream("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Users.txt");
+            final FileInputStream fis = new FileInputStream("src\\files\\Users.txt");
             final ObjectInputStream ois = new ObjectInputStream(fis);
             userList = (UserList) ois.readObject();
             ois.close();
@@ -53,7 +53,7 @@ public abstract class UsersController {
         }   
         userList.setAllUsersList(newUserList);
 
-        final File file = new File("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Users.txt");
+        final File file = new File("src\\files\\Users.txt");
         final FileOutputStream fos = new FileOutputStream(file);
         try (ObjectOutput outputStream = new ObjectOutputStream(fos)) {
             outputStream.writeObject(userList);
@@ -82,7 +82,7 @@ public abstract class UsersController {
             index++;
         }
         userList.setAllUsersList(allUsers);
-        final File file = new File("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Users.txt");
+        final File file = new File("src\\files\\Users.txt");
         final FileOutputStream fos = new FileOutputStream(file);
         try (ObjectOutput outputStream = new ObjectOutputStream(fos)) {
             outputStream.writeObject(userList);
@@ -108,7 +108,7 @@ public abstract class UsersController {
             }
         }
         userList.setAllUsersList(allUsers);
-        final File file = new File("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Users.txt");
+        final File file = new File("src\\files\\Users.txt");
         final FileOutputStream fos = new FileOutputStream(file);
         try (ObjectOutput outputStream = new ObjectOutputStream(fos)) {
             outputStream.writeObject(userList);
@@ -122,7 +122,7 @@ public abstract class UsersController {
 
     public static UserList getAllUsers() throws IOException, ClassNotFoundException {
         UserList userList = new UserList();
-        FileInputStream fis = new FileInputStream("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Users.txt");
+        FileInputStream fis = new FileInputStream("src\\files\\Users.txt");
         ObjectInputStream ois = new ObjectInputStream(fis);
         try{
             userList = (UserList) ois.readObject();

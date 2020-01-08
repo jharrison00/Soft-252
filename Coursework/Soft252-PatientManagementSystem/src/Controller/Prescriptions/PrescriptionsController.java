@@ -15,7 +15,7 @@ public abstract class PrescriptionsController {
         ArrayList<Prescription> newPrescriptionList = new ArrayList<Prescription>();
         try
         {
-            final FileInputStream fis = new FileInputStream("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Prescriptions.txt");
+            final FileInputStream fis = new FileInputStream("src\\files\\Prescriptions.txt");
             final ObjectInputStream ois = new ObjectInputStream(fis);
             prescriptionList = (PrescriptionList) ois.readObject();
             ois.close();
@@ -28,7 +28,7 @@ public abstract class PrescriptionsController {
         }
         prescriptionList.setAllPrescriptions(newPrescriptionList);
 
-        final File file = new File("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Prescriptions.txt");
+        final File file = new File("src\\files\\Prescriptions.txt");
         final FileOutputStream fos = new FileOutputStream(file);
         try (ObjectOutput outputStream = new ObjectOutputStream(fos)) {
             outputStream.writeObject(prescriptionList);
@@ -56,7 +56,7 @@ public abstract class PrescriptionsController {
             }
         }
         prescriptionList.setAllPrescriptions(allPrescriptions);
-        final File file = new File("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Prescriptions.txt");
+        final File file = new File("src\\files\\Prescriptions.txt");
         final FileOutputStream fos = new FileOutputStream(file);
         try (ObjectOutput outputStream = new ObjectOutputStream(fos)) {
             outputStream.writeObject(prescriptionList);

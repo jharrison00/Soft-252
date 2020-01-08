@@ -7,6 +7,7 @@ package View;
 
 import Controller.Users.PatientController;
 import Controller.Users.SecretaryController;
+import Controller.Users.UsersController;
 import Model.Appointments.Appointment;
 import Model.Prescriptions.Prescription;
 import Model.Users.Doctor;
@@ -89,6 +90,22 @@ public class PatientView {
         ratings.add(4);
         doctor.setRatings(ratings);
         doctor.setRatingAverage(ratings);
+        try {
+            UsersController.editUser(doctor);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void giveFeedback(Doctor doctor){
+        ArrayList<String> feedback = doctor.getFeedback();
+        feedback.add("Good doctor");
+        doctor.setFeedback(feedback);
+        try {
+            UsersController.editUser(doctor);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void terminateAccount(Patient patient)

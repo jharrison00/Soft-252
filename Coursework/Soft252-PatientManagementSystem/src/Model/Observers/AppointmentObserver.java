@@ -1,4 +1,4 @@
-package Model.Observables;
+package Model.Observers;
 
 import Model.Appointments.Appointment;
 

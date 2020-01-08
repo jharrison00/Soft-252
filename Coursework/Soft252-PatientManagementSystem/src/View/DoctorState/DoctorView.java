@@ -8,8 +8,11 @@ package View.DoctorState;
 
 import Controller.Appointments.AppointmentsController;
 import Controller.Appointments.AppointmentsTemplate.DoctorAppointmentCreate;
+import Controller.Users.DoctorController;
+import Controller.Users.PatientController;
 import Enums.Genders;
 import Model.Appointments.Appointment;
+import Model.Medicines.Medicine;
 import Model.Users.Doctor;
 import Model.Users.Patient;
 
@@ -72,11 +75,15 @@ public class DoctorView implements IState
 
     public static void createMedicine()
     {
-
+        Medicine medicine = new Medicine("DrDrug",0);
+        DoctorController.createMedicine(medicine);
     }
 
     @Override
     public void enterAppointment(Doctor doctor, DoctorState doctorState) {
+
+        createMedicine();
+
         Scanner in = new Scanner(System.in);
         ArrayList<Appointment> appointments = getAppointments(doctor);
         for (Appointment appointment : appointments){

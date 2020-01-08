@@ -2,7 +2,7 @@ package Model.Prescriptions;
 
 import Model.Medicines.Medicine;
 import Model.Observables.PrescriptionObservable;
-import Model.Observables.PrescriptionObserver;
+import Model.Observers.PrescriptionObserver;
 import Model.Users.Doctor;
 import Model.Users.Patient;
 
@@ -85,7 +85,7 @@ public class Prescription implements Serializable, PrescriptionObservable {
     }
 
     @Override
-    public void notifyPrescription(Prescription prescription) {
+    public void notifyObserverPrescription(Prescription prescription) {
         for (PrescriptionObserver observer: prescriptionObservers){
             observer.updatePrescription(prescription);
         }

@@ -92,7 +92,7 @@ public abstract class PrescriptionsController {
     public static void updateObservers(Prescription prescription)
     {
        prescription.registerPrescriptionObservers();
-       prescription.notifyPrescription(prescription);
+       prescription.notifyObserverPrescription(prescription);
     }
 
     public static void removeObservers(Prescription prescription){

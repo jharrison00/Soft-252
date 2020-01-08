@@ -5,10 +5,15 @@
  */
 package Controller.Users;
 
+import Controller.Medicines.MedicinesController;
+import Model.Appointments.Appointment;
+import Model.Medicines.Medicine;
 import Model.Users.Doctor;
 import View.DoctorState.DoctorState;
 import View.DoctorState.DoctorView;
 import View.DoctorState.IState;
+
+import java.io.IOException;
 
 /**
  *
@@ -23,4 +28,17 @@ public abstract class DoctorController{
         doctorState.enterAppointment();
     }
 
+    public static void createMedicine(Medicine medicine) {
+        try {
+            MedicinesController.createMedicine(medicine);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        updateObservers(medicine);
+    }
+
+    public static void updateObservers(Medicine medicine) {
+        medicine.registerObservers();
+        medicine.notifyObserverMedicine(medicine);
+    }
 }

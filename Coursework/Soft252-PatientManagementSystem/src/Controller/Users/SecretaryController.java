@@ -32,7 +32,9 @@ public abstract class SecretaryController extends AppointmentsController {
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        secretary.setApprovalUser(null);
+        ArrayList<HospitalPeople> approvalUsers = secretary.getApprovalUsers();
+        approvalUsers.remove(person);
+        secretary.setApprovalUsers(approvalUsers);
         try {
             UsersController.editUser(secretary);
             System.out.println("Secretary approval user removed");
@@ -48,7 +50,9 @@ public abstract class SecretaryController extends AppointmentsController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        secretary.setRemovalUser(null);
+        ArrayList<HospitalPeople> removalUsers = secretary.getRemovalUsers();
+        removalUsers.remove(person);
+        secretary.setApprovalUsers(removalUsers);
         try {
             UsersController.editUser(secretary);
             System.out.println("Secretary approval user removed");

@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 public class PatientView {
     public static void patientHome(Patient patient)
     {
-        //requestAppointment(patient);
+        requestAppointment(patient);
         //terminateAccount(patient);
         //appointments(patient);
         prescriptions(patient);
@@ -33,18 +34,14 @@ public class PatientView {
     {
         ArrayList<Doctor> allDocs = PatientController.getAllDoc();
         Appointment requestAppointment = new Appointment();
-        String date = "08/01/2020";
 
         System.out.println("Choose doctor: ");
         System.out.println("Choose date: ");
         Doctor doctor = allDocs.get(0);
         requestAppointment.setDoctor(doctor);
         requestAppointment.setAppointmentPatient(patient);
-        try {
-            requestAppointment.setDate(new SimpleDateFormat("dd/MM/yyyy").parse(date));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        requestAppointment.setDate(new Date(9/1/2020));
+
         PatientController.requestAppointment(requestAppointment);
 
     }

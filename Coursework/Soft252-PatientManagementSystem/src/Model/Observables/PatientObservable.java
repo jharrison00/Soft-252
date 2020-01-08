@@ -8,7 +8,7 @@ import Model.Users.Secretary;
  *
  * @author jonat
  */
-public interface AccountObservable {
+public interface PatientObservable {
     void registerObservers();
     void removeObserver(Secretary secretary);
     void notifyObserverCreate(Patient patient);

@@ -8,10 +8,10 @@ package Model.Users;
 import Controller.Users.UsersController;
 import Enums.Genders;
 import Model.Appointments.Appointment;
-import Model.Observables.AppointmentObserver;
-import Model.Observables.AccountObservable;
-import Model.Observables.AccountObserver;
-import Model.Observables.PrescriptionObserver;
+import Model.Observers.AppointmentObserver;
+import Model.Observables.PatientObservable;
+import Model.Observers.SecretaryObserver;
+import Model.Observers.PrescriptionObserver;
 import Model.Prescriptions.Prescription;
 
 import java.io.IOException;
@@ -21,9 +21,9 @@ import java.util.ArrayList;
  * Patient Data model with override for gender and age
  * @author jonat
  */
-public class Patient extends HospitalPeople implements AccountObservable, AppointmentObserver, PrescriptionObserver
+public class Patient extends HospitalPeople implements PatientObservable, AppointmentObserver, PrescriptionObserver
 {
-    private ArrayList<AccountObserver> secretaries;
+    private ArrayList<SecretaryObserver> secretaries;
 
     protected int age;
     protected Genders gender;
@@ -84,21 +84,21 @@ public class Patient extends HospitalPeople implements AccountObservable, Appoin
 
     @Override
     public void notifyObserverCreate(Patient patient) {
-        for (AccountObserver secretary: secretaries){
+        for (SecretaryObserver secretary: secretaries){
             secretary.updateCreate(patient);
         }
     }
 
     @Override
     public void notifyObserverRemove(Patient patient) {
-        for (AccountObserver secretary: secretaries){
+        for (SecretaryObserver secretary: secretaries){
             secretary.updateRemove(patient);
         }
     }
 
     @Override
     public void notifyObserverAppointment(Appointment appointment) {
-        for (AccountObserver secretary: secretaries){
+        for (SecretaryObserver secretary: secretaries){
             secretary.updateRequestAppointment(appointment);
         }
     }

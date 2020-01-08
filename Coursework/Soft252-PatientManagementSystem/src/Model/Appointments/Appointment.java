@@ -1,7 +1,7 @@
 package Model.Appointments;
 
 import Model.Observables.AppointmentObservable;
-import Model.Observables.AppointmentObserver;
+import Model.Observers.AppointmentObserver;
 import Model.Users.*;
 
 import java.io.Serializable;

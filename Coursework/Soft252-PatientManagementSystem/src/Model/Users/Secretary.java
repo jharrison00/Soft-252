@@ -7,19 +7,23 @@ package Model.Users;
 
 import Controller.Users.UsersController;
 import Model.Appointments.Appointment;
-import Model.Observables.AccountObserver;
+import Model.Medicines.Medicine;
+import Model.Observers.SecretaryObserver;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
  *
  * @author jonat
  */
-public class Secretary extends HospitalPeople implements AccountObserver {
-    protected HospitalPeople approvalUser;
-    protected HospitalPeople removalUser;
-    protected Appointment requestAppointment;
+public class Secretary extends HospitalPeople implements SecretaryObserver {
+
+    protected ArrayList<HospitalPeople> approvalUsers;
+    protected ArrayList<HospitalPeople> removalUsers;
+    protected ArrayList<Appointment> requestAppointments;
+    protected ArrayList<Medicine> requestMedicines;
 
     public Secretary(String username, String firstName, String lastName, String password, String address) {
         this.username = username;
@@ -29,8 +33,8 @@ public class Secretary extends HospitalPeople implements AccountObserver {
         this.address = address;
     }
 
-    public static ArrayList<AccountObserver> getAllSecretaries() {
-        ArrayList<AccountObserver>  secretaries = new ArrayList<AccountObserver>();
+    public static ArrayList<SecretaryObserver> getAllSecretaries() {
+        ArrayList<SecretaryObserver>  secretaries = new ArrayList<SecretaryObserver>();
         UserList userList = null;
         try {
             userList = UsersController.getAllUsers();
@@ -46,29 +50,44 @@ public class Secretary extends HospitalPeople implements AccountObserver {
         return secretaries;
     }
 
-    public void setApprovalUser(HospitalPeople approvalUser) {
-        this.approvalUser = approvalUser;
+    public ArrayList<HospitalPeople> getApprovalUsers() {
+        return approvalUsers;
     }
 
-    public Patient getApprovalUser(){
-        return (Patient) this.approvalUser;
+    public void setApprovalUsers(ArrayList<HospitalPeople> approvalUsers) {
+        this.approvalUsers = approvalUsers;
     }
 
-
-    public void setRemovalUser(HospitalPeople removalUser) {
-        this.removalUser = removalUser;
+    public ArrayList<HospitalPeople> getRemovalUsers() {
+        return removalUsers;
     }
 
-    public Patient getRemovalUser(){
-        return (Patient) this.removalUser;
+    public void setRemovalUsers(ArrayList<HospitalPeople> removalUsers) {
+        this.removalUsers = removalUsers;
     }
 
-    public Appointment getRequestAppointment() {
-        return requestAppointment;
+    public ArrayList<Appointment> getRequestAppointments() {
+        return requestAppointments;
     }
 
-    public void setRequestAppointment(Appointment requestAppointment) {
-        this.requestAppointment = requestAppointment;
+    public void setRequestAppointments(ArrayList<Appointment> requestAppointments) {
+        this.requestAppointments = requestAppointments;
+    }
+
+    public ArrayList<Medicine> getRequestMedicines() {
+        return requestMedicines;
+    }
+
+    public void setRequestMedicines(ArrayList<Medicine> requestMedicines) {
+        this.requestMedicines = requestMedicines;
+    }
+
+    public void editUser(){
+        try {
+            UsersController.editUser(this);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -83,15 +102,14 @@ public class Secretary extends HospitalPeople implements AccountObserver {
         for (HospitalPeople user : allUsers){
             if (user.getUsername().equals(this.getUsername())&&user.getPassword().equals(this.getPassword())) {
                 System.out.println("Updating "+this.getUsername());
-                this.approvalUser = person;
+                if (this.approvalUsers == null){
+                    this.approvalUsers = new ArrayList<HospitalPeople>();
+                }
+                this.approvalUsers.add(person);
             }
         }
         userList.setAllUsersList(allUsers);
-        try {
-            UsersController.editUser(this);
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        editUser();
     }
 
     @Override
@@ -106,15 +124,14 @@ public class Secretary extends HospitalPeople implements AccountObserver {
         for (HospitalPeople user : allUsers){
             if (user.getUsername().equals(this.getUsername())&&user.getPassword().equals(this.getPassword())) {
                 System.out.println("Updating "+this.getUsername());
-                this.removalUser = person;
+                if (this.removalUsers == null){
+                    this.removalUsers = new ArrayList<HospitalPeople>();
+                }
+                this.removalUsers.add(person);
             }
         }
         userList.setAllUsersList(allUsers);
-        try {
-            UsersController.editUser(this);
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        editUser();
     }
 
     @Override
@@ -129,14 +146,35 @@ public class Secretary extends HospitalPeople implements AccountObserver {
         for (HospitalPeople user : allUsers){
             if (user.getUsername().equals(this.getUsername())&&user.getPassword().equals(this.getPassword())) {
                 System.out.println("Sending appointment to "+this.getUsername());
-                this.requestAppointment = appointment;
+                if (this.requestAppointments == null){
+                    this.requestAppointments = new ArrayList<Appointment>();
+                }
+                this.requestAppointments.add(appointment);
             }
         }
         userList.setAllUsersList(allUsers);
+        editUser();
+    }
+
+    @Override
+    public void updateRequestMedicine(Medicine medicine) {
+        UserList userList = null;
         try {
-            UsersController.editUser(this);
+            userList = UsersController.getAllUsers();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+        ArrayList<HospitalPeople> allUsers = userList.getAllUsersList();
+        for (HospitalPeople user : allUsers){
+            if (user.getUsername().equals(this.getUsername())&&user.getPassword().equals(this.getPassword())) {
+                System.out.println("Sending medicine to "+this.getUsername());
+                if (this.requestMedicines == null){
+                    this.requestMedicines = new ArrayList<Medicine>();
+                }
+                this.requestMedicines.add(medicine);
+            }
+        }
+        userList.setAllUsersList(allUsers);
+        editUser();
     }
 }

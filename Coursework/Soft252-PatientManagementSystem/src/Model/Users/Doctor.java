@@ -8,7 +8,7 @@ package Model.Users;
 
 import Controller.Users.UsersController;
 import Model.Appointments.Appointment;
-import Model.Observables.AppointmentObserver;
+import Model.Observers.AppointmentObserver;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -1,8 +1,14 @@
 package View.State;
 
+import Model.Appointments.Appointment;
 import Model.Users.Doctor;
 
 public class AppointmentView implements IState{
+
+    public static void addNotes(Doctor doctor,Appointment appointment)
+    {
+
+    }
 
     @Override
     public void enterAppointment(Doctor doctor, DoctorState doctorState) {

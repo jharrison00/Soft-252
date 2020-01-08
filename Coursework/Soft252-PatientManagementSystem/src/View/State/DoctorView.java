@@ -30,16 +30,18 @@ public class DoctorView implements IState
         //createAppointment(doctor);
     }
 
-    public static void appointments(Doctor doctor)
+    public static ArrayList<Appointment> getAppointments(Doctor doctor)
     {
         if (doctor.getAppointments() != null) {
             ArrayList<Appointment> appointments = doctor.getAppointments();
             for (Appointment appointment : appointments) {
                 System.out.println(appointment.getAppointmentID());
             }
+            return appointments;
         }
         else{
             System.out.println("No appointments");
+            return null;
         }
     }
 
@@ -75,8 +77,20 @@ public class DoctorView implements IState
 
     @Override
     public void enterAppointment(Doctor doctor, DoctorState doctorState) {
-        appointments(doctor);
+        Scanner in = new Scanner(System.in);
+        ArrayList<Appointment> appointments = getAppointments(doctor);
+        for (Appointment appointment : appointments){
+            System.out.println(appointment.getAppointmentID());
+        }
+        System.out.println("Select appointment: ");
+        int approve = in.nextInt();
+        for (Appointment appointment : appointments){
+            if (approve == appointment.getAppointmentID()){
+                doctorState.setAppointment(appointment);
+            }
+        }
         System.out.println("Entering appointment view");
+        AppointmentView.addNotes(doctor,doctorState.getAppointment());
         doctorState.setState(new AppointmentView());
     }
 

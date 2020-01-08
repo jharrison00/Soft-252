@@ -10,9 +10,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="JUnit3 Test Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -57,7 +57,7 @@
       <module name="Soft252-PatientManagementSystem" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="View.State.*" />
+          <option name="PATTERN" value="View.DoctorState.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -93,7 +93,7 @@
       <module name="Soft252-PatientManagementSystem" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="View.State.*" />
+          <option name="PATTERN" value="View.DoctorState.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -165,10 +165,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="718" y="343" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578498584829" />
-    <state x="765" y="250" key="#com.intellij.ide.util.MemberChooser" timestamp="1578498761466">
+    <state x="765" y="250" key="#com.intellij.ide.util.MemberChooser" timestamp="1578502954526">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="765" y="250" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578498761466" />
+    <state x="765" y="250" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578502954526" />
     <state x="690" y="324" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1578485832394">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -185,46 +185,46 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="718" y="288" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578486536667" />
-    <state width="483" height="466" key="DebuggerActiveHint" timestamp="1578499048562">
+    <state width="483" height="466" key="DebuggerActiveHint" timestamp="1578502745637">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="483" height="466" key="DebuggerActiveHint/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578499048562" />
+    <state width="483" height="466" key="DebuggerActiveHint/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578502745637" />
     <state x="740" y="295" key="FileChooserDialogImpl" timestamp="1578486553320">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="740" y="295" key="FileChooserDialogImpl/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578486553320" />
-    <state width="1877" height="266" key="GridCell.Tab.0.bottom" timestamp="1578499056661">
+    <state width="1877" height="266" key="GridCell.Tab.0.bottom" timestamp="1578503690775">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578499056661" />
-    <state width="1877" height="266" key="GridCell.Tab.0.center" timestamp="1578499056661">
+    <state width="1877" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578503690775" />
+    <state width="1877" height="266" key="GridCell.Tab.0.center" timestamp="1578503690775">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="266" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578499056661" />
-    <state width="1877" height="266" key="GridCell.Tab.0.left" timestamp="1578499056661">
+    <state width="1877" height="266" key="GridCell.Tab.0.center/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578503690775" />
+    <state width="1877" height="266" key="GridCell.Tab.0.left" timestamp="1578503690775">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="266" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578499056661" />
-    <state width="1877" height="266" key="GridCell.Tab.0.right" timestamp="1578499056661">
+    <state width="1877" height="266" key="GridCell.Tab.0.left/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578503690775" />
+    <state width="1877" height="266" key="GridCell.Tab.0.right" timestamp="1578503690775">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="266" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578499056661" />
-    <state width="1877" height="313" key="GridCell.Tab.1.bottom" timestamp="1578499051820">
+    <state width="1877" height="266" key="GridCell.Tab.0.right/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578503690775" />
+    <state width="1877" height="313" key="GridCell.Tab.1.bottom" timestamp="1578503612929">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="313" key="GridCell.Tab.1.bottom/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578499051820" />
-    <state width="1877" height="313" key="GridCell.Tab.1.center" timestamp="1578499051820">
+    <state width="1877" height="313" key="GridCell.Tab.1.bottom/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578503612929" />
+    <state width="1877" height="313" key="GridCell.Tab.1.center" timestamp="1578503612929">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="313" key="GridCell.Tab.1.center/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578499051820" />
-    <state width="1877" height="313" key="GridCell.Tab.1.left" timestamp="1578499051820">
+    <state width="1877" height="313" key="GridCell.Tab.1.center/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578503612929" />
+    <state width="1877" height="313" key="GridCell.Tab.1.left" timestamp="1578503612929">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="313" key="GridCell.Tab.1.left/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578499051820" />
-    <state width="1877" height="313" key="GridCell.Tab.1.right" timestamp="1578499051820">
+    <state width="1877" height="313" key="GridCell.Tab.1.left/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578503612929" />
+    <state width="1877" height="313" key="GridCell.Tab.1.right" timestamp="1578503612929">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="313" key="GridCell.Tab.1.right/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578499051820" />
+    <state width="1877" height="313" key="GridCell.Tab.1.right/0.0.1920.1080/1920.0.1920.1080@0.0.1920.1080" timestamp="1578503612929" />
     <state x="656" y="364" key="com.intellij.ide.util.TipDialog" timestamp="1578483146945">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -269,14 +269,9 @@
           <option name="timeStamp" value="171" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/View/LogIn.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="182" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/View/LogIn.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="183" />
+          <url>file://$PROJECT_DIR$/src/View/DoctorState/AppointmentView.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="193" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

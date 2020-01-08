@@ -1,4 +1,4 @@
-package Controller;
+package Controller.Medicines;
 
 import Model.Medicines.Medicine;
 import Model.Medicines.MedicineList;

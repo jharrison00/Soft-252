@@ -1,7 +1,9 @@
-package Controller;
+package Controller.Prescriptions;
 
 import Model.Prescriptions.Prescription;
 import Model.Prescriptions.PrescriptionList;
+import Model.Users.HospitalPeople;
+import Model.Users.UserList;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -35,6 +37,35 @@ public abstract class PrescriptionsController {
             System.out.println("Stored in file : " + file.getName());
             outputStream.close();
             fos.close();
+        }
+    }
+
+    public static void deletePrescription(Prescription prescription) throws FileNotFoundException {
+        PrescriptionList prescriptionList = null;
+        try {
+            prescriptionList = getAllPrescriptions();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        ArrayList<Prescription> allPrescriptions = prescriptionList.getAllPrescriptions();
+        for (Prescription filePrescription : allPrescriptions) {
+            if (prescription.getDoctor().getUsername().equals(filePrescription.getDoctor().getUsername())
+                    && prescription.getPatient().getUsername().equals(filePrescription.getPatient().getUsername())
+                    && prescription.getNote().equals(filePrescription.getNote())) {
+                System.out.println("Removing prescription");
+                allPrescriptions.remove(filePrescription);
+                break;
+            }
+        }
+        prescriptionList.setAllPrescriptions(allPrescriptions);
+        final File file = new File("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Prescriptions.txt");
+        final FileOutputStream fos = new FileOutputStream(file);
+        try (ObjectOutput outputStream = new ObjectOutputStream(fos)) {
+            outputStream.writeObject(prescriptionList);
+            outputStream.close();
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

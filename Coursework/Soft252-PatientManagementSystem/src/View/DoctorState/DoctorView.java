@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.State;
+package View.DoctorState;
 
 
 import Controller.AppointmentsTemplate.AppointmentsController;
@@ -90,12 +90,12 @@ public class DoctorView implements IState
             }
         }
         System.out.println("Entering appointment view");
-        AppointmentView.addNotes(doctor,doctorState.getAppointment());
+        AppointmentView.appointmentHome(doctor,doctorState.getAppointment());
         doctorState.setState(new AppointmentView());
     }
 
     @Override
-    public void saveAppointment(Doctor doctor, DoctorState doctorState) {
+    public void exitAppointment(Doctor doctor, DoctorState doctorState) {
         System.out.println("Not in appointment view, cant save appointment details");
         doctorState.setState(this);
     }

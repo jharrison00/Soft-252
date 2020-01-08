@@ -1,4 +1,4 @@
-package View.State;
+package View.DoctorState;
 
 import Model.Appointments.Appointment;
 import Model.Users.Doctor;
@@ -30,8 +30,8 @@ public class DoctorState {
         state.enterAppointment(doctor,this);
     }
 
-    public void saveAppointment(){
-        state.saveAppointment(doctor,this);
+    public void exitAppointment(){
+        state.exitAppointment(doctor,this);
     }
 
 }

@@ -6,8 +6,8 @@
 package View;
 
 import Controller.AppointmentsTemplate.AppointmentsController;
-import Controller.MedicinesController;
-import Controller.PrescriptionsController;
+import Controller.Medicines.MedicinesController;
+import Controller.Prescriptions.PrescriptionsController;
 import Controller.Users.PatientController;
 import Controller.Users.UsersController;
 import Enums.Genders;
@@ -29,8 +29,8 @@ public class LogIn {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         //getUserDetails();
-        addUsers();
-        //logInUser();
+        //addUsers();
+        logInUser();
         //createAccount();
         //UserList userList  = UsersController.getAllUsers();
         AppointmentList appointmentList = AppointmentsController.getAllAppointments();
@@ -99,10 +99,10 @@ public class LogIn {
         //Appointment appointment = new Appointment(1,patient,doctor, new Date(8/1/2020));
         //AppointmentsController.createAppointment(appointment);
         //AppointmentsController.getAllAppointments();
-        //Prescription prescription = new Prescription(doctor,patient,"Death");
-        //PrescriptionsController.createPrescription(prescription);
         Medicine medicine = new Medicine("Drug1",1000);
         MedicinesController.createMedicine(medicine);
+        //Prescription prescription = new Prescription(doctor,patient,"Death",medicine,3,"2 Times a day");
+        //PrescriptionsController.createPrescription(prescription);
     }
 
 

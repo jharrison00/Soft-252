@@ -1,5 +1,6 @@
 package Model.Prescriptions;
 
+import Model.Medicines.Medicine;
 import Model.Users.Doctor;
 import Model.Users.Patient;
 
@@ -9,11 +10,13 @@ public class Prescription implements Serializable {
     protected Doctor doctor;
     protected Patient patient;
     protected String note = "No note";
+    protected Medicine medicine;
+    protected int quantity;
+    protected String Dosage;
 
-    public Prescription(Doctor doctor, Patient patient, String note) {
+    public Prescription(Doctor doctor, Patient patient) {
         this.doctor = doctor;
         this.patient = patient;
-        this.note = note;
     }
 
     public Doctor getDoctor() {
@@ -40,6 +43,29 @@ public class Prescription implements Serializable {
         this.note = note;
     }
 
+    public Medicine getMedicine() {
+        return medicine;
+    }
+
+    public void setMedicine(Medicine medicine) {
+        this.medicine = medicine;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getDosage() {
+        return Dosage;
+    }
+
+    public void setDosage(String dosage) {
+        Dosage = dosage;
+    }
 }
 
 

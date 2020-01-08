@@ -6,9 +6,9 @@
 package Controller.Users;
 
 import Model.Users.Doctor;
-import View.State.DoctorState;
-import View.State.DoctorView;
-import View.State.IState;
+import View.DoctorState.DoctorState;
+import View.DoctorState.DoctorView;
+import View.DoctorState.IState;
 
 /**
  *

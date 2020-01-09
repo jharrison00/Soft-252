@@ -10,7 +10,7 @@ import Model.Users.Doctor;
 import Model.Users.HospitalPeople;
 import Model.Users.Patient;
 import Model.Users.UserList;
-import View.PatientView;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,10 +20,6 @@ import java.util.ArrayList;
  * @author jonat
  */
 public abstract class PatientController {
-    public static void setView(Patient patient)
-    {
-        PatientView.patientHome(patient);
-    }
 
     public static void createAccount(Patient patient) throws IOException, ClassNotFoundException {
         patient.registerObservers();

@@ -69,9 +69,6 @@ public abstract class MedicinesController {
 
         ArrayList<Medicine> allMedicines = medicineList.getAllMedicines();
         medicineList.setAllMedicines(allMedicines);
-        allMedicines.forEach((medicine) -> {
-            System.out.println(medicine.getName());
-        });
         return medicineList;
     }
 

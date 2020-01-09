@@ -6,12 +6,14 @@
 package View.GuiView;
 
 import Controller.Users.PatientController;
-import Controller.Users.SecretaryController;
-import Model.Users.Doctor;
-import Model.Users.HospitalPeople;
+import Controller.Users.UsersController;
+import Model.Appointments.Appointment;
 import Model.Users.Patient;
 import Model.Users.Secretary;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -20,33 +22,33 @@ import javax.swing.JOptionPane;
  *
  * @author jonat
  */
-public class SecretaryApproveAccount extends javax.swing.JFrame {
+public class SecretaryRemovePatient extends javax.swing.JFrame {
     private Secretary secretary;
     /**
-     * Creates new form SecretaryApproveAccount
+     * Creates new form SecretaryRemovePatient
      */
-    public SecretaryApproveAccount() {
+    public SecretaryRemovePatient() {
         initComponents();
         fillList();
     }
     
-    public SecretaryApproveAccount(Secretary secretary) {
+    public SecretaryRemovePatient(Secretary secretary) {
         initComponents();
         this.secretary = secretary;
         fillList();
     }
 
-    private void fillList(){
+        private void fillList(){
         DefaultListModel listModel = new DefaultListModel();
-        ArrayList<HospitalPeople> allPatients = secretary.getApprovalUsers();
+        ArrayList<Patient> allPatients = PatientController.getAllPatients();
         if (allPatients != null) {
-            for (HospitalPeople user : allPatients) {
-                listModel.addElement(user.getUsername() );
+            for (Patient patient : allPatients) {
+                listModel.addElement(patient.getUsername());
             }
         }
         else {
-        listModel.addElement("No users");}
-        listAccounts.setModel(listModel);
+        listModel.addElement("No patients");}
+        listAccounts.setModel(listModel); 
     }
     
     /**
@@ -67,7 +69,7 @@ public class SecretaryApproveAccount extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblHome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblHome.setText("Approve Accounts");
+        lblHome.setText("Remove Patient");
 
         jScrollPane1.setViewportView(listAccounts);
 
@@ -92,12 +94,12 @@ public class SecretaryApproveAccount extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblHome)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBack)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblHome)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btnBack))
+                        .addGap(21, 21, 21)))
                 .addContainerGap(83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -107,37 +109,42 @@ public class SecretaryApproveAccount extends javax.swing.JFrame {
                 .addComponent(lblHome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(btnBack)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        this.setVisible(false);
-        new SecretaryView(secretary).setVisible(true);
-    }//GEN-LAST:event_btnBackActionPerformed
-
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
         String accountName = listAccounts.getSelectedValue();
         if (accountName == null) {
-            JOptionPane.showMessageDialog(new JFrame(), "Please select an account to approve","Required input",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(new JFrame(), "Please select an account to remove","Required input",JOptionPane.ERROR_MESSAGE);
         }
-        ArrayList<HospitalPeople> allPatients = secretary.getApprovalUsers();
+        ArrayList<Patient> allPatients = PatientController.getAllPatients();
         if (allPatients != null) {
-            for (HospitalPeople person : allPatients) {
+            for (Patient person : allPatients) {
                 if (person.getUsername().equals(accountName)) {
-                    SecretaryController.approveAccount(secretary,person);
+                    try {
+                        UsersController.deleteUser(person);
+                        
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(SecretaryRemovePatient.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     fillList();
-                    JOptionPane.showMessageDialog(null, "Approval successful", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Delete successful", "Success", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         }
     }//GEN-LAST:event_btnApproveActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        this.setVisible(false);
+        new SecretaryView(secretary).setVisible(true);
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,20 +163,20 @@ public class SecretaryApproveAccount extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SecretaryApproveAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SecretaryRemovePatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SecretaryApproveAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SecretaryRemovePatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SecretaryApproveAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SecretaryRemovePatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SecretaryApproveAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SecretaryRemovePatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SecretaryApproveAccount().setVisible(true);
+                new SecretaryRemovePatient().setVisible(true);
             }
         });
     }

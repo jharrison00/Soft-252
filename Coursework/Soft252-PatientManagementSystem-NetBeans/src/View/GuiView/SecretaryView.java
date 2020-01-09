@@ -41,6 +41,7 @@ public class SecretaryView extends javax.swing.JFrame {
         btnGiveMedicine = new javax.swing.JButton();
         btnRemovePatients = new javax.swing.JButton();
         btnApproveDeletes = new javax.swing.JButton();
+        btnStockMedicine = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,15 +63,37 @@ public class SecretaryView extends javax.swing.JFrame {
         });
 
         btnApproveAppointments.setText("Approve Appointments");
+        btnApproveAppointments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApproveAppointmentsActionPerformed(evt);
+            }
+        });
 
         btnGiveMedicine.setText("Give Medicine");
+        btnGiveMedicine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGiveMedicineActionPerformed(evt);
+            }
+        });
 
         btnRemovePatients.setText("Remove Patient");
+        btnRemovePatients.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemovePatientsActionPerformed(evt);
+            }
+        });
 
         btnApproveDeletes.setText("Approve Deletes");
         btnApproveDeletes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApproveDeletesActionPerformed(evt);
+            }
+        });
+
+        btnStockMedicine.setText("Stock Medicine");
+        btnStockMedicine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStockMedicineActionPerformed(evt);
             }
         });
 
@@ -93,7 +116,8 @@ public class SecretaryView extends javax.swing.JFrame {
                             .addComponent(btnApproveAppointments, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnApproveAccounts, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnRemovePatients, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnGiveMedicine, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnGiveMedicine, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnStockMedicine, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(124, 124, 124))))
         );
         layout.setVerticalGroup(
@@ -111,7 +135,9 @@ public class SecretaryView extends javax.swing.JFrame {
                 .addComponent(btnRemovePatients, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGiveMedicine, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnStockMedicine, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
                 .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -133,6 +159,26 @@ public class SecretaryView extends javax.swing.JFrame {
         this.setVisible(false);
         new SecretaryApproveDelete(secretary).setVisible(true);
     }//GEN-LAST:event_btnApproveDeletesActionPerformed
+
+    private void btnApproveAppointmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveAppointmentsActionPerformed
+        this.setVisible(false);
+        new SecretaryApproveAccount(secretary).setVisible(true);
+    }//GEN-LAST:event_btnApproveAppointmentsActionPerformed
+
+    private void btnRemovePatientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemovePatientsActionPerformed
+        this.setVisible(false);
+        new SecretaryRemovePatient(secretary).setVisible(true);
+    }//GEN-LAST:event_btnRemovePatientsActionPerformed
+
+    private void btnGiveMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGiveMedicineActionPerformed
+        this.setVisible(false);
+        new SecretaryGiveMedicine(secretary).setVisible(true);
+    }//GEN-LAST:event_btnGiveMedicineActionPerformed
+
+    private void btnStockMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStockMedicineActionPerformed
+        this.setVisible(false);
+        new SecretaryAddStock(secretary).setVisible(true);
+    }//GEN-LAST:event_btnStockMedicineActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,6 +222,7 @@ public class SecretaryView extends javax.swing.JFrame {
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnGiveMedicine;
     private javax.swing.JButton btnRemovePatients;
+    private javax.swing.JButton btnStockMedicine;
     private javax.swing.JLabel lblHome;
     // End of variables declaration//GEN-END:variables
 }

@@ -190,7 +190,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JList" name="litMedicines">
+        <Component class="javax.swing.JList" name="listMedicines">
           <Properties>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
               <StringArray count="0"/>
@@ -211,11 +211,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Undo Medicine"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUndoMedicineActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSaveMedicine">
       <Properties>
         <Property name="text" type="java.lang.String" value="Save Medicine"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveMedicineActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>

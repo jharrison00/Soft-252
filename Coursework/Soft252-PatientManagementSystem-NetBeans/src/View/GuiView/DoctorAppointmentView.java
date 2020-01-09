@@ -5,10 +5,25 @@
  */
 package View.GuiView;
 
+import Controller.Medicines.MedicinesController;
+import Controller.Prescriptions.PrescriptionsCommand.AddMedicine;
+import Controller.Prescriptions.PrescriptionsCommand.ICommand;
 import Model.Appointments.Appointment;
+import Model.Appointments.AppointmentInvoker;
+import Model.Medicines.Medicine;
+import Model.Medicines.MedicineList;
+import Model.Prescriptions.Prescription;
 import Model.Users.Doctor;
+import static View.DoctorState.AppointmentView.addMedicine;
 import View.DoctorState.DoctorState;
 import View.DoctorState.IState;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +32,8 @@ import View.DoctorState.IState;
 public class DoctorAppointmentView extends javax.swing.JFrame implements IState {
     private Doctor doctor;
     private Appointment appointment;
+    private Prescription prescription;
+    private AppointmentInvoker invoker;
     /**
      * Creates new form DoctorAppointmentView
      */
@@ -28,6 +45,8 @@ public class DoctorAppointmentView extends javax.swing.JFrame implements IState 
         initComponents();
         this.doctor = doctor;
         this.appointment = appointment;
+        prescription = new Prescription(doctor,appointment.getAppointmentPatient());
+        invoker = new AppointmentInvoker();
     }
 
     /**
@@ -47,7 +66,7 @@ public class DoctorAppointmentView extends javax.swing.JFrame implements IState 
         btnSaveNote = new javax.swing.JButton();
         btnUndoNote = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        litMedicines = new javax.swing.JList<>();
+        listMedicines = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
         btnUndoMedicine = new javax.swing.JButton();
         btnSaveMedicine = new javax.swing.JButton();
@@ -78,13 +97,23 @@ public class DoctorAppointmentView extends javax.swing.JFrame implements IState 
 
         btnUndoNote.setText("Undo");
 
-        jScrollPane2.setViewportView(litMedicines);
+        jScrollPane2.setViewportView(listMedicines);
 
         jLabel2.setText("Add medicine");
 
         btnUndoMedicine.setText("Undo Medicine");
+        btnUndoMedicine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUndoMedicineActionPerformed(evt);
+            }
+        });
 
         btnSaveMedicine.setText("Save Medicine");
+        btnSaveMedicine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveMedicineActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Add dosage");
 
@@ -189,11 +218,71 @@ public class DoctorAppointmentView extends javax.swing.JFrame implements IState 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+        private void fillList(){
+        DefaultListModel listModel = new DefaultListModel();
+        MedicineList allMedicinesList = null;
+        try {
+            allMedicinesList = MedicinesController.getAllMedicines();
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(SecretaryGiveMedicine.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ArrayList<Medicine> allMedicines = allMedicinesList.getAllMedicines();
+        if (allMedicines != null) {
+            for (Medicine medicine : allMedicines) {
+                listModel.addElement(medicine.getName());
+            }
+        }
+        listMedicines.setModel(listModel);
+    }
+    
     private void btnExitAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitAppointmentActionPerformed
         this.setVisible(false);
         new DoctorView(doctor).setVisible(true);
     }//GEN-LAST:event_btnExitAppointmentActionPerformed
 
+    private void btnSaveMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveMedicineActionPerformed
+        addMedicine(true);
+        JOptionPane.showMessageDialog(null, "Medicinel saved", "Success", JOptionPane.INFORMATION_MESSAGE);          
+       
+    }//GEN-LAST:event_btnSaveMedicineActionPerformed
+
+    private void btnUndoMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUndoMedicineActionPerformed
+        addMedicine(false);
+        JOptionPane.showMessageDialog(null, "Medicinel undone from prescription", "Success", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnUndoMedicineActionPerformed
+
+    
+    private void addMedicine(boolean add){
+        String medicineName = listMedicines.getSelectedValue();
+        MedicineList medicineList = new MedicineList();
+        if (medicineName == null) {
+            JOptionPane.showMessageDialog(new JFrame(), "Please select a medicine from the list","Required input",JOptionPane.ERROR_MESSAGE);
+        }
+        try {
+            medicineList = MedicinesController.getAllMedicines();
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(DoctorAppointmentView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        int amount;
+        String strAmount = txtQuantity.getText();
+        amount = Integer.parseInt(strAmount);
+        String dosage = txtDosage.getText();
+        ArrayList<Medicine> allMedicines = medicineList.getAllMedicines();
+        if (allMedicines != null) {
+            for (Medicine medicine : allMedicines) {
+                if (medicine.getName().equals(medicineName)) {
+                    ICommand addMedicine = new AddMedicine(prescription,medicine,amount,dosage);              
+                    invoker.setCommand(addMedicine);
+                    if (add) {
+                        invoker.executeCommand();
+                    }
+                    else{
+                    invoker.undoCommand();
+                    }
+                }
+            }
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -244,7 +333,7 @@ public class DoctorAppointmentView extends javax.swing.JFrame implements IState 
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblHome;
-    private javax.swing.JList<String> litMedicines;
+    private javax.swing.JList<String> listMedicines;
     private javax.swing.JTextField txtDosage;
     private javax.swing.JTextPane txtNote;
     private javax.swing.JTextField txtQuantity;

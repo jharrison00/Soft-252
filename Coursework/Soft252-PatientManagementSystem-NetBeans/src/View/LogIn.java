@@ -28,7 +28,7 @@ public class LogIn {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         //getUserDetails();
-        addUsers();
+       addUsers();
         //logInUser();
         //createAccount();
         //UserList userList  = UsersController.getAllUsers();

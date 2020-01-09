@@ -40,6 +40,10 @@ public class Patient extends HospitalPeople implements PatientObservable, Appoin
         this.gender = gender;
     }
 
+    public Patient() {
+     
+    }
+
     public int getAge() {
         return age;
     }

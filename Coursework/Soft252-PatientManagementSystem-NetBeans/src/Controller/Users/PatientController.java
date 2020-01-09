@@ -57,4 +57,45 @@ public abstract class PatientController {
         requestAppointment.getAppointmentPatient().notifyObserverAppointment(requestAppointment);
     }
 
+    public static ArrayList<Patient> getAllPatients() {
+        UserList userList = null;
+        ArrayList<Patient> allPatients = new ArrayList<Patient>();
+        try {
+            userList = UsersController.getAllUsers();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        ArrayList<HospitalPeople> allUsers = userList.getAllUsersList();
+        for (HospitalPeople user : allUsers) {
+            if (user.getUsername().toUpperCase().charAt(0) == "P".charAt(0)) {
+                allPatients.add((Patient) user);
+            }
+        }
+        return allPatients;
+    }
+    
+    public static String generateUsername() {
+          String username = "P";
+        ArrayList<Patient> allPatients = getAllPatients();
+        int id = 0;
+        for (Patient patient : allPatients) {
+            String stringId = patient.getUsername().substring(patient.getUsername().length() - 4); 
+            int thisId = Integer.parseInt(stringId);
+            if (thisId >= id ) {
+                id = thisId;          
+            }    
+        }
+        id++;
+        if (id >= 100 && id <= 999) {
+            username = (username+"0"+Integer.toString(id));
+        }
+        else if (id >= 10 && id <= 99) {
+            username = (username+"00"+Integer.toString(id));
+        }
+        else if (id >= 1 && id <= 9) {
+            username = (username+"000"+Integer.toString(id));
+        }
+        return username;
+    }
+
 }

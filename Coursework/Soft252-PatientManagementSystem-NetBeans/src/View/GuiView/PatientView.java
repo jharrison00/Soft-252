@@ -128,7 +128,8 @@ public class PatientView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDoctorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorsActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        new PatientViewDoctors(patient).setVisible(true);
     }//GEN-LAST:event_btnDoctorsActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed

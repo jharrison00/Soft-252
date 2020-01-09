@@ -97,7 +97,7 @@ public abstract class SecretaryController extends AppointmentsController {
     }
     
     public static String generateUsername() {
-       String username = "A";
+       String username = "S";
         ArrayList<Secretary> allSecretaries = getAllSecretaries();
         int id = 0;
         for (Secretary secretary : allSecretaries) {

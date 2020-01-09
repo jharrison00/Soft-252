@@ -128,7 +128,8 @@ public class AdminView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreateAccountActionPerformed
 
     private void btnRemoveAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveAccountActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        new AdminRemoveAccount().setVisible(true);
     }//GEN-LAST:event_btnRemoveAccountActionPerformed
 
     private void btnViewDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDoctorActionPerformed

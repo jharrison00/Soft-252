@@ -31,7 +31,7 @@ public class LogIn {
         addUsers();
         //logInUser();
         //createAccount();
-        //UserList userList  = UsersController.getAllUsers();
+        UserList userList  = UsersController.getAllUsers();
         //AppointmentList appointmentList = AppointmentsController.getAllAppointments();
         //PrescriptionList prescriptionList = PrescriptionsController.getAllPrescriptions();
         //MedicineList medicineList = MedicinesController.getAllMedicines();

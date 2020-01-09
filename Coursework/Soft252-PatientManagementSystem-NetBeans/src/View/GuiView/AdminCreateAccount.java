@@ -306,11 +306,12 @@ public class AdminCreateAccount extends javax.swing.JFrame {
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         boolean valid = true;
         HospitalPeople user = getChoice();
+        lblUsername.setText("Generated Username: "+ user.getUsername());
         String password = txtPassword.getText();
         String firstName = txtFirstName.getText();
         String lastName = txtLastName.getText();
         String address = txtAddress.getText();
-        if (user == null || password == null || firstName == null || lastName == null || address == null) {
+        if ("".equals(password) || user == null || "".equals(firstName) || "".equals(lastName) || "".equals(address)) {
             JOptionPane.showMessageDialog(new JFrame(), "Please input all fields","Required input",JOptionPane.ERROR_MESSAGE);
             valid = false;
         }
@@ -324,6 +325,7 @@ public class AdminCreateAccount extends javax.swing.JFrame {
             } catch (IOException | ClassNotFoundException ex) {
                 Logger.getLogger(AdminCreateAccount.class.getName()).log(Level.SEVERE, null, ex);
             }
+            JOptionPane.showMessageDialog(null, "User successfully added", "Success", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
 

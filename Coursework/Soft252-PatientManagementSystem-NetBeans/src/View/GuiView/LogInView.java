@@ -10,6 +10,8 @@ import Model.Users.HospitalPeople;
 import static View.LogIn.logInUser;
 import java.io.IOException;
 import java.util.Scanner;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -141,7 +143,7 @@ public class LogInView extends javax.swing.JFrame {
         }
         if (valid == false)
         {
-            lblInvalidUser.setText("Incorrect username or password");
+            JOptionPane.showMessageDialog(new JFrame(), "Incorrect username or password","Invalid user",JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_btnSubmitActionPerformed
@@ -175,7 +177,6 @@ public class LogInView extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(LogInView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

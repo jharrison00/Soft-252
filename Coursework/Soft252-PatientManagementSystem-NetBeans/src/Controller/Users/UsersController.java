@@ -6,7 +6,10 @@
 package Controller.Users;
 
 import Model.Users.*;
+import View.DoctorState.DoctorState;
+import View.DoctorState.IState;
 import View.GuiView.AdminView;
+import View.GuiView.DoctorView;
 import View.GuiView.LogInView;
 import View.GuiView.PatientView;
 import View.GuiView.SecretaryView;
@@ -161,7 +164,8 @@ public abstract class UsersController {
         new AdminView().setVisible(true);
         }
         else if(validUser.getUsername().toUpperCase().charAt(0) == "D".charAt(0)){
-            DoctorController.setView((Doctor) validUser);
+            view.setVisible(false);
+            new DoctorView((Doctor) validUser).setVisible(true);          
         }
         else if(validUser.getUsername().toUpperCase().charAt(0) == "P".charAt(0)){
         view.setVisible(false);

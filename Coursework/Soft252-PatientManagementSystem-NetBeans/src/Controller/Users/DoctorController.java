@@ -21,15 +21,6 @@ import java.util.ArrayList;
  * @author jonat
  */
 public abstract class DoctorController{
-
-    public static void setView(Doctor doctor)
-    {
-        IState start = new DoctorView();
-        DoctorState doctorState = new DoctorState(doctor, start);
-        doctorState.enterAppointment();
-        doctorState.exitAppointment();
-    }
-
     public static void createMedicine(Medicine medicine) {
         try {
             MedicinesController.createMedicine(medicine);

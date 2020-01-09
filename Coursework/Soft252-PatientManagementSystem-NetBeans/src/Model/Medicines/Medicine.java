@@ -19,6 +19,9 @@ public class Medicine implements Serializable, MedicineObservable {
         this.quantity = quantity;
     }
 
+    public Medicine() {
+    }
+
     public String getName() {
         return name;
     }

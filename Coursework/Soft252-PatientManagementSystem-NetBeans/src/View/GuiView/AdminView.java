@@ -31,7 +31,7 @@ public class AdminView extends javax.swing.JFrame {
         btnCreateAccount = new javax.swing.JButton();
         btnRemoveAccount = new javax.swing.JButton();
         btnViewDoctor = new javax.swing.JButton();
-        btnViewDoctor1 = new javax.swing.JButton();
+        btnGiveFeedback = new javax.swing.JButton();
         lblHome = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
 
@@ -58,10 +58,10 @@ public class AdminView extends javax.swing.JFrame {
             }
         });
 
-        btnViewDoctor1.setText("Give Feedback");
-        btnViewDoctor1.addActionListener(new java.awt.event.ActionListener() {
+        btnGiveFeedback.setText("Give Feedback");
+        btnGiveFeedback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewDoctor1ActionPerformed(evt);
+                btnGiveFeedbackActionPerformed(evt);
             }
         });
 
@@ -84,7 +84,7 @@ public class AdminView extends javax.swing.JFrame {
                 .addComponent(lblWelcome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnViewDoctor1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGiveFeedback, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnViewDoctor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCreateAccount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRemoveAccount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -114,7 +114,7 @@ public class AdminView extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(btnViewDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnViewDoctor1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnGiveFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59))
         );
 
@@ -133,12 +133,14 @@ public class AdminView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRemoveAccountActionPerformed
 
     private void btnViewDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDoctorActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        new AdminViewDoctors().setVisible(true);
     }//GEN-LAST:event_btnViewDoctorActionPerformed
 
-    private void btnViewDoctor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDoctor1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnViewDoctor1ActionPerformed
+    private void btnGiveFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGiveFeedbackActionPerformed
+        this.setVisible(false);
+        new AdminGiveFeedback().setVisible(true);
+    }//GEN-LAST:event_btnGiveFeedbackActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         System.exit(0);
@@ -183,9 +185,9 @@ public class AdminView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateAccount;
     private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnGiveFeedback;
     private javax.swing.JButton btnRemoveAccount;
     private javax.swing.JButton btnViewDoctor;
-    private javax.swing.JButton btnViewDoctor1;
     private javax.swing.JLabel lblHome;
     private javax.swing.JLabel lblWelcome;
     // End of variables declaration//GEN-END:variables

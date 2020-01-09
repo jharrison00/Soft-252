@@ -28,7 +28,7 @@
               <Component id="lblWelcome" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="btnViewDoctor1" max="32767" attributes="0"/>
+                  <Component id="btnGiveFeedback" max="32767" attributes="0"/>
                   <Component id="btnViewDoctor" max="32767" attributes="0"/>
                   <Component id="btnCreateAccount" max="32767" attributes="0"/>
                   <Component id="btnRemoveAccount" alignment="0" max="32767" attributes="0"/>
@@ -64,7 +64,7 @@
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="btnViewDoctor" min="-2" pref="35" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnViewDoctor1" min="-2" pref="35" max="-2" attributes="0"/>
+              <Component id="btnGiveFeedback" min="-2" pref="35" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -97,12 +97,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewDoctorActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnViewDoctor1">
+    <Component class="javax.swing.JButton" name="btnGiveFeedback">
       <Properties>
         <Property name="text" type="java.lang.String" value="Give Feedback"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewDoctor1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGiveFeedbackActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblHome">

@@ -28,34 +28,13 @@ public class LogIn {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         //getUserDetails();
-        addUsers();
+        //addUsers();
         //logInUser();
         //createAccount();
         UserList userList  = UsersController.getAllUsers();
         //AppointmentList appointmentList = AppointmentsController.getAllAppointments();
         //PrescriptionList prescriptionList = PrescriptionsController.getAllPrescriptions();
         //MedicineList medicineList = MedicinesController.getAllMedicines();
-    }
-    
-    public static void logInUser()
-    {
-        boolean valid = false;
-        Scanner in = new Scanner(System.in);        
-        System.out.println("Input username: ");
-        String username = in.nextLine();
-        System.out.println("Input password: ");
-        String password = in.nextLine();
-        HospitalPeople validUser = null;
-        try {
-            valid = UsersController.validateUser(username,password);
-        } catch (IOException | ClassNotFoundException e) {
-            System.out.println(e);
-        }
-        if (valid == false)
-        {
-            System.out.println("Incorrect User");
-            logInUser();
-        }
     }
 
     public static void createAccount()

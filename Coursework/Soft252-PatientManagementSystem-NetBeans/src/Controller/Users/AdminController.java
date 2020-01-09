@@ -8,7 +8,7 @@ package Controller.Users;
 import Model.Users.Administrator;
 import Model.Users.HospitalPeople;
 import Model.Users.UserList;
-import View.AdminView;
+import View.GuiView.AdminView;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -25,7 +25,7 @@ public abstract class AdminController {
 
     public static void setView(Administrator admin)
     {
-        AdminView.adminHome(admin);
+        new AdminView().setVisible(true);
     }
 
     public static ArrayList<HospitalPeople> getAllDocSec() {

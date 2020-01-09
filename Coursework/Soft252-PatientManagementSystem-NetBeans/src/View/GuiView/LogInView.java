@@ -7,7 +7,6 @@ package View.GuiView;
 
 import Controller.Users.UsersController;
 import Model.Users.HospitalPeople;
-import static View.LogIn.logInUser;
 import java.io.IOException;
 import java.util.Scanner;
 import javax.swing.JFrame;

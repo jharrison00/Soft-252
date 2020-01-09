@@ -85,6 +85,11 @@ public class PubSimulator extends javax.swing.JFrame {
         jRadioCocktail.setText("Cocktail");
 
         jOrderButton.setText("Order");
+        jOrderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jOrderButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -187,6 +192,10 @@ public class PubSimulator extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOrderButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jOrderButtonActionPerformed
 
 
     /**

@@ -1,14 +1,18 @@
 package Controller.Appointments;
 
+import static Controller.Users.AdminController.getAllAdmins;
 import Controller.Users.UsersController;
 import Model.Appointments.Appointment;
 import Model.Appointments.AppointmentList;
 import Model.Observers.AppointmentObserver;
+import Model.Users.Administrator;
 import Model.Users.Doctor;
 import Model.Users.Secretary;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -97,5 +101,34 @@ public abstract class AppointmentsController {
             e.printStackTrace();
         }
     }
-
+    
+    /**
+     *Generates unique appointment ID
+     * @return
+     */
+    public static int generateId() {
+        int finalId;
+        AppointmentList appointmentList = null;
+        ArrayList<Appointment> allAppointments = null;
+        try {
+            appointmentList = getAllAppointments();
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(AppointmentsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (appointmentList != null) {
+            allAppointments = appointmentList.getAllAppointmentsList();
+            int id = 0;
+            for (Appointment appointment : allAppointments) {
+                int appointmentId = appointment.getAppointmentID();
+                if (appointmentId >= id ) {
+                    id = appointmentId;          
+                }    
+            }
+            finalId = id+1;
+        }
+        else {
+            finalId = 1;
+        }
+        return finalId;
+    }
 }

@@ -65,8 +65,18 @@ public class PatientView extends javax.swing.JFrame {
         });
 
         btnDeleteAccount.setText("Delete Account");
+        btnDeleteAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteAccountActionPerformed(evt);
+            }
+        });
 
         btnRequestAppointment.setText("Request Appointment");
+        btnRequestAppointment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRequestAppointmentActionPerformed(evt);
+            }
+        });
 
         btnDoctors.setText("View Doctors");
         btnDoctors.addActionListener(new java.awt.event.ActionListener() {
@@ -146,6 +156,16 @@ public class PatientView extends javax.swing.JFrame {
         this.setVisible(false);
         new PatientViewAppointments(patient).setVisible(true);
     }//GEN-LAST:event_btnAppointmentsActionPerformed
+
+    private void btnDeleteAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteAccountActionPerformed
+        this.setVisible(false);
+        new PatientDeleteAccount(patient).setVisible(true);
+    }//GEN-LAST:event_btnDeleteAccountActionPerformed
+
+    private void btnRequestAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestAppointmentActionPerformed
+        this.setVisible(false);
+        new PatientRequestAppointment(patient).setVisible(true);
+    }//GEN-LAST:event_btnRequestAppointmentActionPerformed
 
     /**
      * @param args the command line arguments

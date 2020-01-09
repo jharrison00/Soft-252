@@ -68,7 +68,7 @@ public class AdminView extends javax.swing.JFrame {
         lblHome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblHome.setText("Admin Home Page");
 
-        btnExit.setText("Exit");
+        btnExit.setText("Log out");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
@@ -143,7 +143,8 @@ public class AdminView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGiveFeedbackActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        System.exit(0);
+        this.setVisible(false);
+        new LogInView().setVisible(true);
     }//GEN-LAST:event_btnExitActionPerformed
 
     /**

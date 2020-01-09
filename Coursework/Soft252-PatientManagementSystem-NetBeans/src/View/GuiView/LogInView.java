@@ -137,7 +137,7 @@ public class LogInView extends javax.swing.JFrame {
         String username = txtUserId.getText();
         String password = txtPassword.getText();
         try {
-            valid = UsersController.validateUser(username,password);
+            valid = UsersController.validateUser(username,password,this);
         } catch (IOException | ClassNotFoundException e) {
             System.out.println(e);
         }

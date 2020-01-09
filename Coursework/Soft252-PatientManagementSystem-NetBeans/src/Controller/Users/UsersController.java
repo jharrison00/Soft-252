@@ -6,6 +6,8 @@
 package Controller.Users;
 
 import Model.Users.*;
+import View.GuiView.AdminView;
+import View.GuiView.LogInView;
 
 import java.io.EOFException;
 import java.io.File;
@@ -138,7 +140,7 @@ public abstract class UsersController {
         return userList;
     }   
 
-    public static boolean validateUser(String username, String password) throws ClassNotFoundException, IOException
+    public static boolean validateUser(String username, String password,LogInView view) throws ClassNotFoundException, IOException
     {
         UserList userList;
         userList = getAllUsers();
@@ -153,7 +155,8 @@ public abstract class UsersController {
             return false;
         }
         else if(validUser.getUsername().toUpperCase().charAt(0) == "A".charAt(0)){
-            AdminController.setView((Administrator) validUser);
+        view.setVisible(false);
+        new AdminView().setVisible(true);
         }
         else if(validUser.getUsername().toUpperCase().charAt(0) == "D".charAt(0)){
             DoctorController.setView((Doctor) validUser);

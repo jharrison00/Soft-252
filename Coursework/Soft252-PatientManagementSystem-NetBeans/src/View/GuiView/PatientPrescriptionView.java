@@ -251,7 +251,7 @@ public class PatientPrescriptionView extends javax.swing.JFrame {
 
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
         this.setVisible(false);
-        new PatientViewPrescriptions().setVisible(true);
+        new PatientViewPrescriptions(prescription.getPatient()).setVisible(true);
     }//GEN-LAST:event_btnBack1ActionPerformed
 
     /**

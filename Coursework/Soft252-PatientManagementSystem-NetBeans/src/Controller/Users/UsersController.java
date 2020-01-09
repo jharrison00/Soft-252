@@ -9,6 +9,7 @@ import Model.Users.*;
 import View.GuiView.AdminView;
 import View.GuiView.LogInView;
 import View.GuiView.PatientView;
+import View.GuiView.SecretaryView;
 
 import java.io.EOFException;
 import java.io.File;
@@ -167,7 +168,8 @@ public abstract class UsersController {
         new PatientView((Patient) validUser).setVisible(true);
         }
         else if(validUser.getUsername().toUpperCase().charAt(0) == "S".charAt(0)){
-            SecretaryController.setView((Secretary) validUser);
+            view.setVisible(false);
+            new SecretaryView((Secretary) validUser).setVisible(true);
         }
         return true;
     }

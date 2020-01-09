@@ -24,7 +24,7 @@ public class PatientView extends javax.swing.JFrame {
         this.patient = patient;
     }
 
-    private PatientView() {
+    PatientView() {
         initComponents();
     }
 
@@ -58,6 +58,11 @@ public class PatientView extends javax.swing.JFrame {
         });
 
         btnAppointments.setText("View Appointments");
+        btnAppointments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAppointmentsActionPerformed(evt);
+            }
+        });
 
         btnDeleteAccount.setText("Delete Account");
 
@@ -135,6 +140,11 @@ public class PatientView extends javax.swing.JFrame {
         this.setVisible(false);
         new PatientViewPrescriptions(patient).setVisible(true);
     }//GEN-LAST:event_btnPrescriptionsActionPerformed
+
+    private void btnAppointmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppointmentsActionPerformed
+        this.setVisible(false);
+        new PatientViewAppointments(patient).setVisible(true);
+    }//GEN-LAST:event_btnAppointmentsActionPerformed
 
     /**
      * @param args the command line arguments

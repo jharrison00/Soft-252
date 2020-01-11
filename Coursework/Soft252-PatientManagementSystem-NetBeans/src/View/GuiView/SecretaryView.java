@@ -162,7 +162,7 @@ public class SecretaryView extends javax.swing.JFrame {
 
     private void btnApproveAppointmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveAppointmentsActionPerformed
         this.setVisible(false);
-        new SecretaryApproveAccount(secretary).setVisible(true);
+        new SecretaryApproveAppointments(secretary).setVisible(true);
     }//GEN-LAST:event_btnApproveAppointmentsActionPerformed
 
     private void btnRemovePatientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemovePatientsActionPerformed

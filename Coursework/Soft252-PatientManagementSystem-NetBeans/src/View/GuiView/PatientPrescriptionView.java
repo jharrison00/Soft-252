@@ -24,12 +24,11 @@ public class PatientPrescriptionView extends javax.swing.JFrame {
         initComponents();
     }
     
-        public PatientPrescriptionView(Prescription prescription) {
+    public PatientPrescriptionView(Prescription prescription) {
         initComponents();
         this.prescription = prescription;
         fillPrescription(prescription);
     }
-        
         
     private void fillPrescription(Prescription prescription){
         Patient patient = prescription.getPatient();
@@ -39,6 +38,7 @@ public class PatientPrescriptionView extends javax.swing.JFrame {
         lblPatientAddress.setText("Address: "+patient.getAddress());
         lblPatientSex.setText("Sex: "+patient.getGender().toString());
         lblPatientAge.setText("Age: "+patient.getAge());
+        lblNotes.setText("Note: "+prescription.getNote());
         lblDoctorName.setText("Name: "+doctor.getFirstName()+" "+doctor.getLastName());
         lblDoctorAddress.setText("Address: "+doctor.getAddress());
         lblMedicineName.setText("Medicine: "+medicine.getName());
@@ -68,13 +68,12 @@ public class PatientPrescriptionView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lblDoctorName = new javax.swing.JLabel();
         lblDoctorAddress = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtNotes = new javax.swing.JTextPane();
-        jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         lblMedicineName = new javax.swing.JLabel();
         lblQuantity = new javax.swing.JLabel();
         lblDosage = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        lblNotes = new javax.swing.JLabel();
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -164,10 +163,6 @@ public class PatientPrescriptionView extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jScrollPane1.setViewportView(txtNotes);
-
-        jLabel3.setText("Notes:");
-
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblMedicineName.setText("Medicine:");
@@ -200,6 +195,25 @@ public class PatientPrescriptionView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        lblNotes.setText("Notes:");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(lblNotes)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(lblNotes)
+                .addGap(0, 37, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -207,17 +221,13 @@ public class PatientPrescriptionView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblHome)
-                            .addComponent(btnBack1)
-                            .addComponent(jLabel3))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblHome)
+                    .addComponent(btnBack1)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -231,10 +241,8 @@ public class PatientPrescriptionView extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addComponent(btnBack1)
@@ -294,21 +302,20 @@ public class PatientPrescriptionView extends javax.swing.JFrame {
     private javax.swing.JButton btnBack1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblDoctorAddress;
     private javax.swing.JLabel lblDoctorName;
     private javax.swing.JLabel lblDosage;
     private javax.swing.JLabel lblHome;
     private javax.swing.JLabel lblMedicineName;
+    private javax.swing.JLabel lblNotes;
     private javax.swing.JLabel lblPatientAddress;
     private javax.swing.JLabel lblPatientAge;
     private javax.swing.JLabel lblPatientName;
     private javax.swing.JLabel lblPatientSex;
     private javax.swing.JLabel lblQuantity;
-    private javax.swing.JTextPane txtNotes;
     // End of variables declaration//GEN-END:variables
 }

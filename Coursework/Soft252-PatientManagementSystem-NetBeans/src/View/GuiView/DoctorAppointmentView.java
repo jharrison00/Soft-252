@@ -7,7 +7,9 @@ package View.GuiView;
 
 import Controller.Medicines.MedicinesController;
 import Controller.Prescriptions.PrescriptionsCommand.AddMedicine;
+import Controller.Prescriptions.PrescriptionsCommand.AddNote;
 import Controller.Prescriptions.PrescriptionsCommand.ICommand;
+import Controller.Prescriptions.PrescriptionsCommand.SavePrescription;
 import Model.Appointments.Appointment;
 import Model.Appointments.AppointmentInvoker;
 import Model.Medicines.Medicine;
@@ -39,6 +41,7 @@ public class DoctorAppointmentView extends javax.swing.JFrame implements IState 
      */
     public DoctorAppointmentView() {
         initComponents();
+        fillList();
     }
 
     DoctorAppointmentView(Doctor doctor, Appointment appointment) {
@@ -47,6 +50,7 @@ public class DoctorAppointmentView extends javax.swing.JFrame implements IState 
         this.appointment = appointment;
         prescription = new Prescription(doctor,appointment.getAppointmentPatient());
         invoker = new AppointmentInvoker();
+        fillList();
     }
 
     /**
@@ -82,7 +86,7 @@ public class DoctorAppointmentView extends javax.swing.JFrame implements IState 
         lblHome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblHome.setText("Appointment");
 
-        btnExitAppointment.setText("Exit Appointment");
+        btnExitAppointment.setText("End Appointment");
         btnExitAppointment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitAppointmentActionPerformed(evt);
@@ -93,9 +97,19 @@ public class DoctorAppointmentView extends javax.swing.JFrame implements IState 
 
         jLabel1.setText("Make Notes");
 
-        btnSaveNote.setText("Save");
+        btnSaveNote.setText("Save Note");
+        btnSaveNote.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveNoteActionPerformed(evt);
+            }
+        });
 
-        btnUndoNote.setText("Undo");
+        btnUndoNote.setText("Undo Note");
+        btnUndoNote.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUndoNoteActionPerformed(evt);
+            }
+        });
 
         jScrollPane2.setViewportView(listMedicines);
 
@@ -120,8 +134,18 @@ public class DoctorAppointmentView extends javax.swing.JFrame implements IState 
         jLabel4.setText("Add quantity");
 
         btnSavePrescription.setText("Save Prescription");
+        btnSavePrescription.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSavePrescriptionActionPerformed(evt);
+            }
+        });
 
         btnUndoPrescription.setText("Undo prescription");
+        btnUndoPrescription.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUndoPrescriptionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,36 +161,34 @@ public class DoctorAppointmentView extends javax.swing.JFrame implements IState 
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnUndoNote)
-                            .addComponent(btnSaveNote)))
+                        .addComponent(btnSaveNote)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnUndoNote))
+                    .addComponent(jLabel2)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(38, 38, 38)
+                                .addGap(24, 24, 24)
                                 .addComponent(btnSaveMedicine)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnUndoMedicine))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(btnSavePrescription)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnUndoPrescription))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(btnSavePrescription)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(btnUndoPrescription))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtDosage, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
-                    .addComponent(jLabel2))
-                .addContainerGap(45, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtDosage, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,43 +198,44 @@ public class DoctorAppointmentView extends javax.swing.JFrame implements IState 
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(3, 3, 3))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(1, 1, 1)
+                                .addComponent(jScrollPane2)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnExitAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(txtDosage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnSaveMedicine)
+                                    .addComponent(btnUndoMedicine))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnUndoPrescription)
+                                    .addComponent(btnSavePrescription))
+                                .addGap(15, 15, 15))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSaveNote)
                             .addComponent(btnUndoNote))
-                        .addGap(3, 3, 3))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(1, 1, 1)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                        .addComponent(btnExitAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtDosage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSaveMedicine)
-                            .addComponent(btnUndoMedicine))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnUndoPrescription)
-                            .addComponent(btnSavePrescription))
-                        .addGap(15, 15, 15))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(btnSaveNote)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         pack();
@@ -241,21 +264,63 @@ public class DoctorAppointmentView extends javax.swing.JFrame implements IState 
     }//GEN-LAST:event_btnExitAppointmentActionPerformed
 
     private void btnSaveMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveMedicineActionPerformed
-        addMedicine(true);
-        JOptionPane.showMessageDialog(null, "Medicinel saved", "Success", JOptionPane.INFORMATION_MESSAGE);          
-       
+        boolean success = addMedicine(true);
+        if (success) {
+            JOptionPane.showMessageDialog(null, "Medicine added to prescription", "Success", JOptionPane.INFORMATION_MESSAGE);    
+        }
+                
     }//GEN-LAST:event_btnSaveMedicineActionPerformed
 
     private void btnUndoMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUndoMedicineActionPerformed
-        addMedicine(false);
-        JOptionPane.showMessageDialog(null, "Medicinel undone from prescription", "Success", JOptionPane.INFORMATION_MESSAGE);
+        boolean success = addMedicine(false);
+        if (success){
+            JOptionPane.showMessageDialog(null, "Medicine removed from prescription", "Success", JOptionPane.INFORMATION_MESSAGE);
+            txtDosage.setText("No dosage");
+            txtQuantity.setText("No quantity"); 
+        }
+
     }//GEN-LAST:event_btnUndoMedicineActionPerformed
 
+    private void btnSaveNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveNoteActionPerformed
+        boolean success = addNote(true);
+        if (success){
+            JOptionPane.showMessageDialog(null, "Note added to prescription", "Success", JOptionPane.INFORMATION_MESSAGE);
+        }
+        txtNote.setText(prescription.getNote());
+    }//GEN-LAST:event_btnSaveNoteActionPerformed
+
+    private void btnUndoNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUndoNoteActionPerformed
+        boolean success = addNote(false);
+        if (success) {
+            JOptionPane.showMessageDialog(null, "Note removed from prescription", "Success", JOptionPane.INFORMATION_MESSAGE);  
+        }
+        txtNote.setText(prescription.getNote());
+    }//GEN-LAST:event_btnUndoNoteActionPerformed
+
+    private void btnSavePrescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSavePrescriptionActionPerformed
+        boolean success = savePrescription(true);
+        if (success) {
+            JOptionPane.showMessageDialog(null, "Prescription saved to file", "Success", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnSavePrescriptionActionPerformed
+
+    private void btnUndoPrescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUndoPrescriptionActionPerformed
+        boolean success = savePrescription(false);
+        if (success) {
+            JOptionPane.showMessageDialog(null, "Prescription removed from file", "Success", JOptionPane.INFORMATION_MESSAGE);
+            txtDosage.setText("No dosage");
+            txtQuantity.setText("No quantity"); 
+        }
+        txtNote.setText(prescription.getNote());
+    }//GEN-LAST:event_btnUndoPrescriptionActionPerformed
+
     
-    private void addMedicine(boolean add){
+    private boolean addMedicine(boolean add){
         String medicineName = listMedicines.getSelectedValue();
         MedicineList medicineList = new MedicineList();
+        boolean valid = true;
         if (medicineName == null) {
+            valid = false;
             JOptionPane.showMessageDialog(new JFrame(), "Please select a medicine from the list","Required input",JOptionPane.ERROR_MESSAGE);
         }
         try {
@@ -268,21 +333,61 @@ public class DoctorAppointmentView extends javax.swing.JFrame implements IState 
         amount = Integer.parseInt(strAmount);
         String dosage = txtDosage.getText();
         ArrayList<Medicine> allMedicines = medicineList.getAllMedicines();
-        if (allMedicines != null) {
-            for (Medicine medicine : allMedicines) {
-                if (medicine.getName().equals(medicineName)) {
-                    ICommand addMedicine = new AddMedicine(prescription,medicine,amount,dosage);              
-                    invoker.setCommand(addMedicine);
-                    if (add) {
-                        invoker.executeCommand();
-                    }
-                    else{
-                    invoker.undoCommand();
+        if (valid) {
+            if (allMedicines != null) {
+                for (Medicine medicine : allMedicines) {
+                    if (medicine.getName().equals(medicineName)) {
+                        ICommand addMedicine = new AddMedicine(prescription,medicine,amount,dosage);              
+                        invoker.setCommand(addMedicine);
+                        if (add) {
+                            invoker.executeCommand();
+                        }
+                        else{
+                        invoker.undoCommand();
+                        }
                     }
                 }
             }
         }
+        return valid;
     }
+    
+    private boolean addNote(boolean add){
+        String note = txtNote.getText();
+        if (note.equals("")) {
+              JOptionPane.showMessageDialog(new JFrame(), "Please add a note","Required input",JOptionPane.ERROR_MESSAGE);
+              return false;
+        }
+        else {
+            ICommand addNote = new AddNote(prescription,note);   
+            invoker.setCommand(addNote);
+            if (add) {
+                invoker.executeCommand();
+            }
+            else{
+            invoker.undoCommand();}
+            return true;
+        }
+    }
+   
+    private boolean savePrescription(boolean add){
+        if (prescription.getDosage().equals("") || prescription.getQuantity() == 0 || prescription.getMedicine() == null) {
+            JOptionPane.showMessageDialog(new JFrame(), "Please make sure all fields are filled out","Required input",JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        else  
+        {
+            ICommand savePrescription = new SavePrescription(prescription);   
+            invoker.setCommand(savePrescription);
+            if (add) {
+                invoker.executeCommand();
+            }
+            else{
+            invoker.undoCommand();}
+            return true;
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */

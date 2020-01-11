@@ -42,7 +42,9 @@ private Secretary secretary;
         ArrayList<Appointment> allAppointments = secretary.getRequestAppointments();
         if (allAppointments != null) {
             for (Appointment appointment : allAppointments) {
-                listModel.addElement(appointment.getAppointmentID());
+                int id = appointment.getAppointmentID();
+                String strId = Integer.toString(id);
+                listModel.addElement(strId);
             }
         }
         else {
@@ -119,15 +121,15 @@ private Secretary secretary;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
-        String appointmentId = listAppointments.getSelectedValue();
-        int id = Integer.parseInt(appointmentId);
-        if (appointmentId == null) {
-            JOptionPane.showMessageDialog(new JFrame(), "Please select an appointment to approve","Required input",JOptionPane.ERROR_MESSAGE);
+        String strAppointmentId = listAppointments.getSelectedValue().toString();
+        int appointmentId = Integer.parseInt(strAppointmentId);
+        if (listAppointments.getSelectedIndex() == -1) {
+              JOptionPane.showMessageDialog(new JFrame(), "Please choose a valid appointment","Required input",JOptionPane.ERROR_MESSAGE);  
         }
         ArrayList<Appointment> allAppointments = secretary.getRequestAppointments();
         if (allAppointments != null) {
             for (Appointment appointment : allAppointments) {
-                if (appointment.getAppointmentID() == id) {
+                if (appointment.getAppointmentID() == appointmentId) {
                     AppointmentsController secretaryAppointment = new SecretaryAppointmentCreate();
                     try {
                         secretaryAppointment.createAppointment(secretary, appointment);

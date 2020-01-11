@@ -15,7 +15,17 @@ public class DoctorRequestMedicineCreate extends MedicinesController {
     @Override
     protected void secretaryApproval(Secretary secretary, Medicine medicine) {
         ArrayList<Medicine> requestMedicines = secretary.getRequestMedicines();
+        String medicineName = medicine.getName();
+        System.out.println(medicineName);
+        String reqMedName;
+        for (Medicine reqMed : requestMedicines) {
+            reqMedName = reqMed.getName();
+            System.out.println(reqMedName);
+        }
         requestMedicines.remove(medicine);
+        if (requestMedicines.isEmpty()){
+            requestMedicines = null;
+        }
         secretary.setRequestMedicines(requestMedicines);
         try {
             UsersController.editUser(secretary);

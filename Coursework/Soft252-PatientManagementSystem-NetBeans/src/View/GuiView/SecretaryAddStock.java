@@ -231,7 +231,6 @@ public class SecretaryAddStock extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(new JFrame(), "Please select a valid amount(in integer)","Required input",JOptionPane.ERROR_MESSAGE);
             valid = false;
         }
-
         if (medicineName == null) {
             JOptionPane.showMessageDialog(new JFrame(), "Please select a medicine from the All medicines list","Required input",JOptionPane.ERROR_MESSAGE);
         }
@@ -261,8 +260,7 @@ public class SecretaryAddStock extends javax.swing.JFrame {
                                 }
                             }
                         } 
-                    }
-                   
+                    }                   
                     if (isRequest == false) {
                         MedicinesController secretaryMedicine = new SecretaryMedicineCreate();
                         try {

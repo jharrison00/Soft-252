@@ -10,6 +10,7 @@ import Controller.Prescriptions.PrescriptionsCommand.AddMedicine;
 import Controller.Prescriptions.PrescriptionsCommand.AddNote;
 import Controller.Prescriptions.PrescriptionsCommand.ICommand;
 import Controller.Prescriptions.PrescriptionsCommand.SavePrescription;
+import Controller.Users.UsersController;
 import Model.Appointments.Appointment;
 import Model.Appointments.AppointmentInvoker;
 import Model.Medicines.Medicine;
@@ -259,8 +260,21 @@ public class DoctorAppointmentView extends javax.swing.JFrame implements IState 
     }
     
     private void btnExitAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitAppointmentActionPerformed
-        this.setVisible(false);
-        new DoctorView(doctor).setVisible(true);
+      
+        int selectedOption = JOptionPane.showConfirmDialog(null, "Are you sure you would like to exit and end this appointment."
+                + " Upon doing so, you will not be able to reacccess this appointment.",
+                "End appointment",
+                JOptionPane.YES_NO_OPTION);
+        if (selectedOption == JOptionPane.YES_OPTION) {
+            doctor.getAppointments().remove(appointment);
+            try {
+                UsersController.editUser(doctor);
+            } catch (IOException | ClassNotFoundException ex) {
+                Logger.getLogger(DoctorAppointmentView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.setVisible(false);
+            new DoctorView(doctor).setVisible(true); 
+        }
     }//GEN-LAST:event_btnExitAppointmentActionPerformed
 
     private void btnSaveMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveMedicineActionPerformed

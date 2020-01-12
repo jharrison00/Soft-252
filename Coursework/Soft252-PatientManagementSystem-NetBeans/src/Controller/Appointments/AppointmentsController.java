@@ -30,7 +30,7 @@ public abstract class AppointmentsController {
 
     public static AppointmentList getAllAppointments() throws IOException, ClassNotFoundException {
         AppointmentList appointmentList = new AppointmentList();
-        FileInputStream fis = new FileInputStream("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Appointments.txt");
+        FileInputStream fis = new FileInputStream("src\\files\\Appointments.txt");
 
         ObjectInputStream ois = new ObjectInputStream(fis);
         try{

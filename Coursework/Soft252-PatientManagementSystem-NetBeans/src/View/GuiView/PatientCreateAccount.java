@@ -59,28 +59,29 @@ public class PatientCreateAccount extends javax.swing.JFrame {
     
           /**
      * Get the selected gender by the user. 
-     * @param user
+     * @return 
      */
-    public void setGender(Patient user){
+    public Genders getGender(){
         for (Enumeration<AbstractButton> buttons = bg.getElements(); buttons.hasMoreElements();) {
             AbstractButton button = buttons.nextElement();
             if (button.isSelected()) {
                 String type = button.getText();
                 if (null != type)switch (type) {
                     case "Female":{
-                        user.setGender(Genders.Female);
-                        }
+                        return Genders.Female;
+                    }
                     case "Male":{
-                            user.setGender(Genders.Male);
-                        }
+                        return Genders.Male;
+                    }
                     case "Other":{
-                        user.setGender(Genders.Other);
+                        return Genders.Other;
                     }
                     default:
-                        user.setGender(Genders.Other);
+                        return null;
                 }
             }
         }
+        return null;
     }
     
     /**
@@ -316,7 +317,7 @@ public class PatientCreateAccount extends javax.swing.JFrame {
             user.setLastName(lastName);
             user.setAddress(address);
             user.setAge(age);
-            setGender(user);
+            user.setGender(getGender());
             try {
                 PatientController.createAccount(user);
             } catch (IOException | ClassNotFoundException ex) {

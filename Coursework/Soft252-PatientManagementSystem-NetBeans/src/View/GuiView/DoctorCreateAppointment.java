@@ -48,7 +48,7 @@ public class DoctorCreateAppointment extends javax.swing.JFrame {
         ArrayList<Patient> allPatients = PatientController.getAllPatients();
         if (allPatients != null) {
             for (Patient patient : allPatients) {
-                listModel.addElement("Patient Name: "+patient.getFirstName()+" "+doctor.getLastName());
+                listModel.addElement("Patient Name: "+patient.getFirstName()+" "+patient.getLastName());
             }
         }
         listDoctor.setModel(listModel);

@@ -78,7 +78,7 @@ public class PatientView extends javax.swing.JFrame {
             }
         });
 
-        btnDoctors.setText("View Doctors");
+        btnDoctors.setText("View Doctors + Give Feedback");
         btnDoctors.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDoctorsActionPerformed(evt);

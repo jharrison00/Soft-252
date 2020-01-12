@@ -174,7 +174,7 @@ public class PatientRequestAppointment extends javax.swing.JFrame {
 
         int index = listDoctor.getSelectedIndex();
         if (index == -1) {
-            JOptionPane.showMessageDialog(new JFrame(), "Please input the doctor","Doctor Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(new JFrame(), "Please choose a doctor","Doctor Error",JOptionPane.ERROR_MESSAGE);
         }
         else{    
             ArrayList<Doctor> allDoctors = PatientController.getAllDoc();

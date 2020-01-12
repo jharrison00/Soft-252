@@ -10,6 +10,8 @@ import Model.Prescriptions.Prescription;
 import Model.Users.Patient;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -63,6 +65,7 @@ public class PatientViewAppointments extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listAppointments = new javax.swing.JList<>();
         btnBack = new javax.swing.JButton();
+        btnViewAppointment = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,6 +81,13 @@ public class PatientViewAppointments extends javax.swing.JFrame {
             }
         });
 
+        btnViewAppointment.setText("View Appointment Details");
+        btnViewAppointment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewAppointmentActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,13 +96,18 @@ public class PatientViewAppointments extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblHome1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBack)
-                        .addGap(325, 325, 325)))
-                .addContainerGap())
+                        .addGap(335, 335, 335))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblHome1)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnViewAppointment)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,7 +116,9 @@ public class PatientViewAppointments extends javax.swing.JFrame {
                 .addComponent(lblHome1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnViewAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addGap(9, 9, 9))
         );
@@ -113,6 +130,23 @@ public class PatientViewAppointments extends javax.swing.JFrame {
         this.setVisible(false);
         new PatientView(patient).setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnViewAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAppointmentActionPerformed
+        String strAppointmentId = listAppointments.getSelectedValue();
+        if (listAppointments.getSelectedIndex() == -1 || strAppointmentId.equals("You have no appointments")) {
+              JOptionPane.showMessageDialog(new JFrame(), "Please choose a valid appointment","Required input",JOptionPane.ERROR_MESSAGE);  
+        }
+        else{
+            int appointmentId = Integer.parseInt(strAppointmentId);
+            ArrayList<Appointment> allAppointments = patient.getAppointments();
+            for (Appointment appointment:allAppointments) {
+                if (appointmentId == appointment.getAppointmentID()) {
+                    this.setVisible(false);
+                    new PatientAppointmentView(patient,appointment).setVisible(true);
+                }
+            }
+        }
+    }//GEN-LAST:event_btnViewAppointmentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,6 +185,7 @@ public class PatientViewAppointments extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnViewAppointment;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblHome1;
     private javax.swing.JList<String> listAppointments;

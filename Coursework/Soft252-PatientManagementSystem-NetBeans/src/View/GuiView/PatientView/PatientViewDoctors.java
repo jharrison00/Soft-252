@@ -3,45 +3,48 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.GuiView;
+package View.GuiView.PatientView;
 
-import Controller.Users.AdminController;
-import Controller.Users.UsersController;
-import Model.Users.HospitalPeople;
-import java.io.FileNotFoundException;
+import Controller.Users.PatientController;
+import Model.Users.Doctor;
+import Model.Users.Patient;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 
 /**
  *
  * @author jonat
  */
-public class AdminRemoveAccount extends javax.swing.JFrame {
+public class PatientViewDoctors extends javax.swing.JFrame {
 
+    private Patient patient;
     /**
-     * Creates new form AdminRemoveAccount
+     * Creates new form PatientViewDoctors
      */
-    public AdminRemoveAccount() {
+    public PatientViewDoctors() {
         initComponents();
         fillList();
     }
+    
+    public PatientViewDoctors(Patient patient) {
+        initComponents();
+        this.patient = patient;
+        fillList();
+    }
 
-       
     private void fillList(){
         DefaultListModel listModel = new DefaultListModel();
-        ArrayList<HospitalPeople> allDocSec = AdminController.getAllDocSec();
-        if (allDocSec != null) {
-            for (HospitalPeople person : allDocSec) {
-                listModel.addElement(person.getUsername());
+        ArrayList<Doctor> allDoctors = PatientController.getAllDoc();
+        if (allDoctors != null) {
+            for (Doctor doctor : allDoctors) {
+                listModel.addElement(doctor.getFirstName() + "  " + doctor.getLastName() + "    Rating: " + doctor.getRatingAverage() );
             }
         }
-        listUsers.setModel(listModel);
+        listDoctors.setModel(listModel);
     }
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,20 +55,18 @@ public class AdminRemoveAccount extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblHome = new javax.swing.JLabel();
         lblHome1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listDoctors = new javax.swing.JList<>();
         btnBack = new javax.swing.JButton();
-        btnRemove = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        listUsers = new javax.swing.JList<>();
-
-        lblHome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblHome.setText("Create Account");
+        btnFeedback = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblHome1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblHome1.setText("Remove Account");
+        lblHome1.setText("All Doctors");
+
+        jScrollPane1.setViewportView(listDoctors);
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -74,16 +75,12 @@ public class AdminRemoveAccount extends javax.swing.JFrame {
             }
         });
 
-        btnRemove.setText("Remove user");
-        btnRemove.setMaximumSize(new java.awt.Dimension(65, 23));
-        btnRemove.setMinimumSize(new java.awt.Dimension(65, 23));
-        btnRemove.addActionListener(new java.awt.event.ActionListener() {
+        btnFeedback.setText("Give rating/Feedback");
+        btnFeedback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoveActionPerformed(evt);
+                btnFeedbackActionPerformed(evt);
             }
         });
-
-        jScrollPane2.setViewportView(listUsers);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,29 +89,27 @@ public class AdminRemoveAccount extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblHome1)
                             .addComponent(btnBack))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(56, 56, 56))))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnFeedback)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblHome1)
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addContainerGap())
         );
@@ -122,28 +117,23 @@ public class AdminRemoveAccount extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
-        String username = listUsers.getSelectedValue();
-        ArrayList<HospitalPeople> allDocSec = AdminController.getAllDocSec();
-        if (allDocSec != null) {
-            for (HospitalPeople person : allDocSec) {
-                if (person.getUsername().equals(username)) {
-                    try {
-                        UsersController.deleteUser(person);
-                    } catch (FileNotFoundException ex) {
-                        Logger.getLogger(AdminRemoveAccount.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    fillList();
-                    JOptionPane.showMessageDialog(null, "User successfully deleted", "Success", JOptionPane.INFORMATION_MESSAGE);
-                }
-            }
-        }
-    }//GEN-LAST:event_btnRemoveActionPerformed
-
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         this.setVisible(false);
-        new AdminView().setVisible(true);
+        new PatientView(patient).setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFeedbackActionPerformed
+        int index = listDoctors.getSelectedIndex();
+        if (index == -1) {
+            JOptionPane.showMessageDialog(new JFrame(), "Please choose a doctor","Required input",JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            ArrayList<Doctor> allDoctors = PatientController.getAllDoc();
+            Doctor doctor = allDoctors.get(index);
+            this.setVisible(false);
+            new PatientDoctorFeedback(patient,doctor).setVisible(true);
+        }
+    }//GEN-LAST:event_btnFeedbackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,30 +152,29 @@ public class AdminRemoveAccount extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminRemoveAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientViewDoctors.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminRemoveAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientViewDoctors.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminRemoveAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientViewDoctors.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminRemoveAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientViewDoctors.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminRemoveAccount().setVisible(true);
+                new PatientViewDoctors().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnRemove;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblHome;
+    private javax.swing.JButton btnFeedback;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblHome1;
-    private javax.swing.JList<String> listUsers;
+    private javax.swing.JList<String> listDoctors;
     // End of variables declaration//GEN-END:variables
 }

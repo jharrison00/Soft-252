@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.GuiView;
+package View.GuiView.DoctorView;
 
 import Model.Appointments.Appointment;
 import Model.Users.Doctor;
@@ -11,6 +11,7 @@ import View.DoctorState.AppointmentView;
 import View.DoctorState.DoctorState;
 import static View.DoctorState.DoctorView.getAppointments;
 import View.DoctorState.IState;
+import View.GuiView.LogInView;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;

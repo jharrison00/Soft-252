@@ -3,29 +3,41 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.GuiView;
+package View.GuiView.PatientView;
 
-import Controller.Users.AdminController;
-import Controller.Users.PatientController;
-import Model.Users.Doctor;
-import Model.Users.HospitalPeople;
-import java.util.ArrayList;
-import javax.swing.DefaultListModel;
+import Model.Appointments.Appointment;
+import Model.Users.Patient;
 
 /**
  *
  * @author jonat
  */
-public class AdminViewDoctors extends javax.swing.JFrame {
+public class PatientAppointmentView extends javax.swing.JFrame {
 
+    private Patient patient;
+    private Appointment appointment;
+    
     /**
-     * Creates new form ViewDoctors
+     * Creates new form PatientAppointmentView
      */
-    public AdminViewDoctors() {
+    public PatientAppointmentView() {
         initComponents();
-        fillList();
+        fillData();
+    }
+    
+    public PatientAppointmentView(Patient patient, Appointment appointment) {
+        initComponents();
+        this.patient = patient;
+        this.appointment = appointment;
+        fillData();
     }
 
+    private void fillData(){
+        lblDoctorName.setText("Doctor Name: "+appointment.getDoctor().getFirstName() +" "+appointment.getDoctor().getLastName());
+        lblRating.setText("Doctor Rating: "+appointment.getAppointmentPatient().getAge());
+        lblDate.setText("Appointment Date : "+appointment.getDate().toString());
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,21 +48,26 @@ public class AdminViewDoctors extends javax.swing.JFrame {
     private void initComponents() {
 
         lblHome1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listDoctors = new javax.swing.JList<>();
-        btnBack = new javax.swing.JButton();
+        lblDoctorName = new javax.swing.JLabel();
+        lblRating = new javax.swing.JLabel();
+        lblDate = new javax.swing.JLabel();
+        btnBack1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblHome1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblHome1.setText("All Doctors");
+        lblHome1.setText("View Appointments");
 
-        jScrollPane1.setViewportView(listDoctors);
+        lblDoctorName.setText("Doctor Name: ");
 
-        btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
+        lblRating.setText("Doctor Rating:");
+
+        lblDate.setText("Appointment Date: ");
+
+        btnBack1.setText("Back");
+        btnBack1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
+                btnBack1ActionPerformed(evt);
             }
         });
 
@@ -61,13 +78,17 @@ public class AdminViewDoctors extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblHome1)
-                            .addComponent(btnBack))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(lblDoctorName))
+                        .addContainerGap(238, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRating)
+                            .addComponent(lblDate)
+                            .addComponent(btnBack1))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -75,32 +96,24 @@ public class AdminViewDoctors extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblHome1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(btnBack)
+                .addComponent(lblDoctorName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblRating)
+                .addGap(26, 26, 26)
+                .addComponent(lblDate)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
+                .addComponent(btnBack1)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+    private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
         this.setVisible(false);
-        new AdminView().setVisible(true);
-    }//GEN-LAST:event_btnBackActionPerformed
+        new PatientViewAppointments(patient).setVisible(true);
+    }//GEN-LAST:event_btnBack1ActionPerformed
 
-    private void fillList(){
-        DefaultListModel listModel = new DefaultListModel();
-        ArrayList<Doctor> allDoctors = PatientController.getAllDoc();
-        if (allDoctors != null) {
-            for (Doctor doctor : allDoctors) {
-                listModel.addElement(doctor.getFirstName() + " " + doctor.getLastName() + "         Rating :" + doctor.getRatingAverage() );
-            }
-        }
-        listDoctors.setModel(listModel);
-    }
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -118,29 +131,29 @@ public class AdminViewDoctors extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminViewDoctors.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientAppointmentView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminViewDoctors.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientAppointmentView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminViewDoctors.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientAppointmentView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminViewDoctors.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientAppointmentView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminViewDoctors().setVisible(true);
+                new PatientAppointmentView().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton btnBack1;
+    private javax.swing.JLabel lblDate;
+    private javax.swing.JLabel lblDoctorName;
     private javax.swing.JLabel lblHome1;
-    private javax.swing.JList<String> listDoctors;
+    private javax.swing.JLabel lblRating;
     // End of variables declaration//GEN-END:variables
 }

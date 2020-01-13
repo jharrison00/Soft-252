@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.GuiView;
+package View.GuiView.PatientView;
 
 import Controller.Users.AdminController;
 import Controller.Users.DoctorController;
@@ -16,6 +16,7 @@ import Model.Users.Doctor;
 import Model.Users.HospitalPeople;
 import Model.Users.Patient;
 import Model.Users.Secretary;
+import View.GuiView.LogInView;
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.logging.Level;

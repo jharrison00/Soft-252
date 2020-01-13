@@ -3,49 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.GuiView;
+package View.GuiView.AdminView;
 
+import Controller.Users.AdminController;
 import Controller.Users.PatientController;
 import Model.Users.Doctor;
-import Model.Users.Patient;
+import Model.Users.HospitalPeople;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author jonat
  */
-public class PatientViewDoctors extends javax.swing.JFrame {
+public class AdminViewDoctors extends javax.swing.JFrame {
 
-    private Patient patient;
     /**
-     * Creates new form PatientViewDoctors
+     * Creates new form ViewDoctors
      */
-    public PatientViewDoctors() {
+    public AdminViewDoctors() {
         initComponents();
-        fillList();
-    }
-    
-    public PatientViewDoctors(Patient patient) {
-        initComponents();
-        this.patient = patient;
         fillList();
     }
 
-    private void fillList(){
-        DefaultListModel listModel = new DefaultListModel();
-        ArrayList<Doctor> allDoctors = PatientController.getAllDoc();
-        if (allDoctors != null) {
-            for (Doctor doctor : allDoctors) {
-                listModel.addElement(doctor.getFirstName() + "  " + doctor.getLastName() + "    Rating: " + doctor.getRatingAverage() );
-            }
-        }
-        listDoctors.setModel(listModel);
-    }
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,7 +39,6 @@ public class PatientViewDoctors extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listDoctors = new javax.swing.JList<>();
         btnBack = new javax.swing.JButton();
-        btnFeedback = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,13 +54,6 @@ public class PatientViewDoctors extends javax.swing.JFrame {
             }
         });
 
-        btnFeedback.setText("Give rating/Feedback");
-        btnFeedback.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFeedbackActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -94,10 +66,7 @@ public class PatientViewDoctors extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblHome1)
                             .addComponent(btnBack))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnFeedback)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -107,9 +76,7 @@ public class PatientViewDoctors extends javax.swing.JFrame {
                 .addComponent(lblHome1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addContainerGap())
         );
@@ -119,22 +86,21 @@ public class PatientViewDoctors extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         this.setVisible(false);
-        new PatientView(patient).setVisible(true);
+        new AdminView().setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void btnFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFeedbackActionPerformed
-        int index = listDoctors.getSelectedIndex();
-        if (index == -1) {
-            JOptionPane.showMessageDialog(new JFrame(), "Please choose a doctor","Required input",JOptionPane.ERROR_MESSAGE);
+    private void fillList(){
+        DefaultListModel listModel = new DefaultListModel();
+        ArrayList<Doctor> allDoctors = PatientController.getAllDoc();
+        if (allDoctors != null) {
+            for (Doctor doctor : allDoctors) {
+                listModel.addElement(doctor.getFirstName() + " " + doctor.getLastName() + "         Rating :" + doctor.getRatingAverage() );
+            }
         }
-        else {
-            ArrayList<Doctor> allDoctors = PatientController.getAllDoc();
-            Doctor doctor = allDoctors.get(index);
-            this.setVisible(false);
-            new PatientDoctorFeedback(patient,doctor).setVisible(true);
-        }
-    }//GEN-LAST:event_btnFeedbackActionPerformed
-
+        listDoctors.setModel(listModel);
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -152,27 +118,27 @@ public class PatientViewDoctors extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PatientViewDoctors.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminViewDoctors.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PatientViewDoctors.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminViewDoctors.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PatientViewDoctors.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminViewDoctors.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PatientViewDoctors.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminViewDoctors.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PatientViewDoctors().setVisible(true);
+                new AdminViewDoctors().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnFeedback;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblHome1;
     private javax.swing.JList<String> listDoctors;

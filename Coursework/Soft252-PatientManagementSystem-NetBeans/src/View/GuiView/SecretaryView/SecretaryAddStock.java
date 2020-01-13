@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.GuiView;
+package View.GuiView.SecretaryView;
 
 import Controller.Medicines.MedicinesController;
 import Controller.Medicines.MedicinesTemplate.DoctorRequestMedicineCreate;

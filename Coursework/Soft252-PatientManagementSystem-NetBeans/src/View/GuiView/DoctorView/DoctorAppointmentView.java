@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.GuiView;
+package View.GuiView.DoctorView;
 
 import Controller.Medicines.MedicinesController;
 import Controller.Prescriptions.PrescriptionsCommand.AddMedicine;
@@ -20,6 +20,7 @@ import Model.Users.Doctor;
 import static View.DoctorState.AppointmentView.addMedicine;
 import View.DoctorState.DoctorState;
 import View.DoctorState.IState;
+import View.GuiView.SecretaryView.SecretaryGiveMedicine;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;

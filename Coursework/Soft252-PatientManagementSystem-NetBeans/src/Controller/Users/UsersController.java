@@ -8,11 +8,11 @@ package Controller.Users;
 import Model.Users.*;
 import View.DoctorState.DoctorState;
 import View.DoctorState.IState;
-import View.GuiView.AdminView;
-import View.GuiView.DoctorView;
+import View.GuiView.AdminView.AdminView;
+import View.GuiView.DoctorView.DoctorView;
 import View.GuiView.LogInView;
-import View.GuiView.PatientView;
-import View.GuiView.SecretaryView;
+import View.GuiView.PatientView.PatientView;
+import View.GuiView.SecretaryView.SecretaryView;
 
 import java.io.EOFException;
 import java.io.File;

@@ -8,7 +8,7 @@ package Controller.Users;
 import Model.Users.Administrator;
 import Model.Users.HospitalPeople;
 import Model.Users.UserList;
-import View.GuiView.AdminView;
+import View.GuiView.AdminView.AdminView;
 import java.io.IOException;
 import java.util.ArrayList;
 

@@ -3,47 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.GuiView;
+package View.GuiView.PatientView;
 
-import Model.Appointments.Appointment;
-import Model.Users.Doctor;
-import java.util.ArrayList;
-import javax.swing.DefaultListModel;
+import Controller.Users.PatientController;
+import Model.Users.Patient;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author jonat
  */
-public class DoctorViewFeedback extends javax.swing.JFrame {
-
-    private Doctor doctor;
+public class PatientDeleteAccount extends javax.swing.JFrame {
+    private Patient patient;
     /**
-     * Creates new form DoctorViewFeedback
+     * Creates new form PatientDeleteAccount
      */
-    public DoctorViewFeedback() {
+    public PatientDeleteAccount() {
         initComponents();
-    }
-    
-    public DoctorViewFeedback(Doctor doctor) {
-        initComponents();
-        this.doctor = doctor;
-        fillList();
     }
 
-    private void fillList(){        
-        
-        DefaultListModel listModel = new DefaultListModel();
-        ArrayList<String> allFeedback = doctor.getFeedback();
-        if (allFeedback != null) {
-            for (String feedback : allFeedback) {
-                listModel.addElement(feedback);
-            }
-        }
-        else {
-            listModel.addElement("No Feedback");
-        }
-        lblRating.setText("Rating: "+ String.valueOf(doctor.getRatingAverage()));
-        listFeedbacks.setModel(listModel); 
+    public PatientDeleteAccount(Patient patient) {
+        initComponents();
+        this.patient = patient;
     }
     
     /**
@@ -55,19 +39,24 @@ public class DoctorViewFeedback extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         lblHome = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        btnDelete = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listFeedbacks = new javax.swing.JList<>();
-        lblRating = new javax.swing.JLabel();
-
-        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblHome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblHome.setText("Feedback");
+        lblHome.setText("Delete Account");
+
+        jLabel1.setText("Are you sure you want to delete your account?");
+
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -76,10 +65,6 @@ public class DoctorViewFeedback extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane1.setViewportView(listFeedbacks);
-
-        lblRating.setText("Rating: ");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,25 +72,24 @@ public class DoctorViewFeedback extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblHome)
-                            .addComponent(btnBack)
-                            .addComponent(lblRating))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(jLabel1)))
+                    .addComponent(btnBack))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblHome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblRating)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addGap(59, 59, 59)
+                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -114,10 +98,18 @@ public class DoctorViewFeedback extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-            this.setVisible(false);
-            new DoctorView(doctor).setVisible(true);
-        
+        this.setVisible(false);
+        new PatientView(patient).setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        try {
+            PatientController.terminateAccount(patient);
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(PatientDeleteAccount.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JOptionPane.showMessageDialog(null, "Secretaries updated: Waiting for approval.", "Success", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,30 +128,28 @@ public class DoctorViewFeedback extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DoctorViewFeedback.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientDeleteAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DoctorViewFeedback.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientDeleteAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DoctorViewFeedback.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientDeleteAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DoctorViewFeedback.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PatientDeleteAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DoctorViewFeedback().setVisible(true);
+                new PatientDeleteAccount().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblHome;
-    private javax.swing.JLabel lblRating;
-    private javax.swing.JList<String> listFeedbacks;
     // End of variables declaration//GEN-END:variables
 }

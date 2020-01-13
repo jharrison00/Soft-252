@@ -17,7 +17,6 @@ import Model.Medicines.Medicine;
 import Model.Medicines.MedicineList;
 import Model.Prescriptions.Prescription;
 import Model.Users.Doctor;
-import static View.DoctorState.AppointmentView.addMedicine;
 import View.DoctorState.DoctorState;
 import View.DoctorState.IState;
 import View.GuiView.SecretaryView.SecretaryGiveMedicine;

@@ -16,15 +16,25 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- *
+ * Controller for all secretary functionalities relating to files
  * @author jonat
  */
 public abstract class SecretaryController extends AppointmentsController {
+    
+    /**
+     * Sets view to secretary home page
+     * @param secretary 
+     */
     public static void setView(Secretary secretary)
     {
         SecretaryView.secretaryHome(secretary);
     }
 
+    /**
+     * Approves patient account and removes from secretary approval ArrayList
+     * @param secretary
+     * @param person 
+     */
     public static void approveAccount(Secretary secretary, HospitalPeople person)
     {
         try {
@@ -43,6 +53,11 @@ public abstract class SecretaryController extends AppointmentsController {
         }
     }
 
+    /**
+     * Removes patient account from file and removes this from secretary ArrayList containing termination requests
+     * @param secretary
+     * @param person 
+     */
     public static void terminateAccount(Secretary secretary, HospitalPeople person)
     {
         try {
@@ -61,6 +76,10 @@ public abstract class SecretaryController extends AppointmentsController {
         }
     }
 
+    /**
+     * Gets all patients from file
+     * @return ArrayList of all patients
+     */
     public static ArrayList<Patient> getAllPatients() {
         UserList userList = null;
         ArrayList<Patient> allPatients = new ArrayList<Patient>();
@@ -79,7 +98,11 @@ public abstract class SecretaryController extends AppointmentsController {
         return allPatients;
     }
 
-  public static ArrayList<Secretary> getAllSecretaries() {
+    /**
+     * Gets all secretaries from file
+     * @return ArrayList of all secretaries
+     */
+    public static ArrayList<Secretary> getAllSecretaries() {
         UserList userList = null;
         ArrayList<Secretary> allSecretaries = new ArrayList<Secretary>();
         try {
@@ -96,6 +119,10 @@ public abstract class SecretaryController extends AppointmentsController {
         return allSecretaries;
     }
     
+    /**
+     * Generates unique username for secretary when creating secretary account
+     * @return String of unique username
+     */
     public static String generateUsername() {
        String username = "S";
         ArrayList<Secretary> allSecretaries = getAllSecretaries();

@@ -6,21 +6,21 @@
 package Controller.Users;
 
 import Controller.Medicines.MedicinesController;
-import Model.Appointments.Appointment;
 import Model.Medicines.Medicine;
 import Model.Users.Doctor;
-import View.DoctorState.DoctorState;
-import View.DoctorState.DoctorView;
-import View.DoctorState.IState;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- *
+ * Doctor controller used for all doctor functionalities relating to file
  * @author jonat
  */
 public abstract class DoctorController{
+    /**
+     * Allows doctor to create medicine + updates all secretaries of new medicine
+     * @param medicine 
+     */
     public static void createMedicine(Medicine medicine) {
         try {
             MedicinesController.createMedicine(medicine);
@@ -30,11 +30,19 @@ public abstract class DoctorController{
         updateObservers(medicine);
     }
 
+    /**
+     * Updates observers of new medicine
+     * @param medicine 
+     */
     public static void updateObservers(Medicine medicine) {
         medicine.registerObservers();
         medicine.notifyObserverMedicine(medicine);
     }
 
+    /**
+     * Generates new unique doctor username/userID to add to file 
+     * @return String for username
+     */
     public static String generateUsername() {
         String username = "D";
         ArrayList<Doctor> allDoctors = PatientController.getAllDoc();

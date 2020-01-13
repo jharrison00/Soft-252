@@ -5,7 +5,7 @@ import Model.Medicines.Medicine;
 import Model.Users.HospitalPeople;
 
 /**
- *
+ * Interface for all secretary observers
  * @author jonat
  */
 public interface SecretaryObserver {

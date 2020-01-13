@@ -1,20 +1,25 @@
 package Controller.Medicines;
 
-import Controller.Users.UsersController;
-import Model.Appointments.Appointment;
 import Model.Medicines.Medicine;
 import Model.Medicines.MedicineList;
-import Model.Prescriptions.Prescription;
-import Model.Prescriptions.PrescriptionList;
-import Model.Users.HospitalPeople;
 import Model.Users.Secretary;
-import Model.Users.UserList;
-
 import java.io.*;
 import java.util.ArrayList;
 
+
+/**
+ * Adds,edits medicines to file with template pattern
+ * @author jonat
+ */
 public abstract class MedicinesController {
 
+    /**
+     * Template pattern used to add quantity to medicines
+     * @param secretary
+     * @param medicine
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     public final void addQuantity(Secretary secretary, Medicine medicine)
             throws IOException, ClassNotFoundException
     {
@@ -22,7 +27,13 @@ public abstract class MedicinesController {
         editMedicine(medicine);
     }
 
-
+    /**
+     * Creates and adds medicine to file
+     * @param medicine
+     * @throws FileNotFoundException
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     public static void createMedicine(Medicine medicine)
             throws FileNotFoundException, IOException, ClassNotFoundException
     {
@@ -53,6 +64,12 @@ public abstract class MedicinesController {
         }
     }
 
+    /**
+     * Gets all medicines from file
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     public static MedicineList getAllMedicines() throws IOException, ClassNotFoundException {
         MedicineList medicineList = new  MedicineList();
         FileInputStream fis = new FileInputStream("src\\files\\Medicines.txt");
@@ -72,8 +89,19 @@ public abstract class MedicinesController {
         return medicineList;
     }
 
+    /**
+     * Abstract function used in template pattern if secretary chooses to approve medicine
+     * @param secretary
+     * @param medicine 
+     */
     protected abstract void secretaryApproval(Secretary secretary,Medicine medicine);
 
+    /**
+     * Edits medicine in file
+     * @param medicine
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     public static void editMedicine(Medicine medicine)
             throws IOException, ClassNotFoundException
     {

@@ -6,7 +6,7 @@
 package Model.Users;
 
 /**
- *
+ * Model class for administrator that extends hospitalPeople superclass
  * @author jonat
  */
 public class Administrator extends HospitalPeople {

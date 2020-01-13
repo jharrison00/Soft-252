@@ -5,7 +5,7 @@ import Model.Users.Patient;
 import Model.Users.Secretary;
 
 /**
- *
+ * Interface to add patient as an observable in observer pattern
  * @author jonat
  */
 public interface PatientObservable {

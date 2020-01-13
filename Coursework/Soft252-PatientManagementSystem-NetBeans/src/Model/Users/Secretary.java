@@ -11,11 +11,10 @@ import Model.Medicines.Medicine;
 import Model.Observers.SecretaryObserver;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
- *
+ * Model class for secretary that implements secretary observer
  * @author jonat
  */
 public class Secretary extends HospitalPeople implements SecretaryObserver {
@@ -25,6 +24,14 @@ public class Secretary extends HospitalPeople implements SecretaryObserver {
     protected ArrayList<Appointment> requestAppointments;
     protected ArrayList<Medicine> requestMedicines;
 
+    /**
+     * Constructor for secretary object
+     * @param username
+     * @param firstName
+     * @param lastName
+     * @param password
+     * @param address 
+     */
     public Secretary(String username, String firstName, String lastName, String password, String address) {
         this.username = username;
         this.firstName = firstName;
@@ -33,6 +40,10 @@ public class Secretary extends HospitalPeople implements SecretaryObserver {
         this.address = address;
     }
 
+    /**
+     * Getter for ArrayList of all secretary observers
+     * @return ArrayList of all secretary observers
+     */
     public static ArrayList<SecretaryObserver> getAllSecretaries() {
         ArrayList<SecretaryObserver>  secretaries = new ArrayList<SecretaryObserver>();
         UserList userList = null;
@@ -53,6 +64,7 @@ public class Secretary extends HospitalPeople implements SecretaryObserver {
     public Secretary() {
     }
 
+    
     public ArrayList<HospitalPeople> getApprovalUsers() {
         return approvalUsers;
     }
@@ -93,6 +105,10 @@ public class Secretary extends HospitalPeople implements SecretaryObserver {
         }
     }
 
+    /**
+     * Updates object/observer of request for creation of user/observable
+     * @param person 
+     */
     @Override
     public void updateCreate(HospitalPeople person) {
         UserList userList = null;
@@ -115,6 +131,10 @@ public class Secretary extends HospitalPeople implements SecretaryObserver {
         editUser();
     }
 
+    /**
+     * Updates object/observer of request for termination of user/observable
+     * @param person 
+     */
     @Override
     public void updateRemove(HospitalPeople person) {
         UserList userList = null;
@@ -137,6 +157,10 @@ public class Secretary extends HospitalPeople implements SecretaryObserver {
         editUser();
     }
 
+    /**
+     * Updates object/observer of request for appointment/observable
+     * @param appointment 
+     */
     @Override
     public void updateRequestAppointment(Appointment appointment) {
         UserList userList = null;
@@ -159,6 +183,10 @@ public class Secretary extends HospitalPeople implements SecretaryObserver {
         editUser();
     }
 
+    /**
+     * Updates object/observer of request medicine/observable
+     * @param medicine 
+     */
     @Override
     public void updateRequestMedicine(Medicine medicine) {
         UserList userList = null;

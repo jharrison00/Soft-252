@@ -1,17 +1,24 @@
 package Controller.Medicines.MedicinesTemplate;
 
-import Controller.Appointments.AppointmentsController;
 import Controller.Medicines.MedicinesController;
 import Controller.Users.UsersController;
-import Model.Appointments.Appointment;
 import Model.Medicines.Medicine;
 import Model.Users.Secretary;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Used in template pattern when secretary chooses to add quantity to a doctor requested medicine
+ * @author jonat
+ */
 public class DoctorRequestMedicineCreate extends MedicinesController {
 
+    /**
+     * Edits medicine quantity and removes medicine from secretary requests
+     * @param secretary
+     * @param medicine 
+     */
     @Override
     protected void secretaryApproval(Secretary secretary, Medicine medicine) {
         ArrayList<Medicine> requestMedicines = secretary.getRequestMedicines();

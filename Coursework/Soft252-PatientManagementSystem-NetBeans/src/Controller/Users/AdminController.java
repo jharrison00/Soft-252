@@ -13,21 +13,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- *
+ * Admin controller used for all admin functionalities relating to files
  * @author jonat
  */
 public abstract class AdminController {
-
-    
-
     public AdminController() {
     }
 
+    /**
+     * Sets view to admin view
+     * @param admin 
+     */
     public static void setView(Administrator admin)
     {
         new AdminView().setVisible(true);
     }
 
+    /**
+     * Method to get all doctors and secretaries from file
+     * @return ArrayList of all doctors and secretaries
+     */
     public static ArrayList<HospitalPeople> getAllDocSec() {
         UserList userList = null;
         ArrayList<HospitalPeople> allDocSec = new ArrayList<HospitalPeople>();
@@ -45,6 +50,10 @@ public abstract class AdminController {
         return allDocSec;
     }
     
+    /**
+     * Gets all admins from file
+     * @return ArrayList of all admins in file
+     */
     public static ArrayList<Administrator> getAllAdmins() {
         UserList userList = null;
         ArrayList<Administrator> allAdmins = new ArrayList<Administrator>();
@@ -62,6 +71,10 @@ public abstract class AdminController {
         return allAdmins;
     }
     
+    /**
+     * Generates unique Admin username/userID
+     * @return String for unique userID
+     */
     public static String generateUsername() {
         String username = "A";
         ArrayList<Administrator> allAdmins = getAllAdmins();

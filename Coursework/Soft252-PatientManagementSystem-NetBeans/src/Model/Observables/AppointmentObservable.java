@@ -1,10 +1,9 @@
 package Model.Observables;
 
 import Model.Appointments.Appointment;
-import Model.Users.HospitalPeople;
 
 /**
- *
+ * Interface for making appointment an observable in observer pattern
  * @author jonat
  */
 public interface AppointmentObservable {

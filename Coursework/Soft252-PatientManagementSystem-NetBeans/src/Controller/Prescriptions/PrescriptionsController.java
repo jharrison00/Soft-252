@@ -6,8 +6,20 @@ import Model.Prescriptions.PrescriptionList;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * Controller that creates and edits prescriptions to file
+ * @author jonat
+ */
+
 public abstract class PrescriptionsController {
 
+    /**
+     * Creates prescription and adds to file
+     * @param prescription
+     * @throws FileNotFoundException
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     public static void createPrescription(Prescription prescription)
             throws FileNotFoundException, IOException, ClassNotFoundException
     {
@@ -38,6 +50,11 @@ public abstract class PrescriptionsController {
         }
     }
 
+    /**
+     * Deletes prescription from file
+     * @param prescription
+     * @throws FileNotFoundException 
+     */
     public static void deletePrescription(Prescription prescription) throws FileNotFoundException {
         PrescriptionList prescriptionList = null;
         try {
@@ -67,6 +84,12 @@ public abstract class PrescriptionsController {
         }
     }
 
+    /**
+     * Gets all prescriptions from file
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     public static PrescriptionList getAllPrescriptions() throws IOException, ClassNotFoundException {
         PrescriptionList prescriptionList = new PrescriptionList();
         FileInputStream fis = new FileInputStream("C:\\Users\\Johnny\\IdeaProjects\\Soft252-PatientManagementSystem\\src\\Prescriptions.txt");
@@ -89,12 +112,20 @@ public abstract class PrescriptionsController {
         return prescriptionList;
     }
 
+    /**
+     * Adds observers to prescription with observer pattern
+     * @param prescription 
+     */
     public static void updateObservers(Prescription prescription)
     {
        prescription.registerPrescriptionObservers();
        prescription.notifyObserverPrescription(prescription);
     }
 
+    /**
+     * Removes observers from prescription
+     * @param prescription 
+     */
     public static void removeObservers(Prescription prescription){
         prescription.removePrescriptionObserver(prescription);
     }

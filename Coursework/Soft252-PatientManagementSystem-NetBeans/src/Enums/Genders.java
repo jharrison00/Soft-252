@@ -6,7 +6,7 @@
 package Enums;
 
 /**
- *
+ * Enumeration for gender property of patient
  * @author jonat
  */
 public enum Genders {

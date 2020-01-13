@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- *
+ * Model class containing object for all users in file
  * @author jonat
  */
 public class UserList implements Serializable {

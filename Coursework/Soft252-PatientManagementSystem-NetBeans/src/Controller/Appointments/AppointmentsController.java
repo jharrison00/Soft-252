@@ -1,11 +1,8 @@
 package Controller.Appointments;
 
-import static Controller.Users.AdminController.getAllAdmins;
 import Controller.Users.UsersController;
 import Model.Appointments.Appointment;
 import Model.Appointments.AppointmentList;
-import Model.Observers.AppointmentObserver;
-import Model.Users.Administrator;
 import Model.Users.Doctor;
 import Model.Users.Secretary;
 
@@ -15,11 +12,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * 
  * @author jonat
+ * Controller to append,edit and delete appointments from appointment file
  */
 public abstract class AppointmentsController {
 
+    /**
+     * Create appointment template pattern
+     * @param secretary
+     * @param appointment
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     public final void createAppointment(Secretary secretary,Appointment appointment)
             throws IOException, ClassNotFoundException
     {
@@ -28,6 +33,12 @@ public abstract class AppointmentsController {
         addToFile(appointment);
     }
 
+    /**
+     * Gets all appointments from file
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     public static AppointmentList getAllAppointments() throws IOException, ClassNotFoundException {
         AppointmentList appointmentList = new AppointmentList();
         FileInputStream fis = new FileInputStream("src\\files\\Appointments.txt");
@@ -51,14 +62,30 @@ public abstract class AppointmentsController {
         return appointmentList;
     }
 
+    /**
+     * Abstract function used if the appointment being created is being approved by a secretary 
+     * Used in template pattern
+     * @param secretary
+     * @param appointment 
+     */
     protected abstract void secretaryApproval(Secretary secretary,Appointment appointment);
 
+    /**
+     * Updates observers about appointment 
+     * @param appointment 
+     */
     public static void updateObservers(Appointment appointment)
     {
         appointment.registerAppointmentObservers();
         appointment.notifyAppointment(appointment);
     }
 
+    /**
+     * Adds data of appointment to file
+     * @param appointment
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     public static void addToFile(Appointment appointment)
             throws IOException, ClassNotFoundException
     {
@@ -88,6 +115,11 @@ public abstract class AppointmentsController {
         }
     }
 
+    /**
+     * Removes doctor observer if appointment is done
+     * @param doctor
+     * @param appointment 
+     */
     public static void removeAppointmentObserver(Doctor doctor,Appointment appointment){
         ArrayList<Appointment> appointments = doctor.getAppointments();
        appointments.remove(appointment);
@@ -103,8 +135,8 @@ public abstract class AppointmentsController {
     }
     
     /**
-     *Generates unique appointment ID
-     * @return
+     * Generates unique appointment ID
+     * @return unique appointment ID
      */
     public static int generateId() {
         int finalId;

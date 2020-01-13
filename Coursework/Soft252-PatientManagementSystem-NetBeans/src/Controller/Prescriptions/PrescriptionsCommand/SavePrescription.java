@@ -6,13 +6,24 @@ import Model.Prescriptions.Prescription;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+/**
+ * Command to save prescription to file and remove prescription from file 
+ * @author jonat
+ */
 public class SavePrescription implements ICommand{
     private Prescription prescription;
 
+    /**
+     * Constructor to get prescription for command
+     * @param prescription 
+     */
     public SavePrescription(Prescription prescription){
         this.prescription = prescription;
     }
 
+    /**
+     * Execute command saves prescription to file
+     */
     @Override
     public void execute() {
         try {
@@ -23,6 +34,9 @@ public class SavePrescription implements ICommand{
         }
     }
 
+    /**
+     * Undo command removes prescription from file
+     */
     @Override
     public void undo() {
         try {

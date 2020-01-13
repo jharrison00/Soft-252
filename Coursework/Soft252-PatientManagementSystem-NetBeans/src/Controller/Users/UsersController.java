@@ -6,8 +6,6 @@
 package Controller.Users;
 
 import Model.Users.*;
-import View.DoctorState.DoctorState;
-import View.DoctorState.IState;
 import View.GuiView.AdminView.AdminView;
 import View.GuiView.DoctorView.DoctorView;
 import View.GuiView.LogInView;
@@ -26,14 +24,13 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 /**
- *
+ * Controller for user functionality
  * @author jonat
  */
 public abstract class UsersController {
     
     /**
-     * Creates a user
-     * 
+     * Creates a user and adds to file
      * @param person
      * @throws FileNotFoundException
      * @throws IOException
@@ -69,6 +66,12 @@ public abstract class UsersController {
         }
     }
 
+    /**
+     * Edits a user to user file
+     * @param person
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     public static void editUser(HospitalPeople person)
             throws IOException, ClassNotFoundException
     {
@@ -98,6 +101,11 @@ public abstract class UsersController {
         }
     }
 
+    /**
+     * Deletes user from file
+     * @param person
+     * @throws FileNotFoundException 
+     */
     public static void deleteUser(HospitalPeople person) throws FileNotFoundException {
         UserList userList = null;
         try {
@@ -126,6 +134,12 @@ public abstract class UsersController {
         }
     }
 
+    /**
+     * Gets all users from file
+     * @return ArrayList of all users
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     public static UserList getAllUsers() throws IOException, ClassNotFoundException {
         UserList userList = new UserList();
         FileInputStream fis = new FileInputStream("src\\files\\Users.txt");
@@ -145,6 +159,15 @@ public abstract class UsersController {
         return userList;
     }   
 
+    /**
+     * Checks if user exists with username and password
+     * @param username
+     * @param password
+     * @param view
+     * @return true or false if user exists in file
+     * @throws ClassNotFoundException
+     * @throws IOException 
+     */
     public static boolean validateUser(String username, String password,LogInView view) throws ClassNotFoundException, IOException
     {
         UserList userList;

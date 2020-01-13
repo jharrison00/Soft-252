@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- *
+ * Model doctor class that extends hospitalPeople superclass
  * @author jonat
  */
 public class Doctor extends HospitalPeople implements AppointmentObserver
@@ -23,6 +23,15 @@ public class Doctor extends HospitalPeople implements AppointmentObserver
     protected ArrayList<String> feedback;
     protected ArrayList<Integer> ratings;
     protected double ratingAverage;
+    
+    /**
+     * Constructor for doctor object
+     * @param username
+     * @param firstName
+     * @param lastName
+     * @param password
+     * @param address 
+     */
     public Doctor(String username, String firstName, String lastName, String password, String address) {
         this.username = username;
         this.firstName = firstName;
@@ -31,6 +40,9 @@ public class Doctor extends HospitalPeople implements AppointmentObserver
         this.address = address;
     }
 
+    /**
+     * Blank constructor for doctor
+     */
     public Doctor() {
     }
 
@@ -71,6 +83,10 @@ public class Doctor extends HospitalPeople implements AppointmentObserver
         this.ratingAverage = average;
     }
 
+    /**
+     * Updates doctor observer with appointment
+     * @param appointment 
+     */
     @Override
     public void updateAppointment(Appointment appointment) {
         UserList userList = null;

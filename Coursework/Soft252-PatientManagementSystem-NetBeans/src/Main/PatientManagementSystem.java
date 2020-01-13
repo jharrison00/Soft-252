@@ -8,8 +8,8 @@ package Main;
 
 
 /**
- *
- * @author jonathan Harrison
+ * Main method for application
+ * @author jonat
  */
 public class PatientManagementSystem {
 

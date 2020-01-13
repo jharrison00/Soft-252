@@ -30,6 +30,16 @@ public class Patient extends HospitalPeople implements PatientObservable, Appoin
     protected ArrayList<Appointment> appointments;
     protected ArrayList<Prescription> prescriptions;
 
+    /**
+     * Constructor for patient
+     * @param username
+     * @param firstName
+     * @param lastName
+     * @param password
+     * @param address
+     * @param age
+     * @param gender 
+     */
     public Patient(String username, String firstName, String lastName, String password, String address,int age, Genders gender) {
         this.username = username;
         this.firstName = firstName;
@@ -76,16 +86,27 @@ public class Patient extends HospitalPeople implements PatientObservable, Appoin
         this.prescriptions = prescriptions;
     }
 
+    /**
+     * Registers all observers of this object/observable
+     */
     @Override
     public void registerObservers() {
         secretaries = Secretary.getAllSecretaries();
     }
 
+    /**
+     * Remove observers of this object/observable
+     * @param secretary 
+     */
     @Override
     public void removeObserver(Secretary secretary) {
         secretaries.remove(secretary);
     }
 
+    /**
+     * Notify observers that this is a patient create request 
+     * @param patient 
+     */
     @Override
     public void notifyObserverCreate(Patient patient) {
         for (SecretaryObserver secretary: secretaries){
@@ -93,6 +114,10 @@ public class Patient extends HospitalPeople implements PatientObservable, Appoin
         }
     }
 
+    /**
+     * Notify observers that this is a patient remove request
+     * @param patient 
+     */
     @Override
     public void notifyObserverRemove(Patient patient) {
         for (SecretaryObserver secretary: secretaries){
@@ -100,6 +125,10 @@ public class Patient extends HospitalPeople implements PatientObservable, Appoin
         }
     }
 
+    /**
+     * Notify observers of appointment request observable
+     * @param appointment 
+     */
     @Override
     public void notifyObserverAppointment(Appointment appointment) {
         for (SecretaryObserver secretary: secretaries){
@@ -107,6 +136,10 @@ public class Patient extends HospitalPeople implements PatientObservable, Appoin
         }
     }
 
+    /**
+     * Updates observers of appointment request
+     * @param appointment 
+     */
     @Override
     public void updateAppointment(Appointment appointment) {
         UserList userList = null;
@@ -134,6 +167,10 @@ public class Patient extends HospitalPeople implements PatientObservable, Appoin
         }
     }
 
+    /**
+     * Update object/observer on new prescription/observable
+     * @param prescription 
+     */
     @Override
     public void updatePrescription(Prescription prescription) {
         UserList userList = null;
@@ -161,6 +198,10 @@ public class Patient extends HospitalPeople implements PatientObservable, Appoin
         }
     }
 
+    /**
+     * Removes prescription/observable from object/observer
+     * @param prescription 
+     */
     @Override
     public void removePrescription(Prescription prescription) {
         UserList userList = null;

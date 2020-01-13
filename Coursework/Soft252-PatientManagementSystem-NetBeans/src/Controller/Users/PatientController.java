@@ -16,21 +16,37 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- *
+ * Controller for all patient functionality relating to files
  * @author jonat
  */
 public abstract class PatientController {
 
+    /**
+     * Method to notify observers when patient wants to create an account
+     * @param patient
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     public static void createAccount(Patient patient) throws IOException, ClassNotFoundException {
         patient.registerObservers();
         patient.notifyObserverCreate(patient);
     }
 
+    /**
+     * Method to notify observers when patient wants to delete their account
+     * @param patient
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     public static void terminateAccount(Patient patient) throws IOException, ClassNotFoundException {
         patient.registerObservers();
         patient.notifyObserverRemove(patient);
     }
 
+    /**
+     * Gets all doctors from file to view all doctors
+     * @return ArrayList of all doctors
+     */
     public static ArrayList<Doctor> getAllDoc() {
         UserList userList = null;
         ArrayList<Doctor> allDoc = new ArrayList<Doctor>();
@@ -48,11 +64,19 @@ public abstract class PatientController {
         return allDoc;
     }
 
+    /**
+     * Notifies secretary of appointment request
+     * @param requestAppointment 
+     */
     public static void requestAppointment(Appointment requestAppointment) {
         requestAppointment.getAppointmentPatient().registerObservers();
         requestAppointment.getAppointmentPatient().notifyObserverAppointment(requestAppointment);
     }
 
+    /**
+     * Gets all patients from file
+     * @return ArrayList of all patients
+     */
     public static ArrayList<Patient> getAllPatients() {
         UserList userList = null;
         ArrayList<Patient> allPatients = new ArrayList<Patient>();
@@ -70,6 +94,10 @@ public abstract class PatientController {
         return allPatients;
     }
     
+    /**
+     * Generates unique username for patient when creating a patient account
+     * @return String of unique username
+     */
     public static String generateUsername() {
           String username = "P";
         ArrayList<Patient> allPatients = getAllPatients();

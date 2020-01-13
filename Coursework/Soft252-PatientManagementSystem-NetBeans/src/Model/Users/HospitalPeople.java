@@ -1,16 +1,9 @@
 package Model.Users;
 
-import Enums.Genders;
 import java.io.Serializable;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
+ * Abstract superclass for all users in application
  * @author jonat
  */
 public abstract class HospitalPeople implements Serializable {

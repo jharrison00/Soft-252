@@ -9,6 +9,11 @@ import Model.Users.Secretary;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Used when secretary creates appointment
+ * Removes appointment from secretary approval list
+ * @author jonat
+ */
 public class SecretaryAppointmentCreate extends AppointmentsController {
 
     @Override

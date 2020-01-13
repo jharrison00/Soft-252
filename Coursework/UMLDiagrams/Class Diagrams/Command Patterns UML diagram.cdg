@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Multi-package class diagram">
+  <ClassDiagramComponents>
+    <Class name="AddMedicine" package="Controller.Prescriptions.PrescriptionsCommand" visibility="public" xPosition="-56.0" yPosition="255.0">
+      <Fields>
+        <Field name="prescription" type="Prescription" visibility="private"/>
+        <Field name="medicine" type="Medicine" visibility="private"/>
+        <Field name="quantity" type="int" visibility="private"/>
+        <Field name="dosage" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Prescription" name="prescription"/>
+          <Argument type="Medicine" name="medicine"/>
+          <Argument type="int" name="quantity"/>
+          <Argument type="String" name="dosage"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="execute" returnType="void" visibility="public"/>
+        <Method name="undo" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AddNote" package="Controller.Prescriptions.PrescriptionsCommand" visibility="public" xPosition="522.0" yPosition="499.0">
+      <Fields>
+        <Field name="prescription" type="Prescription" visibility="private"/>
+        <Field name="note" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Prescription" name="prescription"/>
+          <Argument type="String" name="note"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="execute" returnType="void" visibility="public"/>
+        <Method name="undo" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AppointmentDoctor" package="Controller.Prescriptions.PrescriptionsCommand" visibility="public" xPosition="522.0" yPosition="30.0">
+      <Fields>
+        <Field name="command" type="ICommand1" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="setCommand" returnType="ICommand" visibility="public">
+          <Argument type="ICommand" name="command"/>
+        </Method>
+        <Method name="executeCommand" returnType="void" visibility="public"/>
+        <Method name="undoCommand" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="SavePrescription" package="Controller.Prescriptions.PrescriptionsCommand" visibility="public" xPosition="946.0" yPosition="284.0">
+      <Fields>
+        <Field name="prescription" type="Prescription" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Prescription" name="prescription"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="execute" returnType="void" visibility="public"/>
+        <Method name="undo" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PrescriptionsController" package="Controller.Prescriptions" visibility="public" isAbstract="true" xPosition="1520.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="createPrescription" returnType="Prescription" visibility="public" isStatic="true">
+          <Argument type="Prescription" name="prescription"/>
+        </Method>
+        <Method name="deletePrescription" returnType="Prescription" visibility="public" isStatic="true">
+          <Argument type="Prescription" name="prescription"/>
+        </Method>
+        <Method name="getAllPrescriptions" returnType="PrescriptionList" visibility="public" isStatic="true"/>
+        <Method name="updateObservers" returnType="Prescription" visibility="public" isStatic="true">
+          <Argument type="Prescription" name="prescription"/>
+        </Method>
+        <Method name="removeObservers" returnType="Prescription" visibility="public" isStatic="true">
+          <Argument type="Prescription" name="prescription"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="AddMedicine1" package="Controller.Prescriptions.PrescriptionsCommand" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="prescription" type="Prescription" visibility="private"/>
+        <Field name="medicine" type="Medicine" visibility="private"/>
+        <Field name="quantity" type="int" visibility="private"/>
+        <Field name="dosage" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Prescription" name="prescription"/>
+          <Argument type="Medicine" name="medicine"/>
+          <Argument type="int" name="quantity"/>
+          <Argument type="String" name="dosage"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="execute" returnType="void" visibility="public"/>
+        <Method name="undo" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AddNote1" package="Controller.Prescriptions.PrescriptionsCommand" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="prescription" type="Prescription" visibility="private"/>
+        <Field name="note" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Prescription" name="prescription"/>
+          <Argument type="String" name="note"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="execute" returnType="void" visibility="public"/>
+        <Method name="undo" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="ICommand" package="Controller.Prescriptions.PrescriptionsCommand" visibility="public" xPosition="587.0" yPosition="308.0">
+      <Methods>
+        <Method name="execute" returnType="void" visibility="public"/>
+        <Method name="undo" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="command" source="Controller.Prescriptions.PrescriptionsCommand.AppointmentDoctor" target="Controller.Prescriptions.PrescriptionsCommand.ICommand" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Controller.Prescriptions.PrescriptionsCommand.AddMedicine" target="Controller.Prescriptions.PrescriptionsCommand.ICommand"/>
+    <UseRelation source="Controller.Prescriptions.PrescriptionsCommand.AppointmentDoctor" target="Controller.Prescriptions.PrescriptionsCommand.ICommand" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Controller.Prescriptions.PrescriptionsCommand.AddNote" target="Controller.Prescriptions.PrescriptionsCommand.ICommand"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Controller.Prescriptions.PrescriptionsCommand.SavePrescription" target="Controller.Prescriptions.PrescriptionsCommand.ICommand"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

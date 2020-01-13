@@ -10,7 +10,6 @@ import Model.Users.HospitalPeople;
 import Model.Users.Patient;
 import Model.Users.Secretary;
 import Model.Users.UserList;
-import View.SecretaryView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,15 +20,6 @@ import java.util.ArrayList;
  */
 public abstract class SecretaryController extends AppointmentsController {
     
-    /**
-     * Sets view to secretary home page
-     * @param secretary 
-     */
-    public static void setView(Secretary secretary)
-    {
-        SecretaryView.secretaryHome(secretary);
-    }
-
     /**
      * Approves patient account and removes from secretary approval ArrayList
      * @param secretary

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="View.DoctorState">
+  <ClassDiagramComponents>
+    <Class name="AppointmentView" package="View.DoctorState" visibility="public" xPosition="63.0" yPosition="300.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="appointmentHome" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Doctor" name="doctor"/>
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+        <Method name="addNotes" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Prescription" name="prescription"/>
+          <Argument type="AppointmentInvoker" name="invoker"/>
+        </Method>
+        <Method name="addMedicine" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Prescription" name="prescription"/>
+          <Argument type="AppointmentInvoker" name="invoker"/>
+        </Method>
+        <Method name="savePrescription" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Prescription" name="prescription"/>
+          <Argument type="AppointmentInvoker" name="invoker"/>
+        </Method>
+        <Method name="patientHistory" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Prescription" name="prescription"/>
+        </Method>
+        <Method name="enterAppointment" returnType="void" visibility="public">
+          <Argument type="Doctor" name="doctor"/>
+          <Argument type="DoctorState" name="doctorState"/>
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+        <Method name="exitAppointment" returnType="void" visibility="public">
+          <Argument type="Doctor" name="doctor"/>
+          <Argument type="DoctorState" name="doctorState"/>
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="DoctorState" package="View.DoctorState" visibility="public" xPosition="683.0" yPosition="575.0">
+      <Fields>
+        <Field name="state" type="IState" visibility="private"/>
+        <Field name="doctor" type="Doctor" visibility="private"/>
+        <Field name="appointment" type="Appointment" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Doctor" name="doctor"/>
+          <Argument type="IState" name="state"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getAppointment" returnType="Appointment" visibility="public"/>
+        <Method name="setAppointment" returnType="void" visibility="public">
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+        <Method name="setState" returnType="void" visibility="public">
+          <Argument type="IState" name="state"/>
+        </Method>
+        <Method name="enterAppointment" returnType="void" visibility="public"/>
+        <Method name="exitAppointment" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DoctorView" package="View.DoctorState" visibility="public" xPosition="1033.0" yPosition="300.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="doctorHome" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Doctor" name="doctor"/>
+        </Method>
+        <Method name="getAppointments" returnType="ArrayList&lt;Appointment&gt;" visibility="public" isStatic="true">
+          <Argument type="Doctor" name="doctor"/>
+        </Method>
+        <Method name="createAppointment" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Doctor" name="doctor"/>
+        </Method>
+        <Method name="createMedicine" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="enterAppointment" returnType="void" visibility="public">
+          <Argument type="Doctor" name="doctor"/>
+          <Argument type="DoctorState" name="doctorState"/>
+          <Argument type="Appointment" name="thisAppointment"/>
+        </Method>
+        <Method name="exitAppointment" returnType="void" visibility="public">
+          <Argument type="Doctor" name="doctor"/>
+          <Argument type="DoctorState" name="doctorState"/>
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="IState" package="View.DoctorState" visibility="public" xPosition="571.0" yPosition="36.0">
+      <Methods>
+        <Method name="enterAppointment" returnType="void" visibility="package">
+          <Argument type="Doctor" name="doctor"/>
+          <Argument type="DoctorState" name="doctorState"/>
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+        <Method name="exitAppointment" returnType="void" visibility="package">
+          <Argument type="Doctor" name="doctor"/>
+          <Argument type="DoctorState" name="doctorState"/>
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="View.DoctorState.DoctorView" target="View.DoctorState.IState"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="View.DoctorState.AppointmentView" target="View.DoctorState.IState"/>
+    <UseRelation source="View.DoctorState.AppointmentView" target="View.DoctorState.DoctorState" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="View.DoctorState.DoctorView" target="View.DoctorState.DoctorState" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="state" source="View.DoctorState.DoctorState" target="View.DoctorState.IState" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="View.DoctorState.DoctorState" target="View.DoctorState.IState" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="View.DoctorState.IState" target="View.DoctorState.DoctorState" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

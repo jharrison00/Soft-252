@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Multi-package class diagram">
+  <ClassDiagramComponents>
+    <Class name="AppointmentsController" package="Controller.Appointments" visibility="public" isAbstract="true" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="createAppointment" returnType="Appointment" visibility="public" isFinal="true">
+          <Argument type="Secretary" name="secretary"/>
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+        <Method name="getAllAppointments" returnType="AppointmentList" visibility="public" isStatic="true"/>
+        <Method name="secretaryApproval" returnType="Appointment" visibility="protected" isAbstract="true">
+          <Argument type="Secretary" name="secretary"/>
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+        <Method name="updateObservers" returnType="Appointment" visibility="public" isStatic="true">
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+        <Method name="addToFile" returnType="Appointment" visibility="public" isStatic="true">
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+        <Method name="removeAppointmentObserver" returnType="Appointment" visibility="public" isStatic="true">
+          <Argument type="Doctor" name="doctor"/>
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+        <Method name="generateId" returnType="int" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="DoctorAppointmentCreate" package="Controller.Appointments.AppointmentsTemplate" visibility="public" xPosition="669.0" yPosition="85.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="secretaryApproval" returnType="Appointment" visibility="protected">
+          <Argument type="Secretary" name="secretary"/>
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SecretaryAppointmentCreate" package="Controller.Appointments.AppointmentsTemplate" visibility="public" xPosition="52.0" yPosition="384.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="secretaryApproval" returnType="Appointment" visibility="protected">
+          <Argument type="Secretary" name="secretary"/>
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MedicinesController" package="Controller.Medicines" visibility="public" isAbstract="true" xPosition="652.0" yPosition="291.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="addQuantity" returnType="Medicine" visibility="public" isFinal="true">
+          <Argument type="Secretary" name="secretary"/>
+          <Argument type="Medicine" name="medicine"/>
+        </Method>
+        <Method name="createMedicine" returnType="Medicine" visibility="public" isStatic="true">
+          <Argument type="Medicine" name="medicine"/>
+        </Method>
+        <Method name="getAllMedicines" returnType="MedicineList" visibility="public" isStatic="true"/>
+        <Method name="secretaryApproval" returnType="Medicine" visibility="protected" isAbstract="true">
+          <Argument type="Secretary" name="secretary"/>
+          <Argument type="Medicine" name="medicine"/>
+        </Method>
+        <Method name="editMedicine" returnType="Medicine" visibility="public" isStatic="true">
+          <Argument type="Medicine" name="medicine"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="DoctorRequestMedicineCreate" package="Controller.Medicines.MedicinesTemplate" visibility="public" xPosition="652.0" yPosition="585.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="secretaryApproval" returnType="Medicine" visibility="protected">
+          <Argument type="Secretary" name="secretary"/>
+          <Argument type="Medicine" name="medicine"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SecretaryMedicineCreate" package="Controller.Medicines.MedicinesTemplate" visibility="public" xPosition="1204.0" yPosition="337.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="secretaryApproval" returnType="Medicine" visibility="protected">
+          <Argument type="Secretary" name="secretary"/>
+          <Argument type="Medicine" name="medicine"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="Controller.Medicines.MedicinesTemplate.SecretaryMedicineCreate" target="Controller.Medicines.MedicinesController"/>
+    <IsRelation name="is" source="Controller.Appointments.AppointmentsTemplate.DoctorAppointmentCreate" target="Controller.Appointments.AppointmentsController"/>
+    <IsRelation name="is" source="Controller.Appointments.AppointmentsTemplate.SecretaryAppointmentCreate" target="Controller.Appointments.AppointmentsController"/>
+    <IsRelation name="is" source="Controller.Medicines.MedicinesTemplate.DoctorRequestMedicineCreate" target="Controller.Medicines.MedicinesController"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

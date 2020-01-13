@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Multi-package class diagram">
+  <ClassDiagramComponents>
+    <Class name="Appointment" package="Model.Appointments" visibility="public" xPosition="1436.0" yPosition="473.0">
+      <Fields>
+        <Field name="appointmentObservers" type="ArrayList&lt;AppointmentObserver&gt;" visibility="private"/>
+        <Field name="appointmentID" type="int" visibility="protected"/>
+        <Field name="patient" type="Patient" visibility="protected"/>
+        <Field name="doctor" type="Doctor" visibility="protected"/>
+        <Field name="date" type="Date" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="appointmentID"/>
+          <Argument type="Patient" name="patient"/>
+          <Argument type="Doctor" name="doctor"/>
+          <Argument type="Date" name="date"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getAppointmentID" returnType="int" visibility="public"/>
+        <Method name="setAppointmentID" returnType="void" visibility="public">
+          <Argument type="int" name="appointmentID"/>
+        </Method>
+        <Method name="getAppointmentPatient" returnType="Patient" visibility="public"/>
+        <Method name="setAppointmentPatient" returnType="void" visibility="public">
+          <Argument type="Patient" name="patient"/>
+        </Method>
+        <Method name="getDoctor" returnType="Doctor" visibility="public"/>
+        <Method name="setDoctor" returnType="void" visibility="public">
+          <Argument type="Doctor" name="doctor"/>
+        </Method>
+        <Method name="getDate" returnType="Date" visibility="public"/>
+        <Method name="setDate" returnType="void" visibility="public">
+          <Argument type="Date" name="date"/>
+        </Method>
+        <Method name="registerAppointmentObservers" returnType="void" visibility="public"/>
+        <Method name="removeAppointmentObserver" returnType="void" visibility="public"/>
+        <Method name="notifyAppointment" returnType="void" visibility="public">
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="AppointmentInvoker" package="Model.Appointments" visibility="public" xPosition="114.0" yPosition="160.0">
+      <Fields>
+        <Field name="command" type="ICommand" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="setCommand" returnType="void" visibility="public">
+          <Argument type="ICommand" name="command"/>
+        </Method>
+        <Method name="executeCommand" returnType="void" visibility="public"/>
+        <Method name="undoCommand" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AppointmentList" package="Model.Appointments" visibility="public" xPosition="430.0" yPosition="14.0">
+      <Fields>
+        <Field name="allAppointments" type="ArrayList&lt;Appointment&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getAllAppointmentsList" returnType="ArrayList&lt;Appointment&gt;" visibility="public"/>
+        <Method name="setAllAppointmentsList" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Appointment&gt;" name="allAppointments"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Medicine" package="Model.Medicines" visibility="public" xPosition="1062.0" yPosition="587.0">
+      <Fields>
+        <Field name="medicineObservers" type="ArrayList&lt;SecretaryObserver&gt;" visibility="private"/>
+        <Field name="name" type="String" visibility="protected"/>
+        <Field name="quantity" type="int" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="quantity"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getQuantity" returnType="int" visibility="public"/>
+        <Method name="setQuantity" returnType="void" visibility="public">
+          <Argument type="int" name="quantity"/>
+        </Method>
+        <Method name="registerObservers" returnType="void" visibility="public"/>
+        <Method name="removeObserver" returnType="void" visibility="public">
+          <Argument type="Secretary" name="secretary"/>
+        </Method>
+        <Method name="notifyObserverMedicine" returnType="void" visibility="public">
+          <Argument type="Medicine" name="medicine"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MedicineList" package="Model.Medicines" visibility="public" xPosition="1152.0" yPosition="20.0">
+      <Fields>
+        <Field name="allMedicines" type="ArrayList&lt;Medicine&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getAllMedicines" returnType="ArrayList&lt;Medicine&gt;" visibility="public"/>
+        <Method name="setAllMedicines" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Medicine&gt;" name="allMedicines"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Prescription" package="Model.Prescriptions" visibility="public" xPosition="2028.0" yPosition="455.0">
+      <Fields>
+        <Field name="prescriptionObservers" type="ArrayList&lt;PrescriptionObserver&gt;" visibility="protected"/>
+        <Field name="doctor" type="Doctor" visibility="protected"/>
+        <Field name="patient" type="Patient" visibility="protected"/>
+        <Field name="note" type="String" visibility="protected"/>
+        <Field name="medicine" type="Medicine" visibility="protected"/>
+        <Field name="quantity" type="int" visibility="protected"/>
+        <Field name="Dosage" type="String" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Doctor" name="doctor"/>
+          <Argument type="Patient" name="patient"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getDoctor" returnType="Doctor" visibility="public"/>
+        <Method name="setDoctor" returnType="void" visibility="public">
+          <Argument type="Doctor" name="doctor"/>
+        </Method>
+        <Method name="getPatient" returnType="Patient" visibility="public"/>
+        <Method name="setPatient" returnType="void" visibility="public">
+          <Argument type="Patient" name="patient"/>
+        </Method>
+        <Method name="getNote" returnType="String" visibility="public"/>
+        <Method name="setNote" returnType="void" visibility="public">
+          <Argument type="String" name="note"/>
+        </Method>
+        <Method name="getMedicine" returnType="Medicine" visibility="public"/>
+        <Method name="setMedicine" returnType="void" visibility="public">
+          <Argument type="Medicine" name="medicine"/>
+        </Method>
+        <Method name="getQuantity" returnType="int" visibility="public"/>
+        <Method name="setQuantity" returnType="void" visibility="public">
+          <Argument type="int" name="quantity"/>
+        </Method>
+        <Method name="getDosage" returnType="String" visibility="public"/>
+        <Method name="setDosage" returnType="void" visibility="public">
+          <Argument type="String" name="dosage"/>
+        </Method>
+        <Method name="registerPrescriptionObservers" returnType="void" visibility="public"/>
+        <Method name="removePrescriptionObserver" returnType="void" visibility="public">
+          <Argument type="Prescription" name="prescription"/>
+        </Method>
+        <Method name="notifyObserverPrescription" returnType="void" visibility="public">
+          <Argument type="Prescription" name="prescription"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PrescriptionList" package="Model.Prescriptions" visibility="public" xPosition="1577.0" yPosition="305.0">
+      <Fields>
+        <Field name="allPrescriptions" type="ArrayList&lt;Prescription&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getAllPrescriptions" returnType="ArrayList&lt;Prescription&gt;" visibility="public"/>
+        <Method name="setAllPrescriptions" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Prescription&gt;" name="allPrescriptions"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Administrator" package="Model.Users" visibility="public" xPosition="2376.0" yPosition="1094.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="username"/>
+          <Argument type="String" name="firstName"/>
+          <Argument type="String" name="lastName"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="address"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Doctor" package="Model.Users" visibility="public" xPosition="1777.0" yPosition="1094.0">
+      <Fields>
+        <Field name="appointments" type="ArrayList&lt;Appointment&gt;" visibility="protected"/>
+        <Field name="feedback" type="ArrayList&lt;String&gt;" visibility="protected"/>
+        <Field name="ratings" type="ArrayList&lt;Integer&gt;" visibility="protected"/>
+        <Field name="ratingAverage" type="double" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="username"/>
+          <Argument type="String" name="firstName"/>
+          <Argument type="String" name="lastName"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="address"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getAppointments" returnType="ArrayList&lt;Appointment&gt;" visibility="public"/>
+        <Method name="setAppointments" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Appointment&gt;" name="appointments"/>
+        </Method>
+        <Method name="getFeedback" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="setFeedback" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;String&gt;" name="feedback"/>
+        </Method>
+        <Method name="getRatings" returnType="ArrayList&lt;Integer&gt;" visibility="public"/>
+        <Method name="setRatings" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Integer&gt;" name="ratings"/>
+        </Method>
+        <Method name="getRatingAverage" returnType="double" visibility="public"/>
+        <Method name="setRatingAverage" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Integer&gt;" name="ratings"/>
+        </Method>
+        <Method name="updateAppointment" returnType="void" visibility="public">
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="HospitalPeople" package="Model.Users" visibility="public" isAbstract="true" xPosition="772.0" yPosition="666.0">
+      <Fields>
+        <Field name="username" type="String" visibility="protected"/>
+        <Field name="password" type="String" visibility="protected"/>
+        <Field name="firstName" type="String" visibility="protected"/>
+        <Field name="lastName" type="String" visibility="protected"/>
+        <Field name="address" type="String" visibility="protected"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getUsername" returnType="String" visibility="public"/>
+        <Method name="setUsername" returnType="void" visibility="public">
+          <Argument type="String" name="username"/>
+        </Method>
+        <Method name="getPassword" returnType="String" visibility="public"/>
+        <Method name="setPassword" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="getFirstName" returnType="String" visibility="public"/>
+        <Method name="setFirstName" returnType="void" visibility="public">
+          <Argument type="String" name="firstName"/>
+        </Method>
+        <Method name="getLastName" returnType="String" visibility="public"/>
+        <Method name="setLastName" returnType="void" visibility="public">
+          <Argument type="String" name="lastName"/>
+        </Method>
+        <Method name="getAddress" returnType="String" visibility="public"/>
+        <Method name="setAddress" returnType="void" visibility="public">
+          <Argument type="String" name="address"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Patient" package="Model.Users" visibility="public" xPosition="378.0" yPosition="1094.0">
+      <Fields>
+        <Field name="secretaries" type="ArrayList&lt;SecretaryObserver&gt;" visibility="private"/>
+        <Field name="age" type="int" visibility="protected"/>
+        <Field name="gender" type="Genders" visibility="protected"/>
+        <Field name="appointments" type="ArrayList&lt;Appointment&gt;" visibility="protected"/>
+        <Field name="prescriptions" type="ArrayList&lt;Prescription&gt;" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="username"/>
+          <Argument type="String" name="firstName"/>
+          <Argument type="String" name="lastName"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="address"/>
+          <Argument type="int" name="age"/>
+          <Argument type="Genders" name="gender"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getAge" returnType="int" visibility="public"/>
+        <Method name="setAge" returnType="void" visibility="public">
+          <Argument type="int" name="age"/>
+        </Method>
+        <Method name="getGender" returnType="Genders" visibility="public"/>
+        <Method name="setGender" returnType="void" visibility="public">
+          <Argument type="Genders" name="gender"/>
+        </Method>
+        <Method name="getAppointments" returnType="ArrayList&lt;Appointment&gt;" visibility="public"/>
+        <Method name="setAppointments" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Appointment&gt;" name="appointments"/>
+        </Method>
+        <Method name="getPrescriptions" returnType="ArrayList&lt;Prescription&gt;" visibility="public"/>
+        <Method name="setPrescriptions" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Prescription&gt;" name="prescriptions"/>
+        </Method>
+        <Method name="registerObservers" returnType="void" visibility="public"/>
+        <Method name="removeObserver" returnType="void" visibility="public">
+          <Argument type="Secretary" name="secretary"/>
+        </Method>
+        <Method name="notifyObserverCreate" returnType="void" visibility="public">
+          <Argument type="Patient" name="patient"/>
+        </Method>
+        <Method name="notifyObserverRemove" returnType="void" visibility="public">
+          <Argument type="Patient" name="patient"/>
+        </Method>
+        <Method name="notifyObserverAppointment" returnType="void" visibility="public">
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+        <Method name="updateAppointment" returnType="void" visibility="public">
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+        <Method name="updatePrescription" returnType="void" visibility="public">
+          <Argument type="Prescription" name="prescription"/>
+        </Method>
+        <Method name="removePrescription" returnType="void" visibility="public">
+          <Argument type="Prescription" name="prescription"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Secretary" package="Model.Users" visibility="public" xPosition="1108.0" yPosition="1094.0">
+      <Fields>
+        <Field name="approvalUsers" type="ArrayList&lt;HospitalPeople&gt;" visibility="protected"/>
+        <Field name="removalUsers" type="ArrayList&lt;HospitalPeople&gt;" visibility="protected"/>
+        <Field name="requestAppointments" type="ArrayList&lt;Appointment&gt;" visibility="protected"/>
+        <Field name="requestMedicines" type="ArrayList&lt;Medicine&gt;" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="username"/>
+          <Argument type="String" name="firstName"/>
+          <Argument type="String" name="lastName"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="address"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getAllSecretaries" returnType="ArrayList&lt;SecretaryObserver&gt;" visibility="public" isStatic="true"/>
+        <Method name="getApprovalUsers" returnType="ArrayList&lt;HospitalPeople&gt;" visibility="public"/>
+        <Method name="setApprovalUsers" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;HospitalPeople&gt;" name="approvalUsers"/>
+        </Method>
+        <Method name="getRemovalUsers" returnType="ArrayList&lt;HospitalPeople&gt;" visibility="public"/>
+        <Method name="setRemovalUsers" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;HospitalPeople&gt;" name="removalUsers"/>
+        </Method>
+        <Method name="getRequestAppointments" returnType="ArrayList&lt;Appointment&gt;" visibility="public"/>
+        <Method name="setRequestAppointments" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Appointment&gt;" name="requestAppointments"/>
+        </Method>
+        <Method name="getRequestMedicines" returnType="ArrayList&lt;Medicine&gt;" visibility="public"/>
+        <Method name="setRequestMedicines" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Medicine&gt;" name="requestMedicines"/>
+        </Method>
+        <Method name="editUser" returnType="void" visibility="public"/>
+        <Method name="updateCreate" returnType="void" visibility="public">
+          <Argument type="HospitalPeople" name="person"/>
+        </Method>
+        <Method name="updateRemove" returnType="void" visibility="public">
+          <Argument type="HospitalPeople" name="person"/>
+        </Method>
+        <Method name="updateRequestAppointment" returnType="void" visibility="public">
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+        <Method name="updateRequestMedicine" returnType="void" visibility="public">
+          <Argument type="Medicine" name="medicine"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="UserList" package="Model.Users" visibility="public" xPosition="20.0" yPosition="615.0">
+      <Fields>
+        <Field name="allUsersList" type="ArrayList&lt;HospitalPeople&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getAllUsersList" returnType="ArrayList&lt;HospitalPeople&gt;" visibility="public"/>
+        <Method name="setAllUsersList" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;HospitalPeople&gt;" name="allUsersList"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="AppointmentObservable" package="Model.Observables" visibility="public" xPosition="1499.0" yPosition="20.0">
+      <Methods>
+        <Method name="registerAppointmentObservers" returnType="void" visibility="package"/>
+        <Method name="removeAppointmentObserver" returnType="void" visibility="package"/>
+        <Method name="notifyAppointment" returnType="void" visibility="package">
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="MedicineObservable" package="Model.Observables" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Methods>
+        <Method name="registerObservers" returnType="void" visibility="package"/>
+        <Method name="removeObserver" returnType="void" visibility="package">
+          <Argument type="Secretary" name="secretary"/>
+        </Method>
+        <Method name="notifyObserverMedicine" returnType="void" visibility="package">
+          <Argument type="Medicine" name="medicine"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="PatientObservable" package="Model.Observables" visibility="public" xPosition="2131.0" yPosition="20.0">
+      <Methods>
+        <Method name="registerObservers" returnType="void" visibility="package"/>
+        <Method name="removeObserver" returnType="void" visibility="package">
+          <Argument type="Secretary" name="secretary"/>
+        </Method>
+        <Method name="notifyObserverCreate" returnType="void" visibility="package">
+          <Argument type="Patient" name="patient"/>
+        </Method>
+        <Method name="notifyObserverRemove" returnType="void" visibility="package">
+          <Argument type="Patient" name="patient"/>
+        </Method>
+        <Method name="notifyObserverAppointment" returnType="void" visibility="package">
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="PrescriptionObservable" package="Model.Observables" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Methods>
+        <Method name="registerPrescriptionObservers" returnType="void" visibility="package"/>
+        <Method name="removePrescriptionObserver" returnType="void" visibility="package">
+          <Argument type="Prescription" name="prescription"/>
+        </Method>
+        <Method name="notifyObserverPrescription" returnType="void" visibility="package">
+          <Argument type="Prescription" name="prescription"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="AppointmentObserver" package="Model.Observers" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Methods>
+        <Method name="updateAppointment" returnType="void" visibility="package">
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="PrescriptionObserver" package="Model.Observers" visibility="public" xPosition="635.0" yPosition="420.0">
+      <Methods>
+        <Method name="updatePrescription" returnType="void" visibility="package">
+          <Argument type="Prescription" name="prescription"/>
+        </Method>
+        <Method name="removePrescription" returnType="void" visibility="package">
+          <Argument type="Prescription" name="prescription"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="SecretaryObserver" package="Model.Observers" visibility="public" xPosition="858.0" yPosition="237.0">
+      <Methods>
+        <Method name="updateCreate" returnType="void" visibility="package">
+          <Argument type="HospitalPeople" name="person"/>
+        </Method>
+        <Method name="updateRemove" returnType="void" visibility="package">
+          <Argument type="HospitalPeople" name="person"/>
+        </Method>
+        <Method name="updateRequestAppointment" returnType="void" visibility="package">
+          <Argument type="Appointment" name="appointment"/>
+        </Method>
+        <Method name="updateRequestMedicine" returnType="void" visibility="package">
+          <Argument type="Medicine" name="medicine"/>
+        </Method>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Model.Users.Patient" target="Model.Observers.PrescriptionObserver"/>
+    <UseRelation source="Model.Prescriptions.PrescriptionList" target="Model.Prescriptions.Prescription" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Model.Users.Patient" target="Model.Users.HospitalPeople"/>
+    <HasRelation name="patient" source="Model.Prescriptions.Prescription" target="Model.Users.Patient" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="requestAppointments" source="Model.Users.Secretary" target="Model.Appointments.Appointment" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Appointment&gt;"/>
+    <UseRelation source="Model.Observables.AppointmentObservable" target="Model.Appointments.Appointment" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Model.Observers.AppointmentObserver" target="Model.Appointments.Appointment" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Model.Appointments.Appointment" target="Model.Appointments.Appointment" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Model.Users.UserList" target="Model.Users.HospitalPeople" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="allMedicines" source="Model.Medicines.MedicineList" target="Model.Medicines.Medicine" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Medicine&gt;"/>
+    <HasRelation name="allUsersList" source="Model.Users.UserList" target="Model.Users.HospitalPeople" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;HospitalPeople&gt;"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Model.Users.Patient" target="Model.Observables.PatientObservable"/>
+    <UseRelation source="Model.Observables.PatientObservable" target="Model.Appointments.Appointment" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="medicineObservers" source="Model.Medicines.Medicine" target="Model.Observers.SecretaryObserver" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;SecretaryObserver&gt;"/>
+    <UseRelation source="Model.Observers.PrescriptionObserver" target="Model.Prescriptions.Prescription" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Model.Users.Doctor" target="Model.Appointments.Appointment" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="prescriptions" source="Model.Users.Patient" target="Model.Prescriptions.Prescription" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Prescription&gt;"/>
+    <UseRelation source="Model.Users.Secretary" target="Model.Users.Secretary" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Model.Medicines.Medicine" target="Model.Observables.MedicineObservable"/>
+    <HasRelation name="requestMedicines" source="Model.Users.Secretary" target="Model.Medicines.Medicine" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Medicine&gt;"/>
+    <UseRelation source="Model.Prescriptions.Prescription" target="Model.Users.Patient" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="appointments" source="Model.Users.Patient" target="Model.Appointments.Appointment" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Appointment&gt;"/>
+    <UseRelation source="Model.Observables.PatientObservable" target="Model.Users.Secretary" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Model.Users.Patient" target="Model.Observers.AppointmentObserver"/>
+    <UseRelation source="Model.Users.Secretary" target="Model.Medicines.Medicine" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Model.Users.Patient" target="Model.Users.Patient" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="approvalUsers" source="Model.Users.Secretary" target="Model.Users.HospitalPeople" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;HospitalPeople&gt;"/>
+    <UseRelation source="Model.Users.Patient" target="Model.Users.Secretary" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="prescriptionObservers" source="Model.Prescriptions.Prescription" target="Model.Observers.PrescriptionObserver" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;PrescriptionObserver&gt;"/>
+    <HasRelation name="secretaries" source="Model.Users.Patient" target="Model.Observers.SecretaryObserver" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;SecretaryObserver&gt;"/>
+    <HasRelation name="appointments" source="Model.Users.Doctor" target="Model.Appointments.Appointment" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Appointment&gt;"/>
+    <IsRelation name="is" source="Model.Users.Doctor" target="Model.Users.HospitalPeople"/>
+    <UseRelation source="Model.Observers.SecretaryObserver" target="Model.Users.HospitalPeople" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Model.Medicines.Medicine" target="Model.Users.Secretary" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Model.Users.Secretary" target="Model.Users.HospitalPeople"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Model.Prescriptions.Prescription" target="Model.Observables.PrescriptionObservable"/>
+    <UseRelation source="Model.Observables.MedicineObservable" target="Model.Users.Secretary" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Model.Appointments.Appointment" target="Model.Users.Patient" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Model.Prescriptions.Prescription" target="Model.Medicines.Medicine" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Model.Observables.MedicineObservable" target="Model.Medicines.Medicine" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="allAppointments" source="Model.Appointments.AppointmentList" target="Model.Appointments.Appointment" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Appointment&gt;"/>
+    <UseRelation source="Model.Users.Secretary" target="Model.Users.HospitalPeople" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="removalUsers" source="Model.Users.Secretary" target="Model.Users.HospitalPeople" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;HospitalPeople&gt;"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Model.Appointments.Appointment" target="Model.Observables.AppointmentObservable"/>
+    <UseRelation source="Model.Observables.PatientObservable" target="Model.Users.Patient" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Model.Users.Secretary" target="Model.Appointments.Appointment" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Model.Appointments.Appointment" target="Model.Users.Doctor" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="doctor" source="Model.Appointments.Appointment" target="Model.Users.Doctor" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Model.Observers.SecretaryObserver" target="Model.Medicines.Medicine" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Model.Appointments.AppointmentList" target="Model.Appointments.Appointment" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Model.Observers.SecretaryObserver" target="Model.Appointments.Appointment" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Model.Observables.PrescriptionObservable" target="Model.Prescriptions.Prescription" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Model.Users.Secretary" target="Model.Observers.SecretaryObserver"/>
+    <IsRelation name="is" source="Model.Users.Administrator" target="Model.Users.HospitalPeople"/>
+    <UseRelation source="Model.Users.Patient" target="Model.Appointments.Appointment" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Model.Prescriptions.Prescription" target="Model.Users.Doctor" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="allPrescriptions" source="Model.Prescriptions.PrescriptionList" target="Model.Prescriptions.Prescription" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Prescription&gt;"/>
+    <UseRelation source="Model.Medicines.MedicineList" target="Model.Medicines.Medicine" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="medicine" source="Model.Prescriptions.Prescription" target="Model.Medicines.Medicine" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Model.Medicines.Medicine" target="Model.Medicines.Medicine" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="doctor" source="Model.Prescriptions.Prescription" target="Model.Users.Doctor" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Model.Users.Doctor" target="Model.Observers.AppointmentObserver"/>
+    <HasRelation name="patient" source="Model.Appointments.Appointment" target="Model.Users.Patient" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Model.Prescriptions.Prescription" target="Model.Prescriptions.Prescription" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Model.Users.Patient" target="Model.Prescriptions.Prescription" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="appointmentObservers" source="Model.Appointments.Appointment" target="Model.Observers.AppointmentObserver" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;AppointmentObserver&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
